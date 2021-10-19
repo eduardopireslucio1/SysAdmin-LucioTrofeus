@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function getName(){
         return $this-> name;
     }
+
+    public function getAvatar(){
+        return 'https://www.gravatar.com/avatar/' . md5($this->email);
+    }
 }
