@@ -1,9 +1,10 @@
 @extends('layouts.auth')
 
 @section('content')
-<p class="login-box-msg">Entre para iniciar a sessão</p>
+<p class="login-box-msg">Faça seu login</p>
 
-<form action="../../index3.html" method="post">
+<form action="{{ route('login') }}" method="post">
+  @csrf
     <div class="form-group">
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
@@ -57,7 +58,7 @@
     <a href="{{ route('password.request') }}">Esqueci minha senha</a>
 </p>
 <p class="mb-0">
-    <a href="register.html" class="text-center">Registrar uma nova conta</a>
+    <a href="{{ route('register') }}" class="text-center">Registrar uma nova conta</a>
 </p>
 <!-- <div class="container">
     <div class="row justify-content-center">
