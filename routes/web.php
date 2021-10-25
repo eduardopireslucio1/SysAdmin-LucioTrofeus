@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +19,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
 Route::prefix('admin')->group(function(){
     Route::get("/produtos", [ProdutoController::class, "index"]);
 });
-

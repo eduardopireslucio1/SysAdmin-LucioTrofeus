@@ -14,7 +14,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        
+        return 'aolooodoasda';
     }
 
     /**
