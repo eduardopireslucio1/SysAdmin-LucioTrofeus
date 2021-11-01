@@ -14,7 +14,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return view('produtos.index'->with('modelsProdutos',$modelsProduto);
+        $models_produtos = modelsProduto::latest()->paginate(10);
+        return view('produtos.index')->with('models_produtos',$models_produtos);
     }
 
     /**

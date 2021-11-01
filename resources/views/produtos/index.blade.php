@@ -18,17 +18,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($modelsProduto as $modelsProduto)
+        @foreach ($models_produtos as $produto)
         <tr>
-            <td>{{$modelsProduto->id}}</td>
-            <td>{{$modelsProduto->nome}}</td>
-            <td>{{$modelsProduto->image}}</td>
-            <td>{{$modelsProduto->barcodigo}}</td>
-            <td>{{$modelsProduto->preco}}</td>
-            <td>{{$modelsProduto->created_at}}</td>
-            <td>{{$modelsProduto->updated_at}}</td>
+            <td>{{$produto->id}}</td>
+            <td>{{$produto->nome}}</td>
+            <td>{{$produto->image}}</td>
+            <td>{{$produto->barcodigo}}</td>
+            <td>{{$produto->preco}}</td>
+            <td>{{$produto->created_at}}</td>
+            <td>{{$produto->updated_at}}</td>
             <td>
-                <a href="{{route('produtos.editar', $modelsProduto)}}">EDITAR </a>
+                <a href="{{route('produtos.edit', $produto)}}">EDITAR </a>
                 <button>DELETAR</button>
             </td>   
         </tr>

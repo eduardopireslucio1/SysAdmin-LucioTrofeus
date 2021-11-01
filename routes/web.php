@@ -31,6 +31,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+// Route::prefix('admin')->group(function(){
+//     Route::get('/produtos', [ProdutoController::class, "index"]);
+//     Route::resource('produtos', "ProdutoController");
+// });
+
 Route::prefix('admin')->group(function(){
     Route::get("/produtos", [ProdutoController::class, "index"]);
-});
+ });
