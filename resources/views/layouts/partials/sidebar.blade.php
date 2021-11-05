@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('produtos.store')}}" class="nav-link {{activeSegment('produtos')}}">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>
                             Produtos
