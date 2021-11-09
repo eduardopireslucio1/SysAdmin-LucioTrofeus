@@ -36,7 +36,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'produto cadastrado!';
     }
 
     /**
