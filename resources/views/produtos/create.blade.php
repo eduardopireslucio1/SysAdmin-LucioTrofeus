@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label>Nome do produto: </label>
-                <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome">
+                <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome">
                 @error('nome')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label>Descrição do produto: </label>
-                <textarea type="text" name="descricao" class="form-control @error('descricao') is-invalid @enderror"
+                <textarea placeholder="Descrição"type="text" name="descricao" class="form-control @error('descricao') is-invalid @enderror"
                     id="descricao">{{old('descricao')}}</textarea>
                 @error('descricao')
                 <span class="invalid-feedback" role="alert">
@@ -32,8 +32,8 @@
             <div class="form-group">
                 <label>Enviar imagem (referência): </label>
                 <div class="custom-file">
-                    <input type="file" id="image" class="custom-file-input" name="image" value="{{old('image')}}">
-                    <label for="image" class="custom-file-label"> </label>  
+                    <input type="file" id="imagem" class="custom-file-input" name="imagem" value="{{old('imagem')}}">
+                    <label for="imagem" class="custom-file-label">Enviar imagem </label>  
                 </div>
                 @error('imagem')
                 <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
 
             <div class="form-group">
                 <label>Preço: </label>
-                <input type="text" name="preco" class="form-control @error('preco') is-invalid @enderror" id="preco">
+                <input placeholder="preço"type="text" name="preco" class="form-control @error('preco') is-invalid @enderror" id="preco">
                 @error('preco')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

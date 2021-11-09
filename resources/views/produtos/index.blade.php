@@ -28,7 +28,6 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Image</th>
-                    <th>Codigo-barra</th>
                     <th>Preco</th>
                     <th>Cadastrado em</th>
                     <th>Atualizado em</th>
@@ -41,7 +40,6 @@
                     <td>{{$produto->id}}</td>
                     <td>{{$produto->nome}}</td>
                     <td>{{$produto->image}}</td>
-                    <td>{{$produto->barcodigo}}</td>
                     <td>{{$produto->preco}}</td>
                     <td>{{$produto->created_at}}</td>
                     <td>{{$produto->updated_at}}</td>

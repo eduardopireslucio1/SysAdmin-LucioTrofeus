@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModelsProduto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProdutoStoreRequest;
 
 class ProdutoController extends Controller
 {
@@ -34,9 +35,27 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdutoStoreRequest $request)
     {
-        return 'produto cadastrado!';
+        $imagem_path = '';
+        if($request->hasFile('imagem')){
+            $imagem_path = $request->file('imagem')->store('models_produtos');
+        }
+
+        $modelsProduto = ModelsProduto::create([
+
+            'nome'=>$request->nome,
+            'descricao'=>$request->descricao,
+            'imagem'=>$imagem_path,
+            'preco'=>$request->preco,
+            'status'=>$request->status
+
+        ]);
+
+        if(!$modelsProduto){
+            return redirect()->back()->with('Não foi possível cadastrar esse produto!');
+        }
+        return redirect()->route('produtos.store')->with('Produto cadastrado com sucesso!');
     }
 
     /**

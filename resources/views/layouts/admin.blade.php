@@ -29,10 +29,12 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
    
+    <section>
+      @include('layouts.partials.alert.sucess')
+      @include('layouts.partials.alert.error')
+      @yield('content')
 
-    @yield('content')
-
-    
+    </section>
   </div>
  
   @include('layouts.partials.footer')
