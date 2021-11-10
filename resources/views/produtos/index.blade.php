@@ -5,7 +5,9 @@
     p{margin-top: 10px !important;}
     p{margin-left: 20px;}
 
-   
+   form{
+       display: inline-block;
+   }
 
 </style>
 
@@ -44,11 +46,15 @@
                     <td>{{$produto->created_at}}</td>
                     <td>{{$produto->updated_at}}</td>
                     <td>
-                        <a href="{{route('produtos.edit', $models_produtos)}}" class="btn btn-primary"><i
+                        <a href="{{route('produtos.edit', $produto->id)}}" class="btn btn-primary"><i
                                 class="fas fa-edit"></i></a>
-                        <a href="{{route('produtos.show', $models_produtos)}}" class="btn btn-info"><i
+                        <a href="{{route('produtos.show', $produto->id)}}" class="btn btn-info"><i
                                 class="fas fa-eye" style="color:white"></i></a>
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <form action="/admin/produtos/{{$produto->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

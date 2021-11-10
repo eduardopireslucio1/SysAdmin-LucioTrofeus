@@ -98,8 +98,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\ModelsProduto  $modelsProduto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ModelsProduto $modelsProduto)
+    public function destroy($id)
     {
-        //
+        ModelsProduto::findOrFail($id)->delete();
+
+        return redirect('/admin/produtos')->with('msg', 'Produto excluído com sucesso!');
     }
 }

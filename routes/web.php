@@ -34,6 +34,7 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::resource('produtos', 'ProdutoController');
     Route::get('produtos',[ProdutoController::class, 'index']);
+    Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy']);
 });
 
 // Route::prefix('admin')->group(function(){

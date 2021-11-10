@@ -1,15 +1,16 @@
 @extends('layouts.admin')
 @section('title','Edição de Produtos')
-
+@section('content')
+<h1>Editar Produto {{}}</h1>
 <div class="card">
     <div class="card-body">
     @foreach ($models_produtos as $produto)
-        <form action="{{action('ProdutoController@update')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('produtos.update', $id)}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
                 <label>Nome do produto: </label>
-                <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome" value="{{$models_produtos->nome}}">
+                <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome" value="{{$produto->nome}}">
                 @error('nome')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -89,4 +90,5 @@
         @endforeach
     </div>
 </div>
+@endsection
 @endsection
