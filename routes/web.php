@@ -34,7 +34,9 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::resource('produtos', 'ProdutoController');
     Route::get('produtos',[ProdutoController::class, 'index']);
-    Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy']);
+    Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
+    Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
+    Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
 });
 
 // Route::prefix('admin')->group(function(){

@@ -43,10 +43,10 @@
                     <td>{{$produto->nome}}</td>
                     <td>{{$produto->image}}</td>
                     <td>{{$produto->preco}}</td>
-                    <td>{{$produto->created_at}}</td>
-                    <td>{{$produto->updated_at}}</td>
+                    <td>{{$produto->created_at->format('d-m-y H:i:s')}}</td>
+                    <td>{{$produto->updated_at->format('d-m-y H:i:s')}}</td>
                     <td>
-                        <a href="{{route('produtos.edit', $produto->id)}}" class="btn btn-primary"><i
+                        <a href="/admin/produtos/edit/{{$produto->id}}" class="btn btn-primary"><i
                                 class="fas fa-edit"></i></a>
                         <a href="{{route('produtos.show', $produto->id)}}" class="btn btn-info"><i
                                 class="fas fa-eye" style="color:white"></i></a>

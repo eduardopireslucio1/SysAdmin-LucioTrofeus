@@ -75,9 +75,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\ModelsProduto  $modelsProduto
      * @return \Illuminate\Http\Response
      */
-    public function edit(ModelsProduto $modelsProduto)
+    public function edit($id)
     {
-        //
+        $produto = ModelsProduto::findOrFail($id);
+
+        return view('produtos.edit', ['models_produtos' => $produto]);
     }
 
     /**
@@ -89,7 +91,9 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, ModelsProduto $modelsProduto)
     {
-        //
+        ModelsProduto::findOrFail($request->id)->update($request->all());
+
+        return redirect('/admin/produtos/')->with('msg', 'Produto editado com sucesso!');
     }
 
     /**
@@ -102,6 +106,6 @@ class ProdutoController extends Controller
     {
         ModelsProduto::findOrFail($id)->delete();
 
-        return redirect('/admin/produtos')->with('msg', 'Produto excluído com sucesso!');
+        return redirect('/admin/produtos/')->with('msg', 'Produto excluído com sucesso!');
     }
 }

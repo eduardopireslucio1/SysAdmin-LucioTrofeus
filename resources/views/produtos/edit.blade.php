@@ -1,16 +1,15 @@
 @extends('layouts.admin')
 @section('title','Edição de Produtos')
 @section('content')
-<h1>Editar Produto {{}}</h1>
+<h1>Editar Produto: {{$models_produtos->nome}}</h1>
 <div class="card">
     <div class="card-body">
-    @foreach ($models_produtos as $produto)
-        <form action="{{route('produtos.update', $id)}}" method="POST" enctype="multipart/form-data">
+        <form action="/admin/produtos/{{$models_produtos->id}}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            @method('PUT')
             <div class="form-group">
                 <label>Nome do produto: </label>
-                <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome" value="{{$produto->nome}}">
+                <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome" value="{{$models_produtos->nome}}">
                 @error('nome')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -20,8 +19,8 @@
 
             <div class="form-group">
                 <label>Descrição do produto: </label>
-                <textarea placeholder="Descrição"type="text" name="descricao" class="form-control @error('descricao') is-invalid @enderror"
-                    id="descricao">{{old('descricao')}}</textarea>
+                <textarea placeholder="Descrição"type="text" name="descricao" class="form-control @error('descricao') is-invalid @enderror" 
+                id="descricao">{{$models_produtos->descricao}}</textarea>
                 @error('descricao')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -44,7 +43,7 @@
 
             <div class="form-group">
                 <label>Preço: </label>
-                <input placeholder="preço"type="text" name="preco" class="form-control @error('preco') is-invalid @enderror" id="preco">
+                <input placeholder="preço"type="text" name="preco" class="form-control @error('preco') is-invalid @enderror" id="preco" value="{{$models_produtos->preco}}">
                 @error('preco')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -68,8 +67,8 @@
             <div class="form-group">
                 <label>Status: </label>
                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                    <option value="1" {{old('status'==1 ? 'selected' : '')}}>Ativo</option>
-                    <option value="0" {{old('status'==0 ? 'selected' : '')}}>Inativo</option>
+                    <option value="1" {{$models_produtos->status == 1 ? "selected='selected'" : ""}} >Ativo</option>
+                    <option value="0" {{$models_produtos->status == 0 ? "selected='selected'" : ""}} >Inativo</option>
                 </select>
                 @error('status')
                 <span class="invalid-feedback" role="alert">
@@ -78,7 +77,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary" type="submit">Cadastrar produto</button>
+            <input class="btn btn-primary" type="submit" value="Editar Produto">
 
             <style>
             input[type=checkbox] {
@@ -87,8 +86,6 @@
             }
             </style>
         </form>
-        @endforeach
     </div>
 </div>
-@endsection
 @endsection

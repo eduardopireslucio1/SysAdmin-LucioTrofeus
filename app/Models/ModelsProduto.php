@@ -9,6 +9,8 @@ class ModelsProduto extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $fillable = [
         'nome',
         'descricao',
