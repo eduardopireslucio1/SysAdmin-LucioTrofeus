@@ -18,7 +18,6 @@ class CreateModelsProdutosTable extends Migration
             $table->string('nome');
             $table->text('descricao')->nullable();
             $table->string('imagem')->nullable();
-            $table->string('barcodigo')->unique();
             $table->decimal('preco',8 ,2);
             $table->boolean('status')->default(true);
             $table->timestamps();

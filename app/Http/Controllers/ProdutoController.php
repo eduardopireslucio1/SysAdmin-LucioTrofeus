@@ -38,9 +38,19 @@ class ProdutoController extends Controller
     public function store(ProdutoStoreRequest $request)
     {
         $imagem_path = '';
-        if($request->hasFile('imagem')){
-            $imagem_path = $request->file('imagem')->store('models_produtos');
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            // $imagem_path = $request->file('imagem')->store('models_produtos');
+            $requestImagem = $request->imagem;
+
+            $extension = $requestImagem->extension();
+
+            $imagemName = md5($requestImagem->getClientoriginalName() . strtotime("now")) . "." . $extension;
+
+            $requestImagem->move(public_path('images/produtos'), $imagemName);
+
+            // $produto->imagem = $imagemName;
         }
+
 
         $modelsProduto = ModelsProduto::create([
 
