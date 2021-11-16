@@ -54,9 +54,9 @@
 
             <div class="form-group">
                 <label>Material a utilizar: </label>
-                <input type="checkbox" name="material" class="form-control @error('material') is-invalid @enderror"
+                <input type="checkbox" name="material[]" value="Acrilico" class="form-control @error('material') is-invalid @enderror"
                     id="material">Acrílico</input>
-                <input type="checkbox" name="material" class="form-control @error('material') is-invalid @enderror"
+                <input type="checkbox" name="material[]" value="MDF" class="form-control @error('material') is-invalid @enderror"
                     id="material">MDF</input>
                 @error('material')
                 <span class="invalid-feedback" role="alert">

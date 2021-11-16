@@ -48,7 +48,8 @@ class ProdutoController extends Controller
             'descricao'=>$request->descricao,
             'imagem'=>$imagem_path,
             'preco'=>$request->preco,
-            'status'=>$request->status
+            'status'=>$request->status,
+            'material'=>$request->material
 
         ]);
 
@@ -89,11 +90,24 @@ class ProdutoController extends Controller
      * @param  \App\Models\ModelsProduto  $modelsProduto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ModelsProduto $modelsProduto)
+    public function update(Request $request, $id)
     {
-        ModelsProduto::findOrFail($request->id)->update($request->all());
+        $produto = ModelsProduto::findOrFail($id);
+
+        $produto->update([
+            'nome'=>$request->nome,
+            'descricao'=>$request->descricao,
+            'imagem'=>$request->imagem,
+            'preco'=>$request->preco,
+            'status'=>$request->status,
+            'material'=>$request->material
+        ]);
 
         return redirect('/admin/produtos/')->with('msg', 'Produto editado com sucesso!');
+
+        // ModelsProduto::findOrFail($request->id)->update($request->all());
+
+        // return redirect('/admin/produtos/')->with('msg', 'Produto editado com sucesso!');
     }
 
     /**

@@ -11,12 +11,17 @@ class ModelsProduto extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'material' => 'array'
+    ];
+
     protected $fillable = [
         'nome',
         'descricao',
         'imagem',
         'preco',
-        'status'
+        'status',
+        'material'
 
     
     ];
