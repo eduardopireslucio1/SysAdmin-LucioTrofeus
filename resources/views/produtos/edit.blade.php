@@ -30,7 +30,10 @@
 
             <div class="form-group">
                 <label>Enviar imagem (referência): </label>
+<<<<<<< HEAD
+=======
                 <img src="">
+>>>>>>> 458761291c60e42d3be76a047008b941495920a3
                 <img src="/images/produtos{{$models_produtos->imagem}}">
                 <div class="custom-file">
                     <input type="file" id="imagem" class="custom-file-input" name="imagem" value="{{old('imagem')}}">

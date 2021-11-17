@@ -48,7 +48,7 @@
                     <td>
                         <a href="/admin/produtos/edit/{{$produto->id}}" class="btn btn-primary"><i
                                 class="fas fa-edit"></i></a>
-                        <a href="{{route('produtos.show', $produto->id)}}" class="btn btn-info"><i
+                        <a href="/admin/produtos/{{$produto->id}}" class="btn btn-info"><i
                                 class="fas fa-eye" style="color:white"></i></a>
                         <form action="/admin/produtos/{{$produto->id}}" method="POST">
                             @csrf

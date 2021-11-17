@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function(){
     Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
     Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
     Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+    Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
 });
 
 // Route::prefix('admin')->group(function(){
