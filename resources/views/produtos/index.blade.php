@@ -27,7 +27,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>id</th>
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Cadastrado em</th>

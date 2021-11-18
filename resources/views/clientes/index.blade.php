@@ -27,6 +27,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Nome / Razão Social</th>
                     <th>E-mail</th>
                     <th>Telefone</th>
@@ -38,6 +39,7 @@
             <tbody>
                 @foreach ($models_clientes as $cliente)
                 <tr>
+                    <td>{{$cliente->id}}</td>
                     <td>{{$cliente->nome_razaosocial}}</td>
                     <td>{{$cliente->email}}</td>
                     <td>{{$cliente->telefone}}</td>
