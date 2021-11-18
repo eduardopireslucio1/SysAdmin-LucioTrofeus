@@ -15,16 +15,11 @@
             <p clas="produto-status"><strong>Status:  </strong>
             
             @if($models_produtos->status == 0)
-<<<<<<< HEAD
+
                <a class="btn btn-danger btn-sm" style="background-color: red; color: white" >Inativo</a>
             @else
                <a class="btn btn-sucess btn-sm" style="background-color: green; color: white">Ativo</a>
-=======
-               Desativado
-            @else
-                    Ativo
-            
->>>>>>> a8efeade22de027800f5f1b898fc7ad0f5875ec7
+
             @endif
             
             

@@ -14,7 +14,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return 'oláaaaaaaaaaaaaa';
+        $models_clientes = modelsCliente::latest()->paginate(10);
+        return view('clientes.index')->with('models_clientes',$models_clientes);
     }
 
     /**
@@ -24,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
     /**

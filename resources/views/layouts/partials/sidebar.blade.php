@@ -46,9 +46,18 @@
 
                 <li class="nav-item">
                     <a href="{{route('produtos.store')}}" class="nav-link {{activeSegment('produtos')}}">
-                        <i class="nav-icon fas fa-th-large"></i>
+                        <i class="fa fa-fw fa-inbox"></i>
                         <p>
                             Produtos
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('clientes.store')}}" class="nav-link {{activeSegment('clientes')}}">
+                        <i class="fa fa-fw fa-users"></i>
+                        <p>
+                            Clientes
                         </p>
                     </a>
                 </li>

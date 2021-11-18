@@ -16,7 +16,7 @@
     <div class="painel panel-default">
         <div class="painel-heading" style="margin-top:8px !important;color: black">
             <h3><b>Produtos</b>
-                <a href="{{route('produtos.create')}}" class="btn btn-sucess btn-sm" style="float: right; background-color: green; color: white"><strong>Cadastrar Produtos</strong></a>
+                <a href="{{route('produtos.create')}}" class="btn btn-sucess btn-sm" style="float: right; background-color: green; color: white"><strong>Cadastrar Produto</strong></a>
             </h3>
         </div>
     </div>
@@ -32,7 +32,7 @@
                     <th>Preço</th>
                     <th>Cadastrado em</th>
                     <th>Atualizado em</th>
-                    <th>Acao</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
