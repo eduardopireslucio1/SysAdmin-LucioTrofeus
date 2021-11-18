@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function(){
     // Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
     // Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
     
+=======
 });
 
 // Route::prefix('admin')->group(function(){
