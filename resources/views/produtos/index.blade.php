@@ -29,8 +29,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Image</th>
-                    <th>Preco</th>
+                    <th>Preço</th>
                     <th>Cadastrado em</th>
                     <th>Atualizado em</th>
                     <th>Acao</th>
@@ -41,7 +40,6 @@
                 <tr>
                     <td>{{$produto->id}}</td>
                     <td>{{$produto->nome}}</td>
-                    <td>{{$produto->image}}</td>
                     <td>{{$produto->preco}}</td>
                     <td>{{$produto->created_at->format('d-m-y H:i:s')}}</td>
                     <td>{{$produto->updated_at->format('d-m-y H:i:s')}}</td>

@@ -38,8 +38,19 @@ Route::prefix('admin')->group(function(){
     Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
     Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
     Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
-    Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
-    Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
+    
+});
+
+Auth::routes();
+
+Route::prefix('admin')->group(function(){
+    Route::resource('clientes', 'ClienteController');
+    // Route::get('clientes',[ClienteController::class, 'index']);
+    // Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
+    // Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
+    // Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+    // Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
+    
 });
 
 // Route::prefix('admin')->group(function(){
