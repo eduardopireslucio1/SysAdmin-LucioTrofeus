@@ -11,4 +11,18 @@ class ModelsCliente extends Model
 
     protected $guarded = [];
 
+    protected $fillable=[
+        'nome_razaosocial',
+        'email',
+        'telefone',
+        'cpf',
+        'cnpj',
+        'cep',
+        'cidade',
+        'uf',
+        'rua',
+        'numero',
+        'observacao'
+    ];
+
 }

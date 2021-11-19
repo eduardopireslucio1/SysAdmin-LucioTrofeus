@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModelsCliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClienteStoreRequest;
 
 class ClienteController extends Controller
 {
@@ -24,7 +25,7 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         return view('clientes.create');
     }
 
@@ -34,9 +35,30 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteStoreRequest $request)
     {
-        //
+
+        $modelsCliente = ModelsCliente::create([
+            
+            'nome_razaosocial'=>$request->nome_razaosocial,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'cpf'=>$request->cpf,
+            'cnpj'=>$request->cnpj,
+            'cep'=>$request->cep,
+            'cidade'=>$request->cidade,
+            'uf'=>$request->uf,
+            'rua'=>$request->rua,
+            'numero'=>$request->numero,
+            'observacao'=>$request->observacao
+
+        ]);
+
+        if(!$modelsCliente){
+            return redirect()->back()->with('Não foi possível cadastrar esse cliente!');
+        }
+        return redirect()->route('clientes.store')->with('Cliente cadastrado com sucesso!');
+        
     }
 
     /**
