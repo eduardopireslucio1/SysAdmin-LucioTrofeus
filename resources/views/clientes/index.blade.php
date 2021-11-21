@@ -32,7 +32,7 @@
                     <th>E-mail</th>
                     <th>Telefone</th>
                     <th>Cidade</th>
-                    <th>UF</th>
+                    <th>Estado</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -50,10 +50,11 @@
                                 class="fas fa-edit"></i></a>
                         <a href="/admin/clientes/{{$cliente->id}}" class="btn btn-info"><i
                                 class="fas fa-eye" style="color:white"></i></a>
-                        <form action="/admin/cliente/{{$cliente->id}}" method="POST">
+                        
+                        <form action="/admin/clientes/{{$cliente->id}}" method="POST" >
                             @csrf
                             @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <button type="submit" class="btn btn-danger" ><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -63,7 +64,5 @@
         {{$models_clientes->render()}}
     </div>
 </div>
-
-
 
 @endsection

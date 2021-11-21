@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,14 +46,25 @@ Auth::routes();
 
 Route::prefix('admin')->group(function(){
     Route::resource('clientes', 'ClienteController');
-    // Route::get('clientes',[ClienteController::class, 'index']);
-    // Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
-    // Route::get('/produtos/edit/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
-    // Route::put('/produtos/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
-    // Route::get('/produtos/{id}',[ProdutoController::class, 'show']);
+    Route::get('clientes',[ClienteController::class, 'index']);
+    Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
+    Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
+    Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
+    Route::get('/clientes/{id}',[ClienteController::class, 'show']);
     
 });
 
 // Route::prefix('admin')->group(function(){
 //     Route::get("/produtos", [ProdutoController::class, "index"]);
 //  });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

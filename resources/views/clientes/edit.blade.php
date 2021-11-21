@@ -1,17 +1,16 @@
 @extends('layouts.admin')
-@section('title','Cadastrar Cliente')
-@section('content-header','Cadastrar Cliente')
-
+@section('title','Edição de Produtos')
 @section('content')
+<h1>Editar Cliente: {{$models_clientes->nome_razaosocial}}</h1>
 <div class="card">
     <div class="card-body">
-        <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="/admin/clientes/{{$models_clientes->id}}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            @method('PUT')
             <div class="form-group">
                 <label>Nome / Razão Social: </label>
-                <input placeholder="Ex: Lúcio Troféus" type="text" name="nome_razaosocial" class="form-control @error('nome') is-invalid @enderror" id="nome_razaosocial">
-                @error('nome')
+                <input placeholder="Nome / Razão Social" type="text" name="nome_razaosocial" class="form-control @error('nome_razaosocial') is-invalid @enderror" id="nome_razaocial" value="{{$models_clientes->nome_razaosocial}}">
+                @error('nome_razaosocial')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -19,8 +18,8 @@
             </div>
 
             <div class="form-group">
-                <label>E-mail: </label>
-                <input placeholder="Ex: email@gmail.com" type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email">
+                <label>Email: </label>
+                <input placeholder="Email" type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{$models_clientes->email}}">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -30,7 +29,7 @@
 
             <div class="form-group">
                 <label>Telefone: </label>
-                <input placeholder="Telefone"type="text" name="telefone" class="form-control @error('telefone') is-invalid @enderror" id="telefone">
+                <input placeholder="Telefone" type="text" name="telefone" class="form-control @error('telefone') is-invalid @enderror" id="telefone" value="{{$models_clientes->telefone}}">
                 @error('telefone')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -40,8 +39,7 @@
 
             <div class="form-group">
                 <label>CPF: </label>
-                <input placeholder="CPF"type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                    id="cpf">{{old('cpf')}}</input>
+                <input placeholder="CPF" type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror" id="cpf" value="{{$models_clientes->cpf}}">
                 @error('cpf')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -51,8 +49,7 @@
 
             <div class="form-group">
                 <label>CNPJ: </label>
-                <input placeholder="CNPJ"type="text" name="cnpj" class="form-control @error('cnpj') is-invalid @enderror"
-                    id="cpf">{{old('cnpj')}}</input>
+                <input placeholder="CNPJ" type="text" name="cnpj" class="form-control @error('cnpj') is-invalid @enderror" id="cnpj" value="{{$models_clientes->cnpj}}">
                 @error('cnpj')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -62,8 +59,7 @@
 
             <div class="form-group">
                 <label>CEP: </label>
-                <input placeholder="CEP"type="text" name="cep" class="form-control @error('cep') is-invalid @enderror"
-                    id="cep">{{old('cep')}}</input>
+                <input placeholder="CEP" type="text" name="cep" class="form-control @error('cep') is-invalid @enderror" id="cep" value="{{$models_clientes->cep}}">
                 @error('cep')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -73,8 +69,7 @@
 
             <div class="form-group">
                 <label>Cidade: </label>
-                <input placeholder="Cidade"type="text" name="cidade" class="form-control @error('cidade') is-invalid @enderror"
-                    id="cep">{{old('cidade')}}</input>
+                <input placeholder="Cidade" type="text" name="cidade" class="form-control @error('cidade') is-invalid @enderror" id="cidade" value="{{$models_clientes->cidade}}">
                 @error('cidade')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -84,8 +79,7 @@
 
             <div class="form-group">
                 <label>Estado: </label>
-                <input placeholder="UF"type="text" name="uf" class="form-control @error('uf') is-invalid @enderror"
-                    id="cep">{{old('uf')}}</input>
+                <input placeholder="UF" type="text" name="uf" class="form-control @error('uf') is-invalid @enderror" id="uf" value="{{$models_clientes->uf}}">
                 @error('uf')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -95,8 +89,7 @@
 
             <div class="form-group">
                 <label>Rua: </label>
-                <input placeholder="Rua"type="text" name="rua" class="form-control @error('rua') is-invalid @enderror"
-                    id="rua">{{old('rua')}}</input>
+                <input placeholder="Rua" type="text" name="rua" class="form-control @error('rua') is-invalid @enderror" id="rua" value="{{$models_clientes->rua}}">
                 @error('rua')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -106,8 +99,7 @@
 
             <div class="form-group">
                 <label>Número: </label>
-                <input placeholder="Número"type="text" name="numero" class="form-control @error('numero') is-invalid @enderror"
-                    id="cep">{{old('numero')}}</input>
+                <input placeholder="Número" type="text" name="numero" class="form-control @error('numero') is-invalid @enderror" id="numero" value="{{$models_clientes->numero}}">
                 @error('numero')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -117,8 +109,7 @@
 
             <div class="form-group">
                 <label>Observação: </label>
-                <textarea placeholder="Observação"type="text" name="observacao" class="form-control @error('observacao') is-invalid @enderror"
-                    id="descricao">{{old('observacao')}}</textarea>
+                <input placeholder="Observação" type="text" name="observacao" class="form-control @error('observacao') is-invalid @enderror" id="observacao" value="{{$models_clientes->observacao}}">
                 @error('observacao')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -126,7 +117,8 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary" type="submit">Cadastrar cliente</button>
+
+            <input class="btn btn-primary" type="submit" value="Editar Cliente">
 
             <style>
             input[type=checkbox] {

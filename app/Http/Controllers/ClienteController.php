@@ -67,9 +67,11 @@ class ClienteController extends Controller
      * @param  \App\Models\ModelsCliente  $modelsCliente
      * @return \Illuminate\Http\Response
      */
-    public function show(ModelsCliente $modelsCliente)
+    public function show($id)
     {
-        //
+        $models_clientes = ModelsCliente::findOrFail($id);
+
+        return view('clientes.show', ['models_clientes' => $models_clientes]);
     }
 
     /**
@@ -78,9 +80,11 @@ class ClienteController extends Controller
      * @param  \App\Models\ModelsCliente  $modelsCliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(ModelsCliente $modelsCliente)
+    public function edit($id)
     {
-        //
+        $cliente = ModelsCliente::findOrFail($id);
+
+        return view('clientes.edit', ['models_clientes' => $cliente]);
     }
 
     /**
@@ -90,9 +94,27 @@ class ClienteController extends Controller
      * @param  \App\Models\ModelsCliente  $modelsCliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ModelsCliente $modelsCliente)
+    public function update(Request $request, $id)
     {
-        //
+        $cliente = ModelsCliente::findOrFail($id);
+
+        $cliente->update([
+            
+            'nome_razaosocial'=>$request->nome_razaosocial,
+            'email'=>$request->email,
+            'telefone'=>$request->telefone,
+            'cpf'=>$request->cpf,
+            'cnpj'=>$request->cnpj,
+            'cep'=>$request->cep,
+            'cidade'=>$request->cidade,
+            'uf'=>$request->uf,
+            'rua'=>$request->rua,
+            'numero'=>$request->numero,
+            'observacao'=>$request->observacao
+
+        ]);
+
+        return redirect('/admin/clientes/')->with('msg', 'Cliente editado com sucesso!');
     }
 
     /**
@@ -101,8 +123,10 @@ class ClienteController extends Controller
      * @param  \App\Models\ModelsCliente  $modelsCliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ModelsCliente $modelsCliente)
+    public function destroy($id)
     {
-        //
+        ModelsCliente::findOrFail($id)->delete();
+
+        return redirect('/admin/clientes/')->with('msg', 'Cliente excluído com sucesso!');
     }
 }
