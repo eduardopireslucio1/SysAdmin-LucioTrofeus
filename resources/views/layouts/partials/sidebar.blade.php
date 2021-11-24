@@ -63,6 +63,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('pedido.store')}}" class="nav-link {{activeSegment('pedido')}}">
+                        <i class="fa fa-cart-plus"></i>
+                        <p>
+                            Novo Pedido
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
