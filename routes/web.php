@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PedidoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +52,18 @@ Route::prefix('admin')->group(function(){
     Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/clientes/{id}',[ClienteController::class, 'show']);
+    
+});
+
+Auth::routes();
+
+Route::prefix('admin')->group(function(){
+    Route::resource('pedido', 'PedidoController');
+    Route::get('pedido',[PedidoController::class, 'index']);
+    // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
+    // Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
+    // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
+    // Route::get('/clientes/{id}',[ClienteController::class, 'show']);
     
 });
 
