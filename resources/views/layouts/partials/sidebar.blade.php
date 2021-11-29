@@ -1,20 +1,25 @@
+<style>
+    #user-icon{
+        color:white;
+    }
+
+   
+</style>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
-        <img class="lucio_logo" src="{{('images/lucio_logo.jpeg')}}">
-        <span class="brand-text font-weight-light">Lucio Troféus e Brindes</span>
+    <a href="" class="brand-link">
+        <img class="lucio_logo"  src="{{('/images/lucio_logo_2.png')}}">
+        <span  class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{auth()->user()->getAvatar()}}">>
-            </div>
+            <i id="user-icon" class="fas fa-user" style="font-size: 30px;"></i>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->getName()}}</a>
+                <a href="#" style="font-size: 15px" class="d-block">{{auth()->user()->getName()}}</a>
             </div>
         </div>
 
@@ -36,7 +41,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('home')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
