@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\ModelsProduto;
+use App\Models\ModelsCliente;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class PedidoController extends Controller
     public function index()
     {
         $models_produtos = modelsProduto::all();
-        return view('pedidos.index')->with('models_produtos',$models_produtos);
+        $models_clientes = modelsCliente::all();
+        return view('pedidos.index')->with('models_produtos',$models_produtos)->with('models_clientes',$models_clientes);
     }
 
     /**
@@ -38,7 +40,20 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 123;
+        $pedido = Pedido::create([
+            'models_cliente_id'=>$request->cliente,
+            'valor_total'=>$request->valor_total,
+            // 'imagem_cartaz'=>$imagem_path,
+            'data_entrega'=>$request->data_entrega,
+            'descricao'=>$request->descricao
+    
+        ]);
+
+        if(!$modelsCliente){
+            return redirect()->back()->with('Não foi possível cadastrar esse cliente!');
+        }
+        return redirect()->route('clientes.store')->with('Cliente cadastrado com sucesso!');
     }
 
     /**
