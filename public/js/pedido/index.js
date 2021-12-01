@@ -26,7 +26,7 @@ function addItem(){
     }
 
     const item = {
-        produto: produtoId,
+        models_produto_id: produtoId,
         descricaoProduto: produtoText,
         quantidade: quantidade,
         tamanho: tamanho,
@@ -59,7 +59,7 @@ function renderTable() {
         subtotal += i.quantidade * i.valor;
         table += `
         <tr>
-            <td>${i.produto}</td>
+            <td>${i.models_produto_id}</td>
             <td>${i.descricaoProduto}</td>
             <td>${i.quantidade}</td>
             <td>${i.tamanho}</td>
@@ -84,17 +84,21 @@ $(document).ready(()=>{
 })
 
 function salvar(){
-    const cliente = $('#cliente').val();
-    const descricao = $('#descricao').text();
+    const models_cliente_id = $('#cliente').val();
+    const descricao = $('#descricao').val();
+    let valor_total = 0;
+    itensArray.forEach(i => {
+        valor_total += i.valor;
+    })
 
-    fetch("/admin/pedido",
+    fetch("/api/admin/pedido",
     {
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify({cliente, descricao, itens: itensArray})
+        body: JSON.stringify({valor_total, models_cliente_id, descricao, itens: itensArray})
     })
     .then(function(res){ console.log(res) })
     .catch(function(res){ console.log(res) })

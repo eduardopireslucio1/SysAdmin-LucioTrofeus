@@ -7,6 +7,7 @@ use App\Models\ModelsProduto;
 use App\Models\ModelsCliente;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use App\Models\ItensPedido;
 
 class PedidoController extends Controller
 {
@@ -40,20 +41,40 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
+        $dados = $request->all();
         echo 123;
         $pedido = Pedido::create([
-            'models_cliente_id'=>$request->cliente,
-            'valor_total'=>$request->valor_total,
-            // 'imagem_cartaz'=>$imagem_path,
-            'data_entrega'=>$request->data_entrega,
-            'descricao'=>$request->descricao
+            'models_cliente_id'=>$dados['models_cliente_id'],
+            'valor_total'=>$dados['valor_total'],
+            'imagem_cartaz'=>'',
+            'data_entrega'=>'2021-11-30',
+            'descricao'=>$dados['descricao']
     
         ]);
+        // dd($pedido);
+        
 
-        if(!$modelsCliente){
-            return redirect()->back()->with('Não foi possível cadastrar esse cliente!');
+        $id_pedido = $pedido->id;
+        $itens_pedido = $dados['itens'];
+
+        echo json_encode($itens_pedido);
+
+        foreach ( (array) $itens_pedido as $item){
+            ItensPedido::create([
+                'pedido_id'=>$id_pedido,
+                'models_produto_id'=>$item['models_produto_id'],
+                'quantidade'=>$item['quantidade'],
+                'tamanho'=>$item['tamanho'],
+                'valor'=>$item['valor']
+            ]);
+
         }
-        return redirect()->route('clientes.store')->with('Cliente cadastrado com sucesso!');
+
+        // if(!$pedido){
+        //     return redirect()->back()->with('Não foi possível cadastrar esse cliente!');
+        // }
+        // return redirect()->route('clientes.store')->with('Cliente cadastrado com sucesso!');
+
     }
 
     /**

@@ -19,7 +19,7 @@ class CreatePedidosTable extends Migration
             $table->timestamps();
             $table->foreignIdFor(ModelsCliente::class);
             $table->decimal('valor_total',8,2);
-            $table->string('imagem_cartaz');
+            $table->string('imagem_cartaz')->nullable;
             $table->date('data_entrega');
             $table->string('descricao');
         });

@@ -10,7 +10,8 @@ class ItensPedido extends Model
     use HasFactory;
 
     protected $fillable = [
-        'produto',
+        'pedido_id',
+        'models_produto_id',
         'quantidade',
         'tamanho',
         'valor'

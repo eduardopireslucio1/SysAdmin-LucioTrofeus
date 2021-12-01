@@ -60,6 +60,7 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::resource('pedido', 'PedidoController');
     Route::get('pedido',[PedidoController::class, 'index']);
+    // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
     // Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
