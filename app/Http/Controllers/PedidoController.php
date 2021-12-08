@@ -18,9 +18,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $models_produtos = modelsProduto::all();
-        $models_clientes = modelsCliente::all();
-        return view('pedidos.index')->with('models_produtos',$models_produtos)->with('models_clientes',$models_clientes);
+        $pedidos = Pedido::all();
+        return view('pedidos.index')->with('pedidos',$pedidos);
     }
 
     /**
@@ -30,7 +29,9 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $models_produtos = modelsProduto::all();
+        $models_clientes = modelsCliente::all();
+        return view('pedidos.create')->with('models_produtos',$models_produtos)->with('models_clientes',$models_clientes);
     }
 
     /**
@@ -47,7 +48,7 @@ class PedidoController extends Controller
             'models_cliente_id'=>$dados['models_cliente_id'],
             'valor_total'=>$dados['valor_total'],
             'imagem_cartaz'=>'',
-            'data_entrega'=>'2021-11-30',
+            'data_entrega'=>$dados['data_entrega'],
             'descricao'=>$dados['descricao']
     
         ]);

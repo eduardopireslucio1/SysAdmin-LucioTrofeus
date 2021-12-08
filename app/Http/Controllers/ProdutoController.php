@@ -37,7 +37,6 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoStoreRequest $request)
     {
-        $imagem_path = '';
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
             // $imagem_path = $request->file('imagem')->store('models_produtos');
             $requestImagem = $request->imagem;
@@ -56,7 +55,7 @@ class ProdutoController extends Controller
 
             'nome'=>$request->nome,
             'descricao'=>$request->descricao,
-            'imagem'=>$imagem_path,
+            'imagem'=>$imagemName,
             'preco'=>$request->preco,
             'status'=>$request->status,
             'material'=>$request->material

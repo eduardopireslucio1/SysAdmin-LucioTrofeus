@@ -31,9 +31,7 @@
             <div class="form-group">
                 <label>Enviar imagem (referência): </label>
 
-
-                <img src="">
-                <img src="/images/produtos{{$models_produtos->imagem}}">
+                <img src="/images/produtos/{{$models_produtos->imagem}}" width="230px" style="max-height: 230px">
                 <div class="custom-file">
                     <input type="file" id="imagem" class="custom-file-input" name="imagem" value="{{old('imagem')}}">
                     <label for="imagem" class="custom-file-label">Enviar imagem </label>  
@@ -57,9 +55,9 @@
 
             <div class="form-group">
                 <label>Material a utilizar: </label>
-                <input type="checkbox" name="material[]" value="Acrilico" class="form-control @error('material') is-invalid @enderror"
+                <input type="checkbox" {{in_array("Acrilico", $models_produtos->material) ? "checked=''" : ""}} name="material[]" value="Acrilico" class="form-control @error('material') is-invalid @enderror"
                     id="material">Acrílico</input>
-                <input type="checkbox" name="material[]" value="MDF" class="form-control @error('material') is-invalid @enderror"
+                <input type="checkbox" {{in_array("MDF", $models_produtos->material) ? "checked=''" : ""}} name="material[]" value="MDF" class="form-control @error('material') is-invalid @enderror"
                     id="material">MDF</input>
                 @error('material')
                 <span class="invalid-feedback" role="alert">
