@@ -51,7 +51,7 @@ class RelatorioController extends Controller
      public function faturamentoPorPeriodo(Request $request):JsonResponse{
          $faturamento = DB::table('pedidos')
          ->select(DB::raw('sum(valor_total) as total'))
-         ->whereBetween('created_at', ['2021-12-09 00:00:00', '2021-12-12 23:59:59'])
+         ->whereBetween('created_at', [$request->query('dataInicial') . ' 00:00:00', $request->query('dataFinal') . ' 23:59:59'])
          ->first();
 
          return response()->Json($faturamento,Response::HTTP_OK);

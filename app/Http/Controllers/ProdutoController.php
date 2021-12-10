@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ModelsProduto;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProdutoStoreRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
 {
@@ -129,6 +130,15 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
+        $pedido = DB::table('itens_pedidos')
+        ->select('itens_pedidos.id')
+        ->where('itens_pedidos.models_produto_id', '=', $id)
+        ->first();
+
+        if($pedido){
+            return redirect()->back()->withErrors('msg', 'Contém ao menos um pedido com este produto!');
+        }
+
         ModelsProduto::findOrFail($id)->delete();
 
         return redirect('/admin/produtos/')->with('msg', 'Produto excluído com sucesso!');

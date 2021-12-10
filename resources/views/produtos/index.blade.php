@@ -22,6 +22,9 @@
     </div>
 </div>
 <p class="text" style="color: #007FFF"><strong>Lista de produtos:</strong>
+@if($errors->any())
+<h4>{{$errors->first()}}</h4>
+@endif
 <div class="div card">
     <div class="card-body">
         <table class="table">
