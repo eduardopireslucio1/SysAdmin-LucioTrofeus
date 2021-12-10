@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\RelatorioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +67,15 @@ Route::prefix('admin')->group(function(){
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     // Route::get('/clientes/{id}',[ClienteController::class, 'show']);
     
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('relatorio', 'PedidoController');
+    Route::get('relatorio',[RelatorioController::class, 'index']);
+    Route::get('melhoresClientes',[RelatorioController::class, 'melhoresClientes']);
+    Route::get('produtosMaisVendidos',[RelatorioController::class, 'produtosMaisVendidos']);
+    Route::get('faturamentoPorPeriodo',[RelatorioController::class, 'faturamentoPorPeriodo']);
+
 });
 
 // Route::prefix('admin')->group(function(){

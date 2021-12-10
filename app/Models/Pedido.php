@@ -17,4 +17,8 @@ class Pedido extends Model
         'descricao'
 
     ];
+
+    public function cliente(){
+        return $this->belongsTo(ModelsCliente::class);
+    }
 }

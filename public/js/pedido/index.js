@@ -82,7 +82,7 @@ function renderTable() {
             <td>${i.tamanho}</td>
             <td>${i.valor}</td>
             <td>${i.valor_total}</td>
-            <td><button onclick="remover(${index})">remover</button></td>
+            <td><button class="btn btn-danger" onclick="remover(${index})">remover</button></td>
         </tr>`
     })
     table += `
@@ -93,6 +93,8 @@ function renderTable() {
     `
     table += '</tbody>'
     table += '</table>'
+    table += '<button class="btn btn-success" onclick="salvar()">Salvar</button>'
+    
     $('#grid_produto').html(table)
 }
 
@@ -143,7 +145,3 @@ function salvar(){
     })
     .catch(function(res){ alert(res) })
 }
-
-
-
-

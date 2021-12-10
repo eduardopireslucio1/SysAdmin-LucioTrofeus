@@ -41,7 +41,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{route('home')}}" class="nav-link">
+                    <a href="{{route('home')}}" class="nav-link {{activeSegment('home')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -68,7 +68,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('pedido.create')}}" class="nav-link {{activeSegment('create')}}">
+                    <a href="{{route('pedido.create')}}" class="nav-link {{activeSegment('pedido')}}">
                         <i class="fa fa-cart-plus"></i>
                         <p>
                             Novo Pedido
@@ -77,14 +77,22 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('pedido.store')}}" class="nav-link {{activeSegment('pedido')}}">
-                        <i class="fa fa-cart-plus"></i>
+                    <a href="{{route('pedido.store')}}" class="nav-link {{activeSegment('')}}">
+                        <i class="fas fa-box"></i>
                         <p>
                             Pedidos
                         </p>
                     </a>
                 </li>
-
+                
+                <li class="nav-item">
+                    <a href="{{route('relatorio.store')}}" class="nav-link {{activeSegment('relatorio')}}">
+                        <i class="fas fa-box"></i>
+                        <p>
+                            Relatórios
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
