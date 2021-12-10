@@ -61,11 +61,19 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::resource('pedido', 'PedidoController');
     Route::get('pedido',[PedidoController::class, 'index']);
+    Route::get('pedidos',[PedidoController::class, 'pedidos']);
     // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
     // Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
-    // Route::get('/clientes/{id}',[ClienteController::class, 'show']);
+    Route::get('/pedido/{id}',[PedidoController::class, 'show'])->middleware('auth');
+    
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('pedidos', 'PedidoController');
+    Route::get('pedidos',[PedidoController::class, 'pedidos']);
+    
     
 });
 

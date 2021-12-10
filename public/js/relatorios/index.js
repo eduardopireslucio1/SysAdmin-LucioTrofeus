@@ -71,7 +71,7 @@ const getBestProducts = () => {
 const getTotalByPeriod = () => {
     const urlParams = new URLSearchParams({
         dataInicial: $('#data_inicial').val(),
-        dataFinal: $('#data_final').val
+        dataFinal: $('#data_final').val()
     }).toString()
     fetch('/admin/faturamentoPorPeriodo?'+urlParams, {
         method: "GET"

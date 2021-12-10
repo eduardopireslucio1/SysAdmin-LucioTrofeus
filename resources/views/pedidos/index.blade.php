@@ -31,6 +31,7 @@
                     <th>Cliente</th>
                     <th>Data de entrega</th>
                     <th>Valor total</th>
+                    <th>Informações</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,8 @@
                     <td>{{$pedido->models_cliente_id}}</td>
                     <td>{{$pedido->data_entrega}}</td>
                     <td>{{$pedido->valor_total}}</td>
+                    <td><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i
+                            class="fas fa-eye" style="color:white"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

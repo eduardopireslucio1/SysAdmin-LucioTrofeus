@@ -63,11 +63,12 @@
                     <br>
 
                     <div class="col-8">
-                        <br> <textarea style="resize: none" rows="5" class="form-control" id="descricao"
+                       <br> <br> <textarea style="resize: none" rows="5" class="form-control" id="descricao"
                             placeholder="Descrição"></textarea>
                     </div>
                     <div class="col-4">
-                        <br><input id="data" type="date" placeholde="Data entrega">
+                    <br><label for="">Prazo de entrega:</label>
+                        <br><input class="form-control datetimepicker-input" id="data" type="date" placeholde="Data entrega">
                     </div>
                     <div class="col-4">
                         <br> <button class="btn btn-primary" onclick="addItem()" type="button">Adicionar</button>

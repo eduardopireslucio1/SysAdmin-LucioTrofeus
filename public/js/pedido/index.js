@@ -65,7 +65,7 @@ function renderTable() {
             <th scope="col">Produto</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Tamanho</th>
-            <th scope="col">Valor UN</th>
+            <th scope="col">Valor do produto</th>
             <th scope="col">Total</th>
             <th scope="col">Ações</th>
         </tr>
@@ -81,7 +81,7 @@ function renderTable() {
             <td>${i.quantidade}</td>
             <td>${i.tamanho}</td>
             <td>${i.valor}</td>
-            <td>${i.valor_total}</td>
+            <td>${i.valor_total.toFixed()}</td>
             <td><button class="btn btn-danger" onclick="remover(${index})">remover</button></td>
         </tr>`
     })

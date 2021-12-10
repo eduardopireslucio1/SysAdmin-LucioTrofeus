@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('pedido.store')}}" class="nav-link {{activeSegment('')}}">
+                    <a href="{{route('pedidos.store')}}" class="nav-link {{activeSegment('pedidos')}}">
                         <i class="fas fa-box"></i>
                         <p>
                             Pedidos
@@ -87,7 +87,7 @@
                 
                 <li class="nav-item">
                     <a href="{{route('relatorio.store')}}" class="nav-link {{activeSegment('relatorio')}}">
-                        <i class="fas fa-box"></i>
+                        <i class="fas fa-book-open"></i>
                         <p>
                             Relatórios
                         </p>

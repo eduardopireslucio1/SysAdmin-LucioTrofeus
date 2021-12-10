@@ -8,6 +8,7 @@ use App\Models\ModelsCliente;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
 use App\Models\ItensPedido;
+use Illuminate\Support\Facades\DB;
 
 class PedidoController extends Controller
 {
@@ -18,8 +19,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::all();
-        return view('pedidos.index')->with('pedidos',$pedidos);
+        
     }
 
     /**
@@ -84,9 +84,17 @@ class PedidoController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function show(Pedido $pedido)
+    public function show($id)
     {
-        //
+        $pedidos = Pedido::findOrFail($id);
+        $itens_pedidos = DB::table('itens_pedidos')->where('pedido_id', '=', $id)->get();
+        return view('pedidos.show', ['pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
+    }
+
+    public function pedidos(Pedido $pedido)
+    {
+        $pedidos = Pedido::all();
+        return view('pedidos.index')->with('pedidos',$pedidos);
     }
 
     /**
