@@ -9,7 +9,7 @@
             @csrf
 
             <div class="form-group">
-                <label>Nome do produto: </label>
+                <label>Nome do produto: <span class="obrigatorio">*</span></label>
                 <input placeholder="Nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" id="nome">
                 @error('nome')
                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-                <label>Preço: </label>
+                <label>Preço: <span class="obrigatorio">*</span></label>
                 <input placeholder="preço"type="text" name="preco" class="form-control @error('preco') is-invalid @enderror" id="preco">
                 @error('preco')
                 <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="form-group">
-                <label>Material a utilizar: </label>
+                <label>Material a utilizar: <span class="obrigatorio">*</span></label>
                 <input type="checkbox" name="material[]" value="Acrilico" class="form-control @error('material') is-invalid @enderror"
                     id="material">Acrílico</input>
                 <input type="checkbox" name="material[]" value="MDF" class="form-control @error('material') is-invalid @enderror"
@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-group">
-                <label>Status: </label>
+                <label>Status: <span class="obrigatorio">*</span></label>
                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                     <option value="1" {{old('status'==1 ? 'selected' : '')}}>Ativo</option>
                     <option value="0" {{old('status'==0 ? 'selected' : '')}}>Inativo</option>
@@ -78,12 +78,16 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary" type="submit">Cadastrar produto</button>
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
 
             <style>
             input[type=checkbox] {
                 cursor: pointer;
                 width: 22px;
+            }
+
+            .obrigatorio{
+                color: red;
             }
             </style>
         </form>

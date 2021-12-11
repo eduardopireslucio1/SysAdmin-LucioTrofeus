@@ -9,7 +9,7 @@
             @csrf
 
             <div class="form-group">
-                <label>Nome / Razão Social: </label>
+                <label>Nome / Razão Social: <span class="obrigatorio">*</span></label>
                 <input placeholder="Ex: Lúcio Troféus" type="text" name="nome_razaosocial" class="form-control @error('nome') is-invalid @enderror" id="nome_razaosocial">
                 @error('nome')
                 <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="form-group">
-                <label>E-mail: </label>
+                <label>E-mail: <span class="obrigatorio">*</span></label>
                 <input placeholder="Ex: email@gmail.com" type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group">
-                <label>Telefone: </label>
+                <label>Telefone: <span class="obrigatorio">*</span></label>
                 <input placeholder="Telefone"type="text" name="telefone" class="form-control @error('telefone') is-invalid @enderror" id="telefone">
                 @error('telefone')
                 <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
             </div>
 
             <div class="form-group">
-                <label>CEP: </label>
+                <label>CEP: <span class="obrigatorio">*</span></label>
                 <input placeholder="CEP"type="text" name="cep" class="form-control @error('cep') is-invalid @enderror"
                     id="cep">{{old('cep')}}</input>
                 @error('cep')
@@ -72,7 +72,7 @@
             </div>
 
             <div class="form-group">
-                <label>Cidade: </label>
+                <label>Cidade: <span class="obrigatorio">*</span></label>
                 <input placeholder="Cidade"type="text" name="cidade" class="form-control @error('cidade') is-invalid @enderror"
                     id="cep">{{old('cidade')}}</input>
                 @error('cidade')
@@ -83,7 +83,7 @@
             </div>
 
             <div class="form-group">
-                <label>Estado: </label>
+                <label>Estado: <span class="obrigatorio">*</span></label>
                 <input placeholder="UF"type="text" name="uf" class="form-control @error('uf') is-invalid @enderror"
                     id="cep">{{old('uf')}}</input>
                 @error('uf')
@@ -94,7 +94,7 @@
             </div>
 
             <div class="form-group">
-                <label>Rua: </label>
+                <label>Rua: <span class="obrigatorio">*</span></label>
                 <input placeholder="Rua"type="text" name="rua" class="form-control @error('rua') is-invalid @enderror"
                     id="rua">{{old('rua')}}</input>
                 @error('rua')
@@ -105,7 +105,7 @@
             </div>
 
             <div class="form-group">
-                <label>Número: </label>
+                <label>Número: <span class="obrigatorio">*</span></label>
                 <input placeholder="Número"type="text" name="numero" class="form-control @error('numero') is-invalid @enderror"
                     id="cep">{{old('numero')}}</input>
                 @error('numero')
@@ -116,7 +116,7 @@
             </div>
 
             <div class="form-group">
-                <label>Observação: </label>
+                <label>Observação: <span class="obrigatorio">*</span></label>
                 <textarea placeholder="Observação"type="text" name="observacao" class="form-control @error('observacao') is-invalid @enderror"
                     id="descricao">{{old('observacao')}}</textarea>
                 @error('observacao')
@@ -126,15 +126,20 @@
                 @enderror
             </div>
 
-            <button class="btn btn-primary" type="submit">Cadastrar cliente</button>
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
 
             <style>
             input[type=checkbox] {
                 cursor: pointer;
                 width: 22px;
             }
+
+            .obrigatorio{
+                color:red;
+            }
             </style>
         </form>
     </div>
 </div>
+
 @endsection

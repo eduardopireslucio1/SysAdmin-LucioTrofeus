@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ModelsCliente;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClienteStoreRequest;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -125,6 +126,15 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
+        $pedido = DB::table('pedidos')
+        ->select('pedidos.id')
+        ->where('pedidos.models_cliente_id', '=', $id)
+        ->first();
+
+        if($pedido){
+            return redirect()->back()->withErrors('msg', 'Contém ao menos um pedido com este cliente!');
+        }
+
         ModelsCliente::findOrFail($id)->delete();
 
         return redirect('/admin/clientes/')->with('msg', 'Cliente excluído com sucesso!');

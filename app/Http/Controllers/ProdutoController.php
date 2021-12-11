@@ -139,7 +139,7 @@ class ProdutoController extends Controller
         if($pedido){
             return redirect()->back()->withErrors('msg', 'Contém ao menos um pedido com este produto!');
         }
-
+        
         ModelsProduto::findOrFail($id)->delete();
 
         return redirect('/admin/produtos/')->with('msg', 'Produto excluído com sucesso!');
