@@ -8,7 +8,7 @@
         <div id="info-container" class="col-md-6">
             <h2><strong>Informações do Cliente</strong></h2>
             <h3>Dados pessoais</h3>
-            <p> <strong>Nome / Razão Social:</strong>  {{$models_clientes->nome_razaosocial}}</p>
+            <p> <strong>Nome / Razão Social:</strong>  {{ucwords($models_clientes->nome_razaosocial)}}</p>
             <p><strong>Email: </strong> {{$models_clientes->email}}</p>
             <p><strong>Telefone:</strong>{{$models_clientes->telefone}}</p>
             <p><strong>CNPJ: </strong>{{$models_clientes->cnpj}}</p>

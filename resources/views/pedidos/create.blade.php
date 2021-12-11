@@ -17,7 +17,7 @@
 
 @section('content')
 
-<div>
+
     <div class="container-fluid">
         <div class="row" style="margin-bottom:6vh">
             <div class="col-12">
@@ -86,6 +86,6 @@
     </div>
 
 </div>
-</div>
+
 
 @endsection

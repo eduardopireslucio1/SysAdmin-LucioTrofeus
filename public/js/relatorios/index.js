@@ -1,5 +1,5 @@
 const renderBestClients = (json) => {
-    let table = `<table>
+    let table = `<table class="table table-dark table-striped">
         <tr>
             <th>Posição</th>
             <th>#</th>
@@ -22,7 +22,7 @@ const renderBestClients = (json) => {
 }
 
 const renderBestProducts = (json) => {
-    let table = `<table>
+    let table = `<table class="table table-dark table-striped">
         <tr>
             <th>Posição</th>
             <th>#</th>

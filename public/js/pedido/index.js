@@ -31,7 +31,7 @@ function addItem(){
         quantidade: quantidade,
         tamanho: tamanho,
         valor: valor,
-        valor_total : valor * quantidade,
+        valor_total : (valor * quantidade).toFixed(2),
     }
 
     itensArray.push(item)
@@ -61,7 +61,7 @@ function renderTable() {
     table += `
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Produto</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Tamanho</th>
@@ -79,16 +79,16 @@ function renderTable() {
             <td>${i.models_produto_id}</td>
             <td>${i.descricaoProduto}</td>
             <td>${i.quantidade}</td>
-            <td>${i.tamanho}</td>
+            <td>${i.tamanho} cm</td>
             <td>${i.valor}</td>
-            <td>${i.valor_total.toFixed()}</td>
+            <td>R$ ${i.valor_total}</td>
             <td><button class="btn btn-danger" onclick="remover(${index})">remover</button></td>
         </tr>`
     })
     table += `
     <tr>
         <th colspan="5">Total</th>
-        <th>${subtotal}</th>
+        <th>R$ ${subtotal.toFixed(2)}</th>
     </tr>
     `
     table += '</tbody>'
