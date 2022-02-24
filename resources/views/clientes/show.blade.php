@@ -4,23 +4,69 @@
 @section('content')
 
 <div class="col-md-10 offset-md-0.5">
-    <div class="row">
         <div id="info-container" class="col-md-6">
             <h2><strong>Informações do Cliente</strong></h2>
             <h3>Dados pessoais</h3>
-            <p> <strong>Nome / Razão Social:</strong>  {{ucwords($models_clientes->nome_razaosocial)}}</p>
-            <p><strong>Email: </strong> {{$models_clientes->email}}</p>
-            <p><strong>Telefone:</strong>{{$models_clientes->telefone}}</p>
-            <p><strong>CNPJ: </strong>{{$models_clientes->cnpj}}</p>
-            <p><strong>CEP: </strong>{{$models_clientes->cep}}</p>
-            <p><strong>Cidade: </strong>{{$models_clientes->cidade}}</p>
-            <p><strong>Estado: </strong>{{$models_clientes->uf}}</p>
-            <p><strong>Rua: </strong>{{$models_clientes->rua}}</p>
-            <p><strong>Número: </strong>{{$models_clientes->numero}}</p>
-            <p><strong>Observação: </strong>{{$models_clientes->observacao}}</p>
+            <div class="form-group">
+                <strong>CNPJ:</strong><input type="text" class="form-control" disabled value="{{($models_clientes->cnpj)}}">
+            </div>
+
+            <div class="form-group">
+                <strong>CPF:</strong><input type="text" class="form-control" disabled value="{{($models_clientes->cpf)}}">
+            </div>
+
+            <div class="form-group">
+                <strong>Nome / Razão Social:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->nome_razaosocial)}}">
+            </div>
+
+            <div class="form-group">
+                <strong>Fantasia:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->fantasia)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Telefone:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->telefone)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>CEP:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->cep)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Estado:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->estado)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Cidade:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->cidade)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Logradouro:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->logradouro)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Número:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->numero)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>E-mail:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->email)}}">
+            </div>
+            
+            <div class="form-group">
+                <strong>Observação:</strong><input type="text" class="form-control" disabled
+                        value="{{($models_clientes->observacao)}}">
+            </div>
 
     </div>
-  </div>
- </div>
+</div>
+
 
 @endsection

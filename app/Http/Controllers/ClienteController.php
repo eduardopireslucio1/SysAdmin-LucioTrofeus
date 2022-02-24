@@ -42,6 +42,7 @@ class ClienteController extends Controller
         $modelsCliente = ModelsCliente::create([
             
             'nome_razaosocial'=>$request->nome_razaosocial,
+            'fantasia'=>$request->fantasia,
             'email'=>$request->email,
             'telefone'=>$request->telefone,
             'cpf'=>$request->cpf,
@@ -49,7 +50,7 @@ class ClienteController extends Controller
             'cep'=>$request->cep,
             'cidade'=>$request->cidade,
             'uf'=>$request->uf,
-            'rua'=>$request->rua,
+            'logradouro'=>$request->logradouro,
             'numero'=>$request->numero,
             'observacao'=>$request->observacao
 
@@ -102,6 +103,7 @@ class ClienteController extends Controller
         $cliente->update([
             
             'nome_razaosocial'=>$request->nome_razaosocial,
+            'fantasia'=>$request->fantasia,
             'email'=>$request->email,
             'telefone'=>$request->telefone,
             'cpf'=>$request->cpf,
@@ -109,7 +111,7 @@ class ClienteController extends Controller
             'cep'=>$request->cep,
             'cidade'=>$request->cidade,
             'uf'=>$request->uf,
-            'rua'=>$request->rua,
+            'logradouro'=>$request->logradouro,
             'numero'=>$request->numero,
             'observacao'=>$request->observacao
 

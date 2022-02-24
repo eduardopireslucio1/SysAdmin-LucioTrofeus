@@ -13,6 +13,7 @@ class ModelsCliente extends Model
 
     protected $fillable=[
         'nome_razaosocial',
+        'fantasia',
         'email',
         'telefone',
         'cpf',
@@ -20,7 +21,7 @@ class ModelsCliente extends Model
         'cep',
         'cidade',
         'uf',
-        'rua',
+        'logradouro',
         'numero',
         'observacao'
     ];

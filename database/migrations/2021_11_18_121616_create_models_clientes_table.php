@@ -16,14 +16,15 @@ class CreateModelsClientesTable extends Migration
         Schema::create('models_clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nome_razaosocial');
+            $table->string('fantasia')->nullable();
             $table->string('email');
             $table->string('telefone');
-            $table->string('cpf')->nullable;
-            $table->string('cnpj')->nullable;
+            $table->string('cpf')->nullable();
+            $table->string('cnpj')->nullable();
             $table->string('cep');
             $table->string('cidade');
             $table->string('uf');
-            $table->string('rua');
+            $table->string('logradouro');
             $table->string('numero');
             $table->text('observacao')->nullable();
             $table->timestamps();
