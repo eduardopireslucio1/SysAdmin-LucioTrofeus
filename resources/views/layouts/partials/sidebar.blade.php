@@ -50,6 +50,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('funcionarios.store')}}" class="nav-link {{activeSegment('funcionarios')}}">
+                        <i class="fa fa-user"></i>
+                        <p>
+                            Funcionários
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('produtos.store')}}" class="nav-link {{activeSegment('produtos')}}">
                         <i class="fa fa-fw fa-inbox"></i>
                         <p>

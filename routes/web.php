@@ -5,6 +5,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\FuncionarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +58,16 @@ Route::prefix('admin')->group(function(){
 });
 
 Auth::routes();
+
+Route::prefix('admin')->group(function(){
+    Route::resource('funcionarios', 'FuncionarioController');
+    Route::get('funcionarios',[FuncionarioController::class, 'index']);
+    Route::delete('/funcionarios/{id}', [FuncionarioController::class, 'destroy'])->middleware('auth');
+    Route::get('/funcionarios/edit/{id}', [FuncionarioController::class, 'edit'])->middleware('auth');
+    Route::put('/funcionarios/update/{id}', [FuncionarioController::class, 'update'])->middleware('auth');
+    Route::get('/funcionarios/{id}',[FuncionarioController::class, 'show']);
+    
+});
 
 Route::prefix('admin')->group(function(){
     Route::resource('pedido', 'PedidoController');

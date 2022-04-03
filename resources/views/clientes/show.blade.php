@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', $models_clientes->produtos)
+@section('title', $models_clientes->nome)
 
 @section('content')
 

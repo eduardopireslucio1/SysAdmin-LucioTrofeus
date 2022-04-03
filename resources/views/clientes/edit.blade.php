@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Edição de Produtos')
+@section('title','Edição de Clientes')
 @section('content')
 <h1>Editar Cliente: {{$models_clientes->nome_razaosocial}}</h1>
 <div class="card">
