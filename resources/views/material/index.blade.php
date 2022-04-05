@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Lista de Funcionarios')
+@section('title','Lista de Materiais')
 
 <style>
 p {
@@ -34,14 +34,14 @@ form {
             <div class="painel-heading" style="margin-top:8px !important;color: black">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title"><b>Funcionários</b>
+                        <h3 class="card-title"><b>Materiais</b>
                         </h3>
                     </div>
                 </div>
             </div>
         </div>
         <p class="text" style="color: #007FFF"><strong>Lista de funcionários:</strong>
-            <a id="btn-funcionario" href="{{route('funcionarios.create')}}" class="btn btn-success btn-sm"
+            <a id="btn-funcionario" href="{{route('material.create')}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>Cadastrar</strong></a>
     </div>
     <div class="div card">
@@ -51,29 +51,27 @@ form {
                     <tr>
                         <th>id</th>
                         <th>Nome</th>
-                        <th>Data de admissão</th>
-                        <th>Carga horária/dia</th>
-                        <th>Cargo</th>
-                        <th>Salário</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($models_funcionarios as $funcionario)
+                    @foreach ($models_materials as $material)
                     <tr>
-                        <td>{{$funcionario->id}}</td>
-                        <td>{{ucwords($funcionario->nome)}}</td>
-                        <td>{{$funcionario->dt_admissao}}</td>
-                        <td>{{$funcionario->carga_horaria}}</td>
-                        <td>{{$funcionario->cargo}}</td>
-                        <td>{{$funcionario->salario}}</td>
+                        <td>{{$material->id}}</td>
+                        <td>{{ucwords($material->nome)}}</td>
+                        <td>{{$material->descricao}}</td>
+                        <td>{{$material->quantidade}}</td>
+                        <td>{{$material->preco}}</td>
                         <td>
-                            <a href="/admin/funcionarios/edit/{{$funcionario->id}}" class="btn btn-primary"><i
+                            <a href="/admin/material/edit/{{$material->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>
-                            <a href="/admin/funcionarios/{{$funcionario->id}}" class="btn btn-info"><i class="fas fa-eye"
+                            <a href="/admin/material/{{$material->id}}" class="btn btn-info"><i class="fas fa-eye"
                                     style="color:white"></i></a>
 
-                            <form action="/admin/funcionarios/{{$funcionario->id}}" method="POST">
+                            <form action="/admin/material/{{$material->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -83,7 +81,7 @@ form {
                     @endforeach
                 </tbody>
             </table>
-            {{$models_funcionarios->render()}}
+            {{$models_materials->render()}}
         </div>
     </div>
 </div>

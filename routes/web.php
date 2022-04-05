@@ -6,6 +6,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\MaterialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +67,16 @@ Route::prefix('admin')->group(function(){
     Route::get('/funcionarios/edit/{id}', [FuncionarioController::class, 'edit'])->middleware('auth');
     Route::put('/funcionarios/update/{id}', [FuncionarioController::class, 'update'])->middleware('auth');
     Route::get('/funcionarios/{id}',[FuncionarioController::class, 'show']);
+    
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('material', 'MaterialController');
+    Route::get('material',[MaterialController::class, 'index']);
+    Route::delete('/material/{id}', [MaterialController::class, 'destroy'])->middleware('auth');
+    Route::get('/material/edit/{id}', [MaterialController::class, 'edit'])->middleware('auth');
+    Route::put('/material/update/{id}', [MaterialController::class, 'update'])->middleware('auth');
+    Route::get('/material/{id}',[MaterialController::class, 'show']);
     
 });
 

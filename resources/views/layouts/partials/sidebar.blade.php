@@ -59,6 +59,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('material.store')}}" class="nav-link {{activeSegment('material')}}">
+                        <i class="fa fa-brush"></i>
+                        <p>
+                            Materiais
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('produtos.store')}}" class="nav-link {{activeSegment('produtos')}}">
                         <i class="fa fa-fw fa-inbox"></i>
                         <p>
