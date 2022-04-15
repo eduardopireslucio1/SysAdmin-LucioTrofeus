@@ -6,7 +6,7 @@
     <div class="row">
         <div id="info-container" class="col-md-6">
             <h2><strong>Informações do Pedido</strong></h2>
-            <p> <strong>Nome do cliente:</strong> {{$pedidos->models_cliente_id}}</p>
+            <p> <strong>Nome do cliente:</strong> {{$pedidos->id}}</p>
             <p> <strong>Prazo de entrega:</strong> {{$pedidos->data_entrega}}</p>
             <p> <strong>Descrição:</strong> {{$pedidos->descricao}}</p>
             <p> <strong>Itens do pedido:</strong></p>

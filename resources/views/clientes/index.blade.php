@@ -12,6 +12,7 @@ p {
     width: 100px;
     height: 30px;
     font-size: 15px;
+    margin: 0 8px;
 }
 
 h3 b{
@@ -42,7 +43,9 @@ form {
         </div>
         <p class="text" style="color: #007FFF"><strong>Lista de clientes:</strong>
             <a id="btn-cliente" href="{{route('clientes.create')}}" class="btn btn-success btn-sm"
-                style="float: right; "><strong>Cadastrar</strong></a>
+                style="float: right; "><strong>CPF</strong></a>
+                <a id="btn-cliente" href="{{route('clientes.create')}}" class="btn btn-success btn-sm"
+                style="float: right; "><strong>CNPJ</strong></a>
     </div>
     <div class="div card">
         <div class="card-body">

@@ -47,7 +47,7 @@ form {
                     @foreach ($pedidos as $pedido)
                     <tr>
                         <td>{{$pedido->id}}</td>
-                        <td>{{$pedido->models_cliente_id}}</td>
+                        <td>{{$pedido->nome_razaosocial}}</td>
                         <td>{{$pedido->data_entrega}}</td>
                         <td>{{$pedido->valor_total}}</td>
                         <td><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
