@@ -89,7 +89,11 @@ class PedidoController extends Controller
         $pedidos = Pedido::findOrFail($id);
         $itens_pedidos = DB::table('itens_pedidos')->where('pedido_id', '=', $id)->get();
 
-        return view('pedidos.show', ['pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
+        $models_clientes = ModelsCliente::findOrFail(
+            
+        );
+        
+        return view('pedidos.show', ['models_clientes' => $models_clientes, 'pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
     }
 
     public function pedidos(Pedido $pedido)
