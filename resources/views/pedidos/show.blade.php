@@ -13,15 +13,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
+                        <!-- <th scope="col">id</th> -->
                         <th scope="col">Produto</th>
                         <th scope="col">Quantidade</th>
                         <th scope="col">Tamanho(cm)</th>
                         <th scope="col">Valor do Produto</th>
                         @foreach ($itens_pedidos as $itens)
                     <tr>
-                        <td>{{$itens->id}}</td>
-                        <td>{{$itens->models_produto_id}}</td>
+                        <!-- <td>{{$itens->id}}</td> -->
+                        <td>{{$itens->nome}}</td>
                         <td>{{$itens->quantidade}}</td>
                         <td>{{$itens->tamanho}}</td>
                         <td>{{$itens->valor}}</td>

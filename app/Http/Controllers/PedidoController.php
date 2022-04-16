@@ -87,12 +87,16 @@ class PedidoController extends Controller
     public function show($id)
     {
         $pedidos = Pedido::findOrFail($id);
-        $itens_pedidos = DB::table('itens_pedidos')->where('pedido_id', '=', $id)->get();
+        $itens_pedidos = DB::table('itens_pedidos')
+        ->where('pedido_id', '=', $id)
+        ->join('models_produtos', 'models_produtos.id', '=', 'itens_pedidos.models_produto_id')
+        ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor')
+        ->get();
 
-        $models_clientes = ModelsCliente::findOrFail(
-            
-        );
+
+        $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
         
+
         return view('pedidos.show', ['models_clientes' => $models_clientes, 'pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
     }
 
