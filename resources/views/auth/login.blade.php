@@ -59,12 +59,9 @@
     </div>
 </form>
 
-<p class="mb-1">
+<!-- <p class="mb-1">
     <a href="{{ route('password.request') }}">Esqueci minha senha</a>
-</p>
-<p class="mb-0">
-    <a href="{{ route('register') }}" class="text-center">Cadastrar uma nova conta</a>
-</p>
+</p> -->
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

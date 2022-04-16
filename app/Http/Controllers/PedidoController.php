@@ -89,33 +89,7 @@ class PedidoController extends Controller
         $pedidos = Pedido::findOrFail($id);
         $itens_pedidos = DB::table('itens_pedidos')->where('pedido_id', '=', $id)->get();
 
-
-
         return view('pedidos.show', ['pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
-    }
-
-
-    public function dadosPedidos($id)
-    {
-        echo("dentro");
-        $pedidos = Pedido::findOrFail($id);
-        $dados_pedidos = DB::table('pedidos')
-        ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
-        ->select('pedidos.models_cliente_id', 'models_clientes.nome_razaosocial')
-        ->groupBy('pedidos.models_clientes_id')
-        ->where('pedidos.models_clientes_id', '=', $id);
-
-        return view('pedidos.show', ['pedidos' => $pedidos, 'dados_pedidos' => $dados_pedidos]);
-
-        // $produtos = DB::table('itens_pedidos')
-        //  ->join('models_produtos', 'models_produtos.id','=', 'itens_pedidos.models_produto_id')
-        //  ->select('models_produtos.id', 'models_produtos.nome', DB::raw('sum(itens_pedidos.quantidade) as soma_quantidade'))
-        //  ->groupBy('models_produtos.id', 'models_produtos.nome')
-        //  ->orderByDesc('soma_quantidade')
-        //  ->limit(5)
-        //  ->get();
-
-        //  return response()->Json($produtos,Response::HTTP_OK);
     }
 
     public function pedidos(Pedido $pedido)

@@ -40,6 +40,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    <a id="btn-funcionario" href="{{route('home')}}" class="btn btn-success btn-sm"
+                        style="float: left; height: 30px;"><strong>Voltar para tela inicial</strong></a>
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))

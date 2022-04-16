@@ -19,7 +19,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
-
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="card card-outline card-primary">
