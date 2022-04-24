@@ -48,8 +48,8 @@ form {
                     <tr>
                         <td>{{$pedido->id}}</td>
                         <td>{{$pedido->nome_razaosocial}}</td>
-                        <td>{{$pedido->data_entrega}}</td>
-                        <td>{{$pedido->valor_total}}</td>
+                        <td>{{ \Carbon\Carbon::parse($pedido->data_entrega)->format('d/m/Y')}}</td>
+                        <td>R$ {{number_format($pedido->valor_total, 2, ',', '.')}}</td>
                         <td><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
                                     style="color:white"></i></a></td>
                     </tr>
