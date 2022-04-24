@@ -114,6 +114,11 @@ function salvar(){
         alert('Selecione uma data para entrega!')
         return
     }
+    const status = $('#status').val();
+    if(!status ){
+        alert('Selecione uma status para o pedido!')
+        return
+    }
     if(!itensArray.length){
         alert('Adicione um item!')
         return
@@ -132,6 +137,7 @@ function salvar(){
         method: "POST",
         body: JSON.stringify({
             data_entrega,
+            status,
             valor_total,
             models_cliente_id,
             descricao,

@@ -18,6 +18,20 @@
                 <strong>Descrição:</strong><input type="text" class="form-control" disabled
                     value="{{($pedidos->descricao)}}">
             </div>
+
+            <div class="form-group">
+                <strong>Status:</strong>
+                @if($pedidos->status == 0)
+                <td><button class="btn btn-block btn-warning">Pendente</button></td>
+                @elseif($pedidos->status == 1)
+                <td><button class="btn btn-block btn-primary">Em andamento</button></td>
+                @elseif($pedidos->status == 3)
+                <td><button class="btn btn-block btn-danger">Cancelado</button></td>
+                @else
+                <td><button class="btn btn-block btn-success">Concluído</button></td>
+                @endif
+            </div>
+
             <h5> <strong>Itens do pedido:</strong></h5>
             <table class="table table-dark table-striped">
                 <thead>

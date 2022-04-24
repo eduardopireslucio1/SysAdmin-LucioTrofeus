@@ -52,6 +52,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('clientes', 'ClienteController');
     Route::get('clientes',[ClienteController::class, 'index']);
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
+    Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('createcpf.create');
     Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/clientes/{id}',[ClienteController::class, 'show']);
@@ -86,7 +87,7 @@ Route::prefix('admin')->group(function(){
     Route::get('pedidos',[PedidoController::class, 'pedidos']);
     // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
-    // Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
+    Route::get('/pedido/edit/{id}', [PedidoController::class, 'edit'])->middleware('auth');
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/pedido/{id}',[PedidoController::class, 'show'])->middleware('auth');
     

@@ -22,6 +22,7 @@ class CreatePedidosTable extends Migration
             $table->string('imagem_cartaz')->nullable();
             $table->date('data_entrega');
             $table->string('descricao')->nullable();
+            $table->string('status');
         });
     }
 

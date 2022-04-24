@@ -14,7 +14,8 @@ class Pedido extends Model
         'valor_total',
         'imagem_cartaz',
         'data_entrega',
-        'descricao'
+        'descricao',
+        'status'
 
     ];
 

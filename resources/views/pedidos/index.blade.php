@@ -41,6 +41,7 @@ form {
                         <th>Data de entrega</th>
                         <th>Valor total</th>
                         <th>Informações</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,17 @@ form {
                         <td>R$ {{number_format($pedido->valor_total, 2, ',', '.')}}</td>
                         <td><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
                                     style="color:white"></i></a></td>
+                        <td><a href="/admin/pedido/edit/{{$pedido->id}}" class="btn btn-primary"><i
+                                    class="fas fa-edit"></i></a></td>
+                        @if($pedido->status == 0)
+                        <td><button class="btn btn-block btn-warning">Pendente</button></td>
+                        @elseif($pedido->status == 1)
+                        <td><button class="btn btn-block btn-primary">Em andamento</button></td>
+                        @elseif($pedido->status == 2)
+                        <td><button class="btn btn-block btn-danger">Cancelado</button></td>
+                        @elseif($pedido->status == 3)
+                        <td><button class="btn btn-block btn-success">Concluído</button></td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

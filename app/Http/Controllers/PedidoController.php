@@ -43,13 +43,13 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
-        echo 123;
         $pedido = Pedido::create([
             'models_cliente_id'=>$dados['models_cliente_id'],
             'valor_total'=>$dados['valor_total'],
             'imagem_cartaz'=>'',
             'data_entrega'=>$dados['data_entrega'],
-            'descricao'=>$dados['descricao']
+            'descricao'=>$dados['descricao'],
+            'status'=>$dados['status']
     
         ]);
         // dd($pedido);
@@ -90,7 +90,7 @@ class PedidoController extends Controller
         $itens_pedidos = DB::table('itens_pedidos')
         ->where('pedido_id', '=', $id)
         ->join('models_produtos', 'models_produtos.id', '=', 'itens_pedidos.models_produto_id')
-        ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor')
+        ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor', 'status')
         ->get();
 
 
@@ -104,7 +104,7 @@ class PedidoController extends Controller
     {
         $pedidos = DB::table('pedidos')
         ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
-        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total')
+        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status')
         ->get();
         return view('pedidos.index')->with('pedidos',$pedidos);
     }
@@ -115,9 +115,19 @@ class PedidoController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedido $pedido)
+    public function edit($id)
     {
-        //
+        $pedidos = Pedido::findOrFail($id);
+
+        $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
+
+        $itens_pedidos = DB::table('itens_pedidos')
+        ->where('pedido_id', '=', $id)
+        ->join('models_produtos', 'models_produtos.id', '=', 'itens_pedidos.models_produto_id')
+        ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor', 'status')
+        ->get();
+
+        return view('pedidos.edit', ['pedidos' => $pedidos, 'models_clientes' => $models_clientes, 'itens_pedidos' => $itens_pedidos]);
     }
 
     /**
@@ -127,9 +137,17 @@ class PedidoController extends Controller
      * @param  \App\Models\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedido $pedido)
+    public function update(Request $request, $id)
     {
-        //
+        $pedido = Pedido::findOrFail($id);
+
+        $pedido->update([
+            
+            'status'=>$request->status,
+        
+        ]);
+
+        return redirect('/admin/pedidos/')->with('msg', 'Pedido editado com sucesso!');
     }
 
     /**
