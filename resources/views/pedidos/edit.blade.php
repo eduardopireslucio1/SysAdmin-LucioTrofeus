@@ -14,10 +14,7 @@
                 <strong>Prazo de entrega:</strong><input type="text" class="form-control" disabled
                     value="{{ \Carbon\Carbon::parse($pedidos->data_entrega)->format('d/m/Y')}}">
             </div>
-            <div class="form-group">
-                <strong>Descrição:</strong><input type="text" class="form-control" disabled
-                    value="{{($pedidos->descricao)}}">
-            </div>
+
             <div class="form-group">
                 <h5> <strong>Itens do pedido:</strong></h5>
                 <table class="table table-dark table-striped">
@@ -49,9 +46,20 @@
                     </tr>
                 </table>
                 <form action="/admin/pedidos/{{$pedidos->id}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+                    @csrf
+                    @method('PUT')
                     <div class="form-group">
+
+                        <label>Descrição: </label>
+                        <textarea placeholder="Descrição" type="text" name="descricao" style="resize: none" rows="5"
+                            class="form-control @error('descricao') is-invalid @enderror" id="descricao">{{$pedidos->descricao}}
+                        </textarea>
+                        @error('descricao')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
                         <label>Status: </label>
                         <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                             <option value="0" {{$pedidos->status == 0 ? "selected='selected'" : ""}}>Pendente
@@ -82,4 +90,4 @@
     </div>
 
 
-    @endsection 
+    @endsection

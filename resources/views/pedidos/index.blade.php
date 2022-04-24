@@ -41,6 +41,7 @@ form {
                         <th>Data de entrega</th>
                         <th>Valor total</th>
                         <th>Informações</th>
+                        <th>Editar</th>
                         <th>Status</th>
                     </tr>
                 </thead>

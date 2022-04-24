@@ -144,6 +144,7 @@ class PedidoController extends Controller
         $pedido->update([
             
             'status'=>$request->status,
+            'descricao'=>$request->descricao
         
         ]);
 
