@@ -63,10 +63,10 @@ form {
                     <tr>
                         <td>{{$funcionario->id}}</td>
                         <td>{{ucwords($funcionario->nome)}}</td>
-                        <td>{{$funcionario->dt_admissao}}</td>
+                        <td>{{ \Carbon\Carbon::parse($funcionario->dt_admissao)->format('d/m/Y')}}</td>
                         <td>{{$funcionario->carga_horaria}}</td>
                         <td>{{$funcionario->cargo}}</td>
-                        <td>{{$funcionario->salario}}</td>
+                        <td>R$ {{number_format($funcionario->salario, 2, ',', '.')}}</td>
                         <td>
                             <a href="/admin/funcionarios/edit/{{$funcionario->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>

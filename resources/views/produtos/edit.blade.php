@@ -33,7 +33,7 @@
 
                 <img src="/images/produtos/{{$models_produtos->imagem}}" width="230px" style="max-height: 230px">
                 <div class="custom-file">
-                    <input type="file" id="imagem" class="custom-file-input" name="imagem" value="{{old('imagem')}}">
+                    <input type="file" id="imagem" class="custom-file-input" name="imagem" value="/images/produtos/{{$models_produtos->imagem}}">
                     <label for="imagem" class="custom-file-label">Enviar imagem </label>  
                 </div>
                 @error('imagem')

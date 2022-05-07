@@ -16,11 +16,11 @@
             </div>
 
             <div class="form-group">
-                <strong>Data de nascimento:</strong><input type="text" class="form-control" disabled value="{{($models_funcionarios->dt_nascimento)}}">
+                <strong>Data de nascimento:</strong><input type="text" class="form-control" disabled value="{{ \Carbon\Carbon::parse($models_funcionarios->dt_nascimento)->format('d/m/Y')}}">
             </div>
 
             <div class="form-group">
-                <strong>Data de admissão:</strong><input type="text" class="form-control" disabled value="{{($models_funcionarios->dt_admissao)}}">
+                <strong>Data de admissão:</strong><input type="text" class="form-control" disabled value="{{ \Carbon\Carbon::parse($models_funcionarios->dt_admissao)->format('d/m/Y')}}">
             </div>
 
             <div class="form-group">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-group">
-                <strong>Salário:</strong><input type="text" class="form-control" disabled value="{{($models_funcionarios->salario)}}">
+                <strong>Salário:</strong><input type="text" class="form-control" disabled value="R$ {{number_format($models_funcionarios->salario, 2, ',', '.')}}">
             </div>
 
         </div>

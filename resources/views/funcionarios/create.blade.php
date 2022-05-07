@@ -111,6 +111,19 @@
                 numericOnly: true
             });
 
+            var cleave = new Cleave('#dt_nascimento', {
+                delimiters: ['/', '/', ''],
+                blocks: [2, 2, 4],
+                numericOnly: true
+            });
+
+            var cleave = new Cleave('#dt_admissao', {
+                delimiters: ['/', '/', ''],
+                blocks: [2, 2, 4],
+                numericOnly: true
+            });
+
+
             </script>
 
         </form>

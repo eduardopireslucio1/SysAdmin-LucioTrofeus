@@ -6,6 +6,7 @@ use App\Models\ModelsFuncionario;
 use Illuminate\Http\Request;
 use App\Http\Requests\FuncionarioStoreRequest;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class FuncionarioController extends Controller
 {
@@ -42,8 +43,8 @@ class FuncionarioController extends Controller
             
             'nome'=>$request->nome,
             'cpf'=>$request->cpf,
-            'dt_nascimento'=>$request->dt_nascimento,
-            'dt_admissao'=>$request->dt_admissao,
+            'dt_nascimento' => Carbon::parse($request->dt_nascimento)->format('Y-d-m'),
+            'dt_admissao' => Carbon::parse($request->dt_admissao)->format('Y-d-m'),
             'carga_horaria'=>$request->carga_horaria,
             'cargo'=>$request->cargo,
             'salario'=>$request->salario,

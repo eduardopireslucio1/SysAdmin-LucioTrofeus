@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label>Enviar imagem (referência): </label>
                 <div class="custom-file">
-                    <input type="file" id="imagem" class="custom-file-input" name="imagem" value="{{old('imagem')}}">
+                    <input type="file" id="imagem" class="custom-file-input" name="imagem" value="">
                     <label for="imagem" class="custom-file-label">Enviar imagem </label>  
                 </div>
                 @error('imagem')

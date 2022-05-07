@@ -110,7 +110,6 @@ class ProdutoController extends Controller
         $produto->update([
             'nome'=>$request->nome,
             'descricao'=>$request->descricao,
-            'imagem'=>$request->imagem,
             'preco'=>$request->preco,
             'status'=>$request->status,
             'material'=>$request->material

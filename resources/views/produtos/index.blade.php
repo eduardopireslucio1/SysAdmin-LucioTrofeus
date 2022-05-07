@@ -63,7 +63,7 @@ form {
                     <tr>
                         <td>{{$produto->id}}</td>
                         <td>{{ucfirst($produto->nome)}}</td>
-                        <td>{{$produto->preco}}</td>
+                        <td>R$ {{number_format($produto->preco, 2, ',', '.')}}</td>
                         <td>{{$produto->created_at->format('d/m/Y')}}</td>
                         <td>{{$produto->updated_at->format('d/m/Y')}}</td>
                         <td>

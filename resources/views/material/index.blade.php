@@ -64,7 +64,7 @@ form {
                         <td>{{ucwords($material->nome)}}</td>
                         <td>{{$material->descricao}}</td>
                         <td>{{$material->quantidade}}</td>
-                        <td>{{$material->preco}}</td>
+                        <td>R$ {{number_format($material->preco, 2, ',', '.')}}</td>
                         <td>
                             <a href="/admin/material/edit/{{$material->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>

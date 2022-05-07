@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-group">
-                <strong>Preço:</strong><input type="text" class="form-control" disabled value="{{($models_materials->preco)}}">
+                <strong>Preço:</strong><input type="text" class="form-control" disabled value="R$ {{number_format($models_materials->preco, 2, ',', '.')}}">
             </div>
 
         </div>

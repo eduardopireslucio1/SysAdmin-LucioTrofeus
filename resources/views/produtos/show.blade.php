@@ -10,9 +10,15 @@
         </div>
         <div id="info-container" class="col-md-6">
             <h1><strong>Nome do produto: <br></strong>{{$models_produtos->nome}}</h1>
-            <p class="produto-descricao"><br><strong>Descrição: </strong>{{$models_produtos->descricao}}</p>
-            <p class="produto-preco"><strong>Preço: </strong>{{$models_produtos->preco}}</p>
-            <p clas="produto-status"><strong>Status:  </strong>
+            <div class="form-group">
+                <strong>Nome do produto:</strong><input type="text" class="form-control" disabled value="{{($models_produtos->nome)}}">
+            </div>
+            <div class="form-group">
+                <strong>Descrição:</strong><input type="text" class="form-control" disabled value="{{($models_produtos->descricao)}}">
+            </div>
+            <div class="form-group">
+                <strong>Preço:</strong><input type="text" class="form-control" disabled value="R$ {{number_format($models_produtos->preco, 2, ',', '.')}}">
+            </div>
             
             @if($models_produtos->status == 0)
 
