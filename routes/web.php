@@ -7,6 +7,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\EntregaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +53,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('clientes', 'ClienteController');
     Route::get('clientes',[ClienteController::class, 'index']);
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
-    Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('createcpf.create');
+    Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('clientes.createcpf');
     Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/clientes/{id}',[ClienteController::class, 'show']);
@@ -94,10 +95,25 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
+    Route::resource('entrega', 'EntregaController');
+    Route::get('entrega',[EntregaController::class, 'index']);
+    Route::get('entrega',[EntregaController::class, 'pedidos']);
+    // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
+    // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
+    Route::get('/entrega/edit/{id}', [EntregaController::class, 'edit'])->middleware('auth');
+    // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
+    Route::get('/entrega/{id}',[EntregaController::class, 'show'])->middleware('auth');
+    
+});
+
+Route::prefix('admin')->group(function(){
     Route::resource('pedidos', 'PedidoController');
-    Route::get('pedidos',[PedidoController::class, 'pedidos']);
-    
-    
+    Route::get('pedidos',[PedidoController::class, 'pedidos']); 
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('entrega', 'EntregaController');
+    Route::get('entrega',[EntregaController::class, 'entrega']); 
 });
 
 Route::prefix('admin')->group(function(){

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title','Cadastrar Cliente')
-@section('content-header','Cadastrar Cliente')
+@section('title','Cadastrar Cliente CPF')
+@section('content-header','Cadastrar Cliente CPF')
 
 @section('content')
 
