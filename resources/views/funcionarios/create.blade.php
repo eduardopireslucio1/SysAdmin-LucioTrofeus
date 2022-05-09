@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label>Data de Admissão: <span class="obrigatorio">*</span></label>
                 <input placeholder="" type="text" name="dt_admissao"
-                    class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_admissao">
+                    class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao">
                 @error('dt_admissao')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FuncionarioStoreRequest;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use DateTime;
 
 class FuncionarioController extends Controller
 {
@@ -43,8 +44,8 @@ class FuncionarioController extends Controller
             
             'nome'=>$request->nome,
             'cpf'=>$request->cpf,
-            'dt_nascimento' => Carbon::parse($request->dt_nascimento)->format('Y-d-m'),
-            'dt_admissao' => Carbon::parse($request->dt_admissao)->format('Y-d-m'),
+            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),
+            'dt_admissao' => DateTime::createFromFormat('d/m/Y', $request->dt_admissao),
             'carga_horaria'=>$request->carga_horaria,
             'cargo'=>$request->cargo,
             'salario'=>$request->salario,
@@ -97,8 +98,8 @@ class FuncionarioController extends Controller
             
             'nome'=>$request->nome,
             'cpf'=>$request->cpf,
-            'dt_nascimento'=>$request->dt_nascimento,
-            'dt_admissao'=>$request->dt_admissao,
+            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),
+            'dt_admissao' => DateTime::createFromFormat('d/m/Y', $request->dt_admissao),
             'carga_horaria'=>$request->carga_horaria,
             'cargo'=>$request->cargo,
             'salario'=>$request->salario,
