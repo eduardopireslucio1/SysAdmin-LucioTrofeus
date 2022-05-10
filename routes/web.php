@@ -84,7 +84,7 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::resource('pedido', 'PedidoController');
-    Route::get('pedido',[PedidoController::class, 'index']);
+    //Route::get('pedido',[PedidoController::class, 'index']);
     Route::get('pedidos',[PedidoController::class, 'pedidos']);
     // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
@@ -96,9 +96,9 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::resource('entrega', 'EntregaController');
-    Route::get('entrega',[EntregaController::class, 'index']);
-    Route::get('entrega',[EntregaController::class, 'pedidos']);
-    // Route::post('pedido',[PedidoController::class, 'store'])->middleware('auth');
+    //Route::get('entrega',[EntregaController::class, 'index']);
+    Route::get('entrega/create',[EntregaController::class, 'entrega']);
+    //Route::post('entrega',[EntregaController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
     Route::get('/entrega/edit/{id}', [EntregaController::class, 'edit'])->middleware('auth');
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');

@@ -9,6 +9,10 @@ function limpar(){
     $("#descricao").val('');
 }
 
+$(document).ready(()=>{
+    limpar();
+})
+
 function salvar(){
     const models_funcionario_id = $('#models_funcionario_id').val();
     if(!models_funcionario_id ){
@@ -36,7 +40,7 @@ function salvar(){
     }
     
 
-    fetch("/api/admin/entrega",
+    fetch("/api/admin/entrega/create",
     {
         headers: {
         'Accept': 'application/json',
@@ -51,7 +55,7 @@ function salvar(){
             endereco,
             custo,
             descricao,
-        })
+        }),
     })
     .then(function(res){ 
         alert('Entrega salva com sucesso!');

@@ -42,6 +42,7 @@ class EntregaController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
+
         $entrega = Entrega::create([
             'models_funcionario_id'=>$dados['models_funcionario_id'], 
             'dt_entrega'=>$dados['dt_entrega'],
@@ -52,12 +53,13 @@ class EntregaController extends Controller
         ]);
 
         $id_entrega = $entrega->id;
+        $id_pedido = $dados['pedido_id'];
             
             DadosEntrega::create([
                 'entrega_id'=> $id_entrega,
                 'pedido_id'=>$id_pedido,
             ]);
-
+            //return view em alguma view relacionada a entrega
     }
 
     /**

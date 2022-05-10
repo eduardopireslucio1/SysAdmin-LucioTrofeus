@@ -15,7 +15,7 @@ class DadosEntrega extends Migration
      */
     public function up()
     {
-        Schema::create('dados_entrega', function (Blueprint $table) {
+        Schema::create('dados_entregas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Pedido::class);
