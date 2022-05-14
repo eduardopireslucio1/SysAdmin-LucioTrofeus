@@ -25,7 +25,7 @@
                 <td><button class="btn btn-block btn-warning">Pendente</button></td>
                 @elseif($pedidos->status == 1)
                 <td><button class="btn btn-block btn-primary">Em andamento</button></td>
-                @elseif($pedidos->status == 3)
+                @elseif($pedidos->status == 2)
                 <td><button class="btn btn-block btn-danger">Cancelado</button></td>
                 @else
                 <td><button class="btn btn-block btn-success">Concluído</button></td>

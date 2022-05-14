@@ -25,19 +25,21 @@
                 <div class="card-header">
                     <h3 class="card-title">Novo Pedido</h3><br>
                 </div>
-                <select class="custom-select form-control-border border-width-2" id="cliente"
+            </div>
+
+
+            <div class="row" style="margin-bottom:2vh">
+            <div class="col-3">
+                    <label for="">Cliente</label>
+                    <select class="custom-select form-control-border border-width-2" id="cliente"
                     placeholder="Selecione um cliente" class="selectpicker" data-live-search="true" style="width:100%">
                     <option data-valor="" value=""></option>
                     @foreach ($models_clientes as $cliente)
                     <option value="{{$cliente->id}}">{{$cliente->nome_razaosocial}}</option>
                     @endforeach
                 </select>
-
-            </div>
-
-
-            <div class="row" style="margin-bottom:2vh">
-                <div class="col-4">
+                </div>
+                <div class="col-3">
                     <label for="">Produto</label>
                     <select class="custom-select form-control-border" id="produto" placeholder="Selecione um produto"
                         class="selectpicker" data-live-search="true" style="width:100%; outline: none">
@@ -49,11 +51,11 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <label for="">Quantidade</label>
                     <input class="form-control" id="quantidade" placeholder="Ex: 20" type="number" />
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <label for="">Tamanho</label>
                     <input class="form-control" id="tamanho" placeholder="Ex: 15cm" type="number" />
                 </div>

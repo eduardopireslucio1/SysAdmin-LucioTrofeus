@@ -19,10 +19,12 @@ class Entrega extends Migration
             $table->timestamps();
             $table->foreignIdFor(ModelsFuncionario::class);
             $table->date('dt_entrega');
-            $table->decimal('custo',8,2)->nullable();
-            $table->string('endereco');
+            $table->decimal('taxa_frete',8,2)->nullable();
             $table->string('descricao')->nullable();
             $table->string('status');
+            $table->string('cidade');
+            $table->string('endereco');
+            $table->string('numero')->nullable();
         });
     }
 

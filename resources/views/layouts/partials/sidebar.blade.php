@@ -95,6 +95,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{route('entrega.create')}}" class="nav-link {{activeSegment('entrega')}}">
+                    <i class="fas fa-shipping-fast"></i>
+                        <p>
+                            Nova Entrega
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('pedidos.store')}}" class="nav-link {{activeSegment('pedidos')}}">
                         <i class="fas fa-box"></i>
                         <p>

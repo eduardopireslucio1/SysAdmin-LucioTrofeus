@@ -12,10 +12,12 @@ class Entrega extends Model
     protected $fillable = [
         'models_funcionario_id',
         'dt_entrega',
-        'custo',
-        'endereco',
+        'taxa_frete',
         'descricao',
-        'status'
+        'status',
+        'cidade',
+        'endereco',
+        'numero'
 
     ];
 

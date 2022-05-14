@@ -25,9 +25,13 @@
                 <div class="card-header">
                     <h3 class="card-title">Nova Entrega</h3><br>
                 </div>
+            </div>
 
-                <form action="{{route('entrega.store')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
+            <form action="{{route('entrega.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-3">
+                        <label for="">Funcionário</label>
                         <select class="custom-select form-control-border border-width-2" id="models_funcionario_id" name="models_funcionario_id"
                             placeholder="Selecione um funcionário" class="selectpicker" data-live-search="true"
                             style="width:100%">
@@ -36,77 +40,95 @@
                             <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
                             @endforeach
                         </select>
-
-                        <select class="custom-select form-control-border border-width-2" id="pedido_id" name="pedido_id"
-                            placeholder="Selecione o pedido" class="selectpicker" data-live-search="true"
-                            style="width:100%">
+                    </div>
+                    <div class="col-3">
+                        <label for="">Pedido</label>
+                        <select class="custom-select form-control-border" id="pedido_id" name="pedido_id"
+                            placeholder="Selecione um pedido" class="selectpicker" data-live-search="true"
+                            style="width:100%; outline: none">
                             <option data-valor="" value=""></option>
                             @foreach ($pedidos as $pedido)
                             <option value="{{$pedido->id}}">{{$pedido->models_cliente_id}}</option>
                             @endforeach
                         </select>
-
-                </div>
-                <div class="col-4">
-                    <br><label for="">Data da entrega:</label>
-                    <br><input class="form-control datetimepicker-input" id="dt_entrega" name="dt_entrega" type="date"
-                        placeholder="Data entrega">
-                    <label style="padding:5 px;">Status: <span class="obrigatorio"></span></label>
-                    <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                        <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
-                        <option value="1" {{old('status'==1 ? 'selected' : '')}}>Em andamento</option>
-                    </select>
-                    @error('status')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>Custo: <span class="obrigatorio">*</span></label>
-                    <input placeholder="Custo" type="text" name="custo"
-                        class="form-control @error('custo') is-invalid @enderror" id="custo">{{old('custo')}}</input>
-                    @error('custo')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                    </div>
+                    <div class="col-3">
+                        <label for="">Data da entrega:</label>
+                        <input class="form-control datetimepicker-input" id="dt_entrega" name="dt_entrega" type="date"
+                            placeholder="Data entrega">
+                    </div>
+                    <div class="col-3">
+                        <label for="">Status:</label>
+                        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                            <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
+                            <option value="1" {{old('status'==1 ? 'selected' : '')}}>Em andamento</option>
+                        </select>
+                        @error('status')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Endereço: <span class="obrigatorio">*</span></label>
-                    <input placeholder="Endereço" type="text" name="endereco"
-                        class="form-control @error('endereco') is-invalid @enderror"
-                        id="endereco">{{old('endereco')}}</input>
-                    @error('endereco')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-3">
+                        <label>Taxa de frete: </label>
+                        <input placeholder="Taxa de frete" type="text" name="taxa_frete"
+                            class="form-control @error('taxa_frete') is-invalid @enderror"
+                            id="taxa_frete">{{old('taxa_frete')}}</input>
+                        @error('taxa_frete')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-3">
+                        <label>Cidade:</label>
+                        <input placeholder="Cidade" type="text" name="cidade"
+                            class="form-control @error('cidade') is-invalid @enderror"
+                            id="cidade">{{old('cidade')}}</input>
+                        @error('cidade')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-3">
+                        <label>Endereço:</label>
+                        <input placeholder="Endereço" type="text" name="endereco"
+                            class="form-control @error('endereco') is-invalid @enderror"
+                            id="endereco">{{old('endereco')}}</input>
+                        @error('endereco')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-3">
+                        <label>Número:</label>
+                        <input placeholder="Número" type="text" name="numero"
+                            class="form-control @error('numero') is-invalid @enderror"
+                            id="numero">{{old('numero')}}</input>
+                        @error('numero')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <br><textarea style="resize: none" rows="5" class="form-control" id="descricao" name="descricao"
+                            placeholder="Descrição"></textarea>
+                    </div>
                 </div>
-
-                <div class="col-8">
-                    <br> <br> <textarea style="resize: none" rows="5" class="form-control" name="descricao" id="descricao"
-                        placeholder="Descrição"></textarea>
-                </div>
-
-
-                    <button class="btn btn-success" type="submit">Salvar</button>
-
-            </form>
-
-            <!-- <div>
-                        <button class="btn btn-success" onclick="salvar()">Salvar</button>
-                    </div> -->
         </div>
+
+        <div class="col-4">
+            <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+        </form>
     </div>
 </div>
-</div>
-<div id="grid_produto" class="container" style="margin-bottom:2vh">
-
-</div>
-
 
 
 

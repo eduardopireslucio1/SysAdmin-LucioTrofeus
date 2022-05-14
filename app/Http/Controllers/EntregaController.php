@@ -46,10 +46,12 @@ class EntregaController extends Controller
         $entrega = Entrega::create([
             'models_funcionario_id'=>$dados['models_funcionario_id'], 
             'dt_entrega'=>$dados['dt_entrega'],
-            'custo'=>$dados['custo'],
-            'endereco'=>$dados['endereco'],
+            'taxa_frete'=>$dados['taxa_frete'],
             'descricao'=>$dados['descricao'],
             'status'=>$dados['status'],
+            'cidade'=>$dados['cidade'],
+            'endereco'=>$dados['endereco'],
+            'numero'=>$dados['numero'],
         ]);
 
         $id_entrega = $entrega->id;
