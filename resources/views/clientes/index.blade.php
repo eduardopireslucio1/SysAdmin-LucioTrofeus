@@ -42,7 +42,7 @@ form {
             </div>
         </div>
         <p class="text" style="color: #007FFF"><strong>Lista de clientes:</strong>
-            <a id="btn-cliente" href="{{route('clientes.createcpf')}}" class="btn btn-success btn-sm"
+            <a id="btn-cliente" href="{{route('clientescpf.create')}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>CPF</strong></a>
                 <a id="btn-cliente" href="{{route('clientes.create')}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>CNPJ</strong></a>

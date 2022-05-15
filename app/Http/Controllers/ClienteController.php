@@ -30,15 +30,15 @@ class ClienteController extends Controller
         return view('clientes.create');
     }
 
+    public function createcpf(){
+        return view('clientescpf.create');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function createcpf(){
-        return view('clientes.createcpf');
-    }
 
     /**
      * Store a newly created resource in storage.

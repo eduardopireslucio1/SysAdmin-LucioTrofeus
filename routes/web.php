@@ -53,11 +53,16 @@ Route::prefix('admin')->group(function(){
     Route::resource('clientes', 'ClienteController');
     Route::get('clientes',[ClienteController::class, 'index']);
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
-    Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('clientes.createcpf');
+    //Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('clientes.createcpf');
     Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/clientes/{id}',[ClienteController::class, 'show']);
     
+});
+
+Route::prefix('admin')->group(function(){
+    Route::resource('clientescpf', 'ClienteController');
+    Route::get('clientescpf',[ClienteController::class, 'clientes']); 
 });
 
 Auth::routes();
@@ -95,9 +100,9 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    Route::resource('entregas', 'EntregaController');
-    Route::get('entregas',[EntregaController::class, 'index']);
-    Route::get('entrega/create',[EntregaController::class, 'entrega']);
+    Route::resource('entrega', 'EntregaController');
+    Route::get('entrega',[EntregaController::class, 'index']);
+    // Route::get('entrega/create',[EntregaController::class, 'entrega']);
     //Route::post('entrega',[EntregaController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
     Route::get('/entrega/edit/{id}', [EntregaController::class, 'edit'])->middleware('auth');
@@ -112,7 +117,7 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    Route::resource('entrega', 'EntregaController');
+    Route::resource('entregas', 'EntregaController');
     Route::get('entregas',[EntregaController::class, 'entregas']); 
 });
 

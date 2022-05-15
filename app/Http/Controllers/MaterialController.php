@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ModelsMaterial;
+use App\Http\Requests\MaterialStoreRequest;
 use Illuminate\Support\Facades\DB;
 
 
@@ -36,7 +37,7 @@ class MaterialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MaterialStoreRequest $request)
     {
         $Material = ModelsMaterial::create([
             
@@ -86,7 +87,7 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MaterialStoreRequest $request, $id)
     {
         $material = ModelsMaterial::findOrFail($id);
 

@@ -8,6 +8,7 @@ use App\Models\ModelsFuncionario;
 use App\Models\Entrega;
 use App\Models\DadosEntrega;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\EntregaStoreRequest;
 
 class EntregaController extends Controller
 {
@@ -39,7 +40,7 @@ class EntregaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EntregaStoreRequest $request)
     {
         $dados = $request->all();
 

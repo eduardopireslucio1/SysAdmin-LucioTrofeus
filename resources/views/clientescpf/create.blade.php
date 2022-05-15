@@ -14,10 +14,10 @@
             @csrf
 
             <div class="form-group">
-                <label>CPF: <span class="obrigatorio">*</span> </label>
+                <label>CPF:aaaaaaaaaaaaaaaa <span class="obrigatorio">*</span> </label>
                 <input placeholder="CPF" type="text"
                     name="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                    id="cpf">{{old('cnpj')}}</input>
+                    id="cpf">{{old('cpf')}}</input>
                 @error('cpf')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

@@ -30,4 +30,13 @@ class MaterialStoreRequest extends FormRequest
             'preco'=>'nullable|regex:/^\d+(\.\d{1,2})?$/',
         ];
     }
+
+    public function messages(){
+
+        return [
+            'nome.required'=>'NOME não pode ser nulo!',
+            'quantidade.required'=>'QUANTIDADE não pode ser nula!'
+        ];
+
+    }
 }

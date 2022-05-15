@@ -113,7 +113,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link {{activeSegment('entregas')}}">
+                    <a href="{{route('entregas.store')}}" class="nav-link {{activeSegment('entregas')}}">
                         <i class="fas fa-box"></i>
                         <p>
                             Entregas

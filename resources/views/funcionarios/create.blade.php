@@ -5,6 +5,7 @@
 @section('content')
 
 <script src="/js/cliente/clientes.js"></script>
+<script src="/js/cliente/validarCpf.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -26,7 +27,7 @@
 
             <div class="form-group">
                 <label>CPF: <span class="obrigatorio">*</span></label>
-                <input placeholder="Ex: 111.111.111-11" type="text" name="cpf"
+                <input data-id="cpf" placeholder="Ex: 111.111.111-11" type="text" name="cpf" onblur="validarCPF(this.value);"
                     class="form-control @error('cpf') is-invalid @enderror" id="cpf">
                 @error('cpf')
                 <span class="invalid-feedback" role="alert">

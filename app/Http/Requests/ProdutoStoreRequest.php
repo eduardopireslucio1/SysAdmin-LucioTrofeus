@@ -31,4 +31,15 @@ class ProdutoStoreRequest extends FormRequest
             'status'=>'required|boolean',
         ];
     }
+
+    public function messages(){
+
+        return[
+            'nome.required'=>'NOME não pode ser nulo!',
+            'descricao.required'=>'DESCRIÇÃO não pode ser nula!',
+            'preco.required'=>'PREÇO não pode ser nulo!',
+            'status.required'=>'STATUS não pode ser nulo!',
+        ];
+
+    }
 }
