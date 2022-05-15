@@ -9,10 +9,6 @@ function limpar(){
     $("#descricao").val('');
 }
 
-$(document).ready(()=>{
-    limpar();
-})
-
 function salvar(){
     const models_funcionario_id = $('#models_funcionario_id').val();
     if(!models_funcionario_id ){
@@ -39,27 +35,4 @@ function salvar(){
         return
     }
     
-
-    fetch("/api/admin/entrega/create",
-    {
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({
-            models_funcionario_id,
-            pedido_id,
-            dt_entrega,
-            status,
-            endereco,
-            custo,
-            descricao,
-        }),
-    })
-    .then(function(res){ 
-        alert('Entrega salva com sucesso!');
-        limpar();
-    })
-    .catch(function(res){ alert(res) })
 }

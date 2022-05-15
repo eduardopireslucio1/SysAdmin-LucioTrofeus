@@ -111,6 +111,15 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="" class="nav-link {{activeSegment('entregas')}}">
+                        <i class="fas fa-box"></i>
+                        <p>
+                            Entregas
+                        </p>
+                    </a>
+                </li>
                 
                 <li class="nav-item">
                     <a href="{{route('relatorio.store')}}" class="nav-link {{activeSegment('relatorio')}}">

@@ -40,8 +40,10 @@ function addItem(){
 
 function limpar(){
     itensArray = [];
-    $('#produto').selectpicker('val','');
-    $('#cliente').selectpicker('val','');
+    // $('#produto').selectpicker('val','');
+    // $('#cliente').selectpicker('val','');
+    $('#produto').val('');
+    $('#cliente').val('');
     const today = new Date().toISOString().split('T')[0];
     $("#data").attr('min', today);
     $("#data").val(today);

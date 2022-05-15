@@ -95,8 +95,8 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    Route::resource('entrega', 'EntregaController');
-    //Route::get('entrega',[EntregaController::class, 'index']);
+    Route::resource('entregas', 'EntregaController');
+    Route::get('entregas',[EntregaController::class, 'index']);
     Route::get('entrega/create',[EntregaController::class, 'entrega']);
     //Route::post('entrega',[EntregaController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
@@ -113,7 +113,7 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::resource('entrega', 'EntregaController');
-    Route::get('entrega',[EntregaController::class, 'entrega']); 
+    Route::get('entregas',[EntregaController::class, 'entregas']); 
 });
 
 Route::prefix('admin')->group(function(){
