@@ -24,8 +24,8 @@ class ClienteStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_razaosocial'=>'required|string|max:50',
-            'fantasia'=>'nullable|string|max:50',
+            'nome_razaosocial'=>'required|string|max:100',
+            'fantasia'=>'nullable|string|max:100',
             'email'=>'nullable|string|max:50',
             'telefone'=>'required|string|max:50',
             'cpf'=>'nullable|string|max:11',

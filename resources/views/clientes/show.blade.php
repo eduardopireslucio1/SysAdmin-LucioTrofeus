@@ -3,69 +3,87 @@
 
 @section('content')
 
-<div class="col-md-10 offset-md-0.5">
-        <div id="info-container" class="col-md-6">
-            <h2><strong>Informações do Cliente</strong></h2>
-            <h3>Dados pessoais</h3>
-            <div class="form-group">
-                <strong>CNPJ:</strong><input type="text" class="form-control" disabled value="{{($models_clientes->cnpj)}}">
-            </div>
+<div class="container-fluid">
+    <div style="padding:0px;" class="col-md-12">
+        <div class="painel panel-default">
+            <div class="painel-heading" style="margin-top:8px !important;color: black">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h2><strong>Informações do Cliente</strong></h2>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-4">
+                        <strong>CNPJ:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->cnpj)}}">
+                    </div>
 
-            <div class="form-group">
-                <strong>CPF:</strong><input type="text" class="form-control" disabled value="{{($models_clientes->cpf)}}">
-            </div>
+                    <div class="col-4">
+                        <strong>CPF:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->cpf)}}">
+                    </div>
 
-            <div class="form-group">
-                <strong>Nome / Razão Social:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->nome_razaosocial)}}">
-            </div>
+                    <div class="col-4">
+                        <strong>Nome / Razão Social:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->nome_razaosocial)}}">
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <strong>Fantasia:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->fantasia)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Telefone:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->telefone)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>CEP:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->cep)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Estado:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->estado)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Cidade:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->cidade)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Logradouro:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->logradouro)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Número:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->numero)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>E-mail:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->email)}}">
-            </div>
-            
-            <div class="form-group">
-                <strong>Observação:</strong><input type="text" class="form-control" disabled
-                        value="{{($models_clientes->observacao)}}">
-            </div>
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-4">
+                        <strong>Fantasia:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->fantasia)}}">
+                    </div>
 
+                    <div class="col-4">
+                        <strong>Telefone:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->telefone)}}">
+                    </div>
+
+                    <div class="col-4">
+                        <strong>CEP:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->cep)}}">
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-4">
+                        <strong>Estado:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->uf)}}">
+                    </div>
+
+                    <div class="col-4">
+                        <strong>Cidade:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->cidade)}}">
+                    </div>
+
+                    <div class="col-3">
+                        <strong>Logradouro:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->logradouro)}}">
+                    </div>
+                    <div class="col-1">
+                        <strong>Número:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->numero)}}">
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:2vh; ">
+                    <div class="col-6">
+                        <strong>E-mail:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->email)}}">
+                    </div>
+
+                    <div class="col-6">
+                        <strong>Observação:</strong><input type="text" class="form-control" disabled
+                            value="{{($models_clientes->observacao)}}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+</div>
 </div>
 
 

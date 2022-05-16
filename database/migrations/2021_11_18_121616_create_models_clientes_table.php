@@ -17,7 +17,7 @@ class CreateModelsClientesTable extends Migration
             $table->id();
             $table->string('nome_razaosocial');
             $table->string('fantasia')->nullable();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('telefone');
             $table->string('cpf')->nullable();
             $table->string('cnpj')->nullable();
