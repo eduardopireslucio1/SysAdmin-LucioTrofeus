@@ -62,8 +62,9 @@ class EntregaController extends Controller
                 'entrega_id'=> $id_entrega,
                 'pedido_id'=>$id_pedido,
             ]);
-            //return view em alguma view relacionada a entrega
-    }
+        
+            return redirect()->route('entregas.store')->with('Entrega cadastrada com sucesso!');
+        }
 
     /**
      * Display the specified resource.

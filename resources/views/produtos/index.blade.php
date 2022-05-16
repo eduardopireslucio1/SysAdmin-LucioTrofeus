@@ -32,7 +32,7 @@ form {
     <div class="col-md-12" style="padding:0px">
         <div class="painel panel-default">
             <div class="painel-heading" style="margin-top:8px !important;color: black">
-                <div class="card card-success">
+                <div class="card card-info">
                     <div class="card-header">
                         <h3><b>Produtos</b> </h3>
                     </div>

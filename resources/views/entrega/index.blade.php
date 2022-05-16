@@ -20,7 +20,7 @@ form {
     <div style="padding:0px" class="col-md-12">
         <div class="painel panel-default">
             <div class="painel-heading" style="margin-top:8px !important;color: black">
-                <div class="card card-success">
+                <div class="card card-info">
                     <div class="card-header">
                         <h3><b>Entregas</b>
 
@@ -37,7 +37,7 @@ form {
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Funcionário reponsável</th>
+                        <th>Funcionário responsável</th>
                         <th>Data da entrega</th>
                         <th>Taxa de frete</th>
                         <th>Cidade</th>

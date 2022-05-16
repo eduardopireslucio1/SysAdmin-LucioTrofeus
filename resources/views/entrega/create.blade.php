@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row" style="margin-bottom:6vh">
         <div class="col-12">
-            <div class="card card-success">
+            <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Nova Entrega</h3><br>
                 </div>

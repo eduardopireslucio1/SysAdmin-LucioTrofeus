@@ -23,7 +23,7 @@ class Entrega extends Migration
             $table->string('descricao')->nullable();
             $table->string('status');
             $table->string('cidade');
-            $table->string('endereco');
+            $table->string('endereco')->nullable();
             $table->string('numero')->nullable();
         });
     }

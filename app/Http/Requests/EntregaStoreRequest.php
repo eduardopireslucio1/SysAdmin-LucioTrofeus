@@ -30,7 +30,7 @@ class EntregaStoreRequest extends FormRequest
             'status'=>'required|string|max:50',
             'cidade'=>'required|string|max:50',
             'endereco'=>'nullable|string|max:50',
-            'endereco'=>'nullable|string|max:50',
+            'numero'=>'nullable|string|max:50',
             'pedido_id'=>'required|string|max:50',
         ];
     }

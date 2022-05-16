@@ -114,8 +114,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('entregas.store')}}" class="nav-link {{activeSegment('entregas')}}">
-                        <i class="fas fa-box"></i>
-                        <p>
+                    <i class="fas fa-boxes"></i>
+                    <p>
                             Entregas
                         </p>
                     </a>
