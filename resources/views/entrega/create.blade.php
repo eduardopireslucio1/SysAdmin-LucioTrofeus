@@ -32,7 +32,7 @@
                 <div class="row" style="margin-bottom:2vh">
                     <div class="col-3">
                         <label for="">Funcionário</label>
-                        <select class="custom-select form-control-border border-width-2" id="models_funcionario_id" name="models_funcionario_id"
+                        <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id" name="models_funcionario_id"
                             placeholder="Selecione um funcionário" class="selectpicker" data-live-search="true"
                             style="width:100%">
                             <option data-valor="" value=""></option>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-3">
                         <label for="">Pedido</label>
-                        <select class="custom-select form-control-border" id="pedido_id" name="pedido_id"
+                        <select class="form-control select2bs4 select2-hidden-accessible" id="pedido_id" name="pedido_id"
                             placeholder="Selecione um pedido" class="selectpicker" data-live-search="true"
                             style="width:100%; outline: none">
                             <option data-valor="" value=""></option>

@@ -31,7 +31,7 @@
             <div class="row" style="margin-bottom:2vh">
             <div class="col-3">
                     <label for="">Cliente</label>
-                    <select class="custom-select form-control-border border-width-2" id="cliente"
+                    <select class="form-control select2bs4 select2-hidden-accessible" id="cliente"
                     placeholder="Selecione um cliente" class="selectpicker" data-live-search="true" style="width:100%">
                     <option data-valor="" value=""></option>
                     @foreach ($models_clientes as $cliente)
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-3">
                     <label for="">Produto</label>
-                    <select class="custom-select form-control-border" id="produto" placeholder="Selecione um produto"
+                    <select class="form-control select2bs4 select2-hidden-accessible" id="produto" placeholder="Selecione um produto"
                         class="selectpicker" data-live-search="true" style="width:100%; outline: none">
                         <option data-valor="" value=""></option>
                         @foreach ($models_produtos as $produto)

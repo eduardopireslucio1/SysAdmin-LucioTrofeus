@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <label>Data de nascimento: </label>
-                <input placeholder="dt_nascimento" type="text" name="dt_nascimento" class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_nascimento" value="{{$models_funcionarios->dt_nascimento}}">
+                <input placeholder="dt_nascimento" type="text" name="dt_nascimento" class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_nascimento" value="{{ \Carbon\Carbon::parse($models_funcionarios->dt_nascimento)->format('d/m/Y')}}">
                 @error('dt_nascimento')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <label>Data de admissão: </label>
-                <input placeholder="dt_admissao" type="text" name="dt_admissao" class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao" value="{{$models_funcionarios->dt_admissao}}">
+                <input placeholder="dt_admissao" type="text" name="dt_admissao" class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao" value="{{ \Carbon\Carbon::parse($models_funcionarios->dt_admissao)->format('d/m/Y')}}">
                 @error('dt_admissao')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
