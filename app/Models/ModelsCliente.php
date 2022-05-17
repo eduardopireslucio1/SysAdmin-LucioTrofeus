@@ -25,5 +25,10 @@ class ModelsCliente extends Model
         'numero',
         'observacao'
     ];
+    
+    function getDocument() {
+        $document = $this->cpf ? $this->cpf : $this->cnpj;
+        return $document;
+    }
 
 }

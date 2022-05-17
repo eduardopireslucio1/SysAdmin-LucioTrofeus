@@ -28,7 +28,7 @@ class ClienteStoreRequest extends FormRequest
             'fantasia'=>'nullable|string|max:100',
             'email'=>'nullable|string|max:50',
             'telefone'=>'required|string|max:50',
-            'cpf'=>'nullable|string|max:11',
+            'cpf'=>'nullable|string|max:50',
             'cnpj'=>'nullable|string|max:50',
             'cep'=>'required|string|max:50',
             'cidade'=>'required|string|max:50',

@@ -53,7 +53,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('clientes', 'ClienteController');
     Route::get('clientes',[ClienteController::class, 'index']);
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
-    //Route::get('clientes/createcpf', [ClienteController::class, 'create'])->middleware('auth')->name('clientes.createcpf');
+    Route::get('clientes/create/{opcao}', [ClienteController::class, 'create'])->middleware('auth');
     Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->middleware('auth');
     Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/clientes/{id}',[ClienteController::class, 'show']);

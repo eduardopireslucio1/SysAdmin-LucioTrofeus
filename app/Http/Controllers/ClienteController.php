@@ -25,9 +25,10 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {   
-        return view('clientes.create');
+        $opcao = $request->opcao;
+        return view('clientes.create', compact('opcao'));
     }
 
     public function createcpf(){
@@ -47,7 +48,7 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ClienteStoreRequest $request)
-    {
+    {        
 
         $modelsCliente = ModelsCliente::create([
             
