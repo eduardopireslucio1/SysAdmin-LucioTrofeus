@@ -1,4 +1,4 @@
-<div class="card" id="cnpj>
+<div class="card" id="cnpj">
     <div class="card-body">
         <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data">
             @csrf

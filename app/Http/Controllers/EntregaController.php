@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\ModelsFuncionario;
+use App\Models\ModelsClientes;
 use App\Models\Entrega;
 use App\Models\DadosEntrega;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,10 @@ class EntregaController extends Controller
     public function create()
     {
         $models_funcionarios = ModelsFuncionario::all();
-        $pedidos = Pedido::all();
+        $pedidos = DB::table('pedidos')
+        ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
+        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'pedidos.status')
+        ->get();
         return view('entrega.create')->with('models_funcionarios',$models_funcionarios)->with('pedidos',$pedidos);
     }
 

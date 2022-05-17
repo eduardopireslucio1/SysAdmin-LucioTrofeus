@@ -32,9 +32,9 @@
                 <div class="row" style="margin-bottom:2vh">
                     <div class="col-3">
                         <label for="">Funcionário</label>
-                        <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id" name="models_funcionario_id"
-                            placeholder="Selecione um funcionário" class="selectpicker" data-live-search="true"
-                            style="width:100%">
+                        <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
+                            name="models_funcionario_id" placeholder="Selecione um funcionário" class="selectpicker"
+                            data-live-search="true" style="width:100%">
                             <option data-valor="" value=""></option>
                             @foreach ($models_funcionarios as $funcionario)
                             <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
@@ -43,12 +43,14 @@
                     </div>
                     <div class="col-3">
                         <label for="">Pedido</label>
-                        <select class="form-control select2bs4 select2-hidden-accessible" id="pedido_id" name="pedido_id"
-                            placeholder="Selecione um pedido" class="selectpicker" data-live-search="true"
-                            style="width:100%; outline: none">
+                        <select class="form-control select2bs4 select2-hidden-accessible" id="pedido_id"
+                            name="pedido_id" placeholder="Selecione um pedido" class="selectpicker"
+                            data-live-search="true" style="width:100%; outline: none">
                             <option data-valor="" value=""></option>
                             @foreach ($pedidos as $pedido)
-                            <option value="{{$pedido->id}}">{{$pedido->models_cliente_id}}</option>
+                            @if($pedido->status == 3)
+                            <option value="{{$pedido->id}}">{{$pedido->id}} - {{$pedido->nome_razaosocial}}</option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
