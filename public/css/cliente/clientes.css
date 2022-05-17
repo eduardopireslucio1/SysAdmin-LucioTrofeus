@@ -1,0 +1,12 @@
+#margem{
+    margin-bottom: 2vh;
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+    width: 22px;
+}
+
+.obrigatorio {
+    color: red;
+}

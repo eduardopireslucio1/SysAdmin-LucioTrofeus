@@ -5,6 +5,7 @@
 @section('content')
 
 <script src="/js/cliente/clientes.js"></script>
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -16,25 +17,13 @@
     @include('clientes.clientecnpj')
 
 @endif
-<style>
-input[type=checkbox] {
-    cursor: pointer;
-    width: 22px;
-}
-
-.obrigatorio {
-    color: red;
-}
-</style>
-
-
 <script>
 
 var cleave = new Cleave('#cpf', {
-                delimiters: ['.', '.', '.', '-'],
-                blocks: [3, 3, 3, 2],
-                numericOnly: true
-            });
+    delimiters: ['.', '.', '.', '-'],
+    blocks: [3, 3, 3, 2],
+    numericOnly: true
+});
 
 
 var cleave = new Cleave('#cnpj', {
@@ -55,5 +44,4 @@ var cleave = new Cleave('#telefone', {
     numericOnly: true
 });
 </script>
-
 @endsection

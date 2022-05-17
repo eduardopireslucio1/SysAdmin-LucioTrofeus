@@ -28,6 +28,8 @@ function checkCnpj(cnpj) {
 
 }
 
+
+
 // var cleave = new Cleave('#cnpj', {
 //     delimiters: ['.', '.', '/', '-'],
 //     blocks: [2, 3, 3, 4, 2],

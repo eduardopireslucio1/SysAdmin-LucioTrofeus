@@ -27,6 +27,7 @@
     "dependencies": {
         "admin-lte": "^3.1.0",
         "bootstrap-icons": "^1.8.2",
+        "cleave.js": "^1.6.0",
         "cors": "^2.8.5",
         "font-awesome": "^4.7.0"
     }
