@@ -93,10 +93,8 @@ class PedidoController extends Controller
         ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor', 'status')
         ->get();
 
-
         $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
         
-
         return view('pedidos.show', ['models_clientes' => $models_clientes, 'pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
     }
 
@@ -104,7 +102,8 @@ class PedidoController extends Controller
     {
         $pedidos = DB::table('pedidos')
         ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
-        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status')
+        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status', 'pedidos.created_at')
+        ->orderByRaw('pedidos.created_at DESC')
         ->get();
         return view('pedidos.index')->with('pedidos',$pedidos);
     }

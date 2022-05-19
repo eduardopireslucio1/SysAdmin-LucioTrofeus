@@ -17,8 +17,9 @@ class ClienteController extends Controller
     public function index()
     {
         $tempedido = false;
+        $podeExcluirCliente = false;
         $models_clientes = modelsCliente::latest()->paginate(10);
-        return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido);
+        return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido)->with('podeExcluirCliente', $podeExcluirCliente);
     }
 
     /**
@@ -136,19 +137,19 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
+        $models_clientes = modelsCliente::latest()->paginate(10);
         $pedido = DB::table('pedidos')
         ->select('pedidos.id')
         ->where('pedidos.models_cliente_id', '=', $id)
         ->first();
-
         if($pedido){
             $tempedido = true;
-            $models_clientes = modelsCliente::latest()->paginate(10);
             return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido);
+        }else{
+            $podeExcluirCliente = true;
+            $tempedido = false;
+            ModelsCliente::findOrFail($id)->delete();
+            return redirect('/admin/clientes/')->with('podeExcluirCliente', $podeExcluirCliente);
         }
-
-        ModelsCliente::findOrFail($id)->delete();
-
-        return redirect('/admin/clientes/')->with('msg', 'Cliente excluído com sucesso!');
     }
 }

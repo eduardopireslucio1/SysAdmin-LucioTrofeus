@@ -94,6 +94,12 @@ form {
                             Motivo: contém ao menos um pedido com esse cliente!
                         </ul>
                     </div>
+                    @elseif($podeExcluirCliente == true)
+                    <div class="alert alert-success">
+                        <ul>
+                            CLIENTE EXCLUÍDO COM SUCESSO!<br>
+                        </ul>
+                    </div>
                     @endif
                 </tbody>
             </table>

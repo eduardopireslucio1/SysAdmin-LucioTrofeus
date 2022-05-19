@@ -18,7 +18,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        $models_funcionarios = ModelsFuncionario::latest()->paginate(10);
+        $models_funcionarios = DB::table('models_funcionarios')->orderByRaw('created_at DESC')->paginate(10);
         return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios);
     }
 

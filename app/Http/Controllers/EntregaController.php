@@ -84,7 +84,8 @@ class EntregaController extends Controller
     public function entregas(){
         $entregas = DB::table('entregas')
         ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
-        ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status')
+        ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
+        ->orderByRaw('created_at DESC')
         ->get();
         return view('entrega.index')->with('entregas', $entregas);
     }
