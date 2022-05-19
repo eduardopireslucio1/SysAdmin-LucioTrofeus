@@ -5,20 +5,16 @@
 @section('content')
 
 <script src="/js/cliente/clientes.js"></script>
-<link href="/css/cliente/clientes.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 
 @if($opcao == "cpf")
     @include('clientes.clientecpf')
 @elseif($opcao == "cnpj")
     @include('clientes.clientecnpj')
-
 @endif
 <script>
-
 var cleave = new Cleave('#cpf', {
     delimiters: ['.', '.', '.', '-'],
     blocks: [3, 3, 3, 2],

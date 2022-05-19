@@ -15,7 +15,7 @@ p {
     margin: 0 8px;
 }
 
-h3 b{
+h3 b {
     font-size: 22px;
 }
 
@@ -44,9 +44,9 @@ form {
         <p class="text" style="color: #007FFF"><strong>Lista de clientes:</strong>
             <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cpf'])}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>CPF</strong></a>
-                <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cnpj'])}}" class="btn btn-success btn-sm"
+            <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cnpj'])}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>CNPJ</strong></a>
-</a>
+            </a>
     </div>
     <div class="div card">
         <div class="card-body">
@@ -87,6 +87,14 @@ form {
                         </td>
                     </tr>
                     @endforeach
+                    @if($tempedido == true)
+                    <div class="alert alert-danger">
+                        <ul>
+                            NÃO FOI POSSÍVEL EXCLUIR O CLIENTE!<br>
+                            Motivo: contém ao menos um pedido com esse cliente!
+                        </ul>
+                    </div>
+                    @endif
                 </tbody>
             </table>
             {{$models_clientes->render()}}

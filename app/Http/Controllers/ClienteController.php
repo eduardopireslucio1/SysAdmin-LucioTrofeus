@@ -16,8 +16,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        $tempedido = false;
         $models_clientes = modelsCliente::latest()->paginate(10);
-        return view('clientes.index')->with('models_clientes',$models_clientes);
+        return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido);
     }
 
     /**
@@ -29,10 +30,6 @@ class ClienteController extends Controller
     {   
         $opcao = $request->opcao;
         return view('clientes.create', compact('opcao'));
-    }
-
-    public function createcpf(){
-        return view('clientescpf.create');
     }
 
     /**
@@ -145,7 +142,9 @@ class ClienteController extends Controller
         ->first();
 
         if($pedido){
-            return redirect()->back()->withErrors('msg', 'Contém ao menos um pedido com este cliente!');
+            $tempedido = true;
+            $models_clientes = modelsCliente::latest()->paginate(10);
+            return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido);
         }
 
         ModelsCliente::findOrFail($id)->delete();
