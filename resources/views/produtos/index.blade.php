@@ -79,6 +79,20 @@ form {
                         </td>
                     </tr>
                     @endforeach
+                    @if($tempedido == true)
+                    <div class="alert alert-danger">
+                        <ul>
+                            NÃO FOI POSSÍVEL EXCLUIR O PRODUTO!<br>
+                            Motivo: contém ao menos um pedido com esse produto!
+                        </ul>
+                    </div>
+                    @elseif($podeExcluirProduto == true)
+                    <div class="alert alert-success">
+                        <ul>
+                            PRODUTO EXCLUÍDO COM SUCESSO!<br>
+                        </ul>
+                    </div>
+                    @endif
                 </tbody>
             </table>
             {{$models_produtos->render()}}

@@ -56,7 +56,6 @@ form {
                         <th>id</th>
                         <th>Nome / Razão Social</th>
                         <th> CPF/CNPJ </th>
-                        <th>E-mail</th>
                         <th>Telefone</th>
                         <th>Cidade</th>
                         <th>Estado</th>
@@ -69,7 +68,6 @@ form {
                         <td>{{$cliente->id}}</td>
                         <td>{{ucwords($cliente->nome_razaosocial)}}</td>
                         <td> {{$cliente->getDocument()}} </td>
-                        <td>{{$cliente->email}}</td>
                         <td>{{$cliente->telefone}}</td>
                         <td>{{ucfirst($cliente->cidade)}}</td>
                         <td>{{strtoupper($cliente->uf)}}</td>

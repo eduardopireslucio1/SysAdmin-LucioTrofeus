@@ -17,8 +17,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
+        $excluiu = false;
         $models_materials = modelsMaterial::latest()->paginate(10);
-        return view('material.index')->with('models_materials',$models_materials);
+        return view('material.index')->with('models_materials',$models_materials)->with('excluiu',$excluiu);
     }
 
     /**
@@ -111,8 +112,9 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
+        $excluiu = true;
         ModelsMaterial::findOrFail($id)->delete();
-
-        return redirect('/admin/material/')->with('msg', 'Material excluído com sucesso!');
+        $models_materials = modelsMaterial::latest()->paginate(10);
+        return view('material.index')->with('models_materials',$models_materials)->with('excluiu',$excluiu);
     }
 }

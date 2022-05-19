@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelsFuncionario;
+use App\Models\Entrega;
 use Illuminate\Http\Request;
 use App\Http\Requests\FuncionarioStoreRequest;
 use Illuminate\Support\Facades\DB;
@@ -18,8 +19,10 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
+        $temEntrega = false;
+        $podeExcluirFuncionario = false;
         $models_funcionarios = DB::table('models_funcionarios')->orderByRaw('created_at DESC')->paginate(10);
-        return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios);
+        return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios)->with('temEntrega',$temEntrega)->with('podeExcluirFuncionario',$podeExcluirFuncionario);
     }
 
     /**
@@ -117,8 +120,22 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        ModelsFuncionario::findOrFail($id)->delete();
+        $models_funcionarios = modelsFuncionario::latest()->paginate(10);
+        $entrega = DB::table('entregas')
+        ->select('entregas.id')
+        ->where('entregas.models_funcionario_id', '=', $id)
+        ->first();
 
-        return redirect('/admin/funcionarios/')->with('msg', 'Cliente excluído com sucesso!');
+        if($entrega){
+            $temEntrega = true;
+            $podeExcluirFuncionario = false;
+            return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios)->with('temEntrega',$temEntrega);
+        }else{
+            $podeExcluirFuncionario = true;
+            $temEntrega = false;
+            ModelsFuncionario::findOrFail($id)->delete();
+            $models_funcionarios = modelsFuncionario::latest()->paginate(10);
+            return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios)->with('temEntrega',$temEntrega)->with('podeExcluirFuncionario', $podeExcluirFuncionario);
+        }
     }
 }

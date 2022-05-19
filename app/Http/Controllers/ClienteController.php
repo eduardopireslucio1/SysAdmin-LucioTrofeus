@@ -149,7 +149,8 @@ class ClienteController extends Controller
             $podeExcluirCliente = true;
             $tempedido = false;
             ModelsCliente::findOrFail($id)->delete();
-            return redirect('/admin/clientes/')->with('podeExcluirCliente', $podeExcluirCliente);
+            $models_clientes = modelsCliente::latest()->paginate(10);
+            return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido)->with('podeExcluirCliente',$podeExcluirCliente);
         }
     }
 }

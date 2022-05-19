@@ -16,8 +16,10 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        $tempedido = false;
+        $podeExcluirProduto = false;
         $models_produtos = modelsProduto::latest()->paginate(10);
-        return view('produtos.index')->with('models_produtos',$models_produtos);
+        return view('produtos.index')->with('models_produtos',$models_produtos)->with('tempedido',$tempedido)->with('podeExcluirProduto', $podeExcluirProduto);
     }
 
     /**
@@ -56,7 +58,7 @@ class ProdutoController extends Controller
 
             'nome'=>$request->nome,
             'descricao'=>$request->descricao,
-            'imagem'=>$imagemName,
+            //'imagem'=>$imagemName,
             'preco'=>$request->preco,
             'status'=>$request->status,
             'material'=>$request->material
@@ -130,17 +132,22 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
+        $models_produtos = modelsProduto::latest()->paginate(10);
         $pedido = DB::table('itens_pedidos')
         ->select('itens_pedidos.id')
         ->where('itens_pedidos.models_produto_id', '=', $id)
         ->first();
 
         if($pedido){
-            return redirect()->back()->withErrors('msg', 'Contém ao menos um pedido com este produto!');
+            $tempedido = true;
+            return view('produtos.index')->with('models_produtos', $models_produtos)->with('tempedido',$tempedido);
+        }else{
+            $podeExcluirProduto = true;
+            $tempedido = false;
+            ModelsProduto::findOrFail($id)->delete();
+            $models_produtos = modelsProduto::latest()->paginate(10);
+            return view('produtos.index')->with('models_produtos',$models_produtos)->with('tempedido',$tempedido)->with('podeExcluirProduto',$podeExcluirProduto);
         }
 
-        ModelsProduto::findOrFail($id)->delete();
-
-        return redirect('/admin/produtos/')->with('msg', 'Produto excluído com sucesso!');
     }
 }

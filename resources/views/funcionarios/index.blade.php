@@ -81,6 +81,20 @@ form {
                         </td>
                     </tr>
                     @endforeach
+                    @if($temEntrega == true)
+                    <div class="alert alert-danger">
+                        <ul>
+                            NÃO FOI POSSÍVEL EXCLUIR O FUNCIONÁRIO!<br>
+                            Motivo: contém ao menos uma entrega com esse funcionário!
+                        </ul>
+                    </div>
+                    @elseif($podeExcluirFuncionario == true)
+                    <div class="alert alert-success">
+                        <ul>
+                            FUNCIONÁRIO EXCLUÍDO COM SUCESSO!<br>
+                        </ul>
+                    </div>
+                    @endif
                 </tbody>
             </table>
             {{$models_funcionarios->render()}}

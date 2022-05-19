@@ -79,6 +79,13 @@ form {
                         </td>
                     </tr>
                     @endforeach
+                    @if($excluiu == true)
+                    <div class="alert alert-danger">
+                        <ul>
+                            MATERIAL EXCLUÍDO COM SUCESSO!<br>
+                        </ul>
+                    </div>
+                    @endif
                 </tbody>
             </table>
             {{$models_materials->render()}}
