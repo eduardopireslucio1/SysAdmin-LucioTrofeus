@@ -105,7 +105,7 @@ class ClienteController extends Controller
      * @param  \App\Models\ModelsCliente  $modelsCliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClienteStoreRequest $request, $id)
     {
         $cliente = ModelsCliente::findOrFail($id);
 

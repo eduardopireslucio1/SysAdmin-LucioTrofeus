@@ -43,27 +43,27 @@ class ProdutoController extends Controller
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
             // $imagem_path = $request->file('imagem')->store('models_produtos');
             $requestImagem = $request->imagem;
-
             $extension = $requestImagem->extension();
-
             $imagemName = md5($requestImagem->getClientoriginalName() . strtotime("now")) . "." . $extension;
-
             $requestImagem->move(public_path('images/produtos'), $imagemName);
 
-            // $produto->imagem = $imagemName;
+            $modelsProduto = ModelsProduto::create([
+                'nome'=>$request->nome,
+                'descricao'=>$request->descricao,           // $produto->imagem = $imagemName;equest->descricao,
+                'imagem'=>$imagemName,
+                'preco'=>$request->preco,
+                'status'=>$request->status,
+                'material'=>$request->material
+            ]);
+        }else{
+            $modelsProduto = ModelsProduto::create([
+                'nome'=>$request->nome,
+                'descricao'=>$request->descricao,          // $produto->imagem = $imagemName;equest->descricao,
+                'preco'=>$request->preco,
+                'status'=>$request->status,
+                'material'=>$request->material
+            ]);
         }
-
-
-        $modelsProduto = ModelsProduto::create([
-
-            'nome'=>$request->nome,
-            'descricao'=>$request->descricao,
-            //'imagem'=>$imagemName,
-            'preco'=>$request->preco,
-            'status'=>$request->status,
-            'material'=>$request->material
-
-        ]);
 
         if(!$modelsProduto){
             return redirect()->back()->with('Não foi possível cadastrar esse produto!');
@@ -108,14 +108,33 @@ class ProdutoController extends Controller
     {   
 
         $produto = ModelsProduto::findOrFail($id);
+        $imagem = $produto->imagem;
 
-        $produto->update([
-            'nome'=>$request->nome,
-            'descricao'=>$request->descricao,
-            'preco'=>$request->preco,
-            'status'=>$request->status,
-            'material'=>$request->material
-        ]);
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            // $imagem_path = $request->file('imagem')->store('models_produtos');
+            $requestImagem = $request->imagem;
+            $extension = $requestImagem->extension();
+            $imagemName = md5($requestImagem->getClientoriginalName() . strtotime("now")) . "." . $extension;
+            $requestImagem->move(public_path('images/produtos'), $imagemName);
+
+            $produto->update([
+                'nome'=>$request->nome,
+                'descricao'=>$request->descricao,
+                'imagem'=>$imagemName,
+                'preco'=>$request->preco,
+                'status'=>$request->status,
+                'material'=>$request->material
+            ]);
+        }else{
+            $produto->update([
+                'nome'=>$request->nome,
+                'descricao'=>$request->descricao,
+                'imagem'=>$imagem,
+                'preco'=>$request->preco,
+                'status'=>$request->status,
+                'material'=>$request->material
+            ]);
+        }
 
         return redirect('/admin/produtos/')->with('msg', 'Produto editado com sucesso!');
 
