@@ -101,10 +101,11 @@ class EntregaController extends Controller
         $entregas = Entrega::findOrFail($id);
         $models_funcionarios = ModelsFuncionario::all();
         $funcionario = ModelsFuncionario::findOrFail($entregas->models_funcionario_id);
+        $dados_entregas = DadosEntrega::findOrFail($entregas->id);
 
-        $pedido = DB::table('dados_entregas')
-        ->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
-        ->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
+        $pedido = DB::table('pedidos')
+        ->where('pedidos.id', '=', $dados_entregas->pedido_id)
+        ->select('pedidos.models_cliente_id', 'pedidos.id')
         ->get();
 
         $pedido_cliente = DB::table('dados_entregas')
@@ -112,13 +113,10 @@ class EntregaController extends Controller
         ->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
         ->get();
 
-        $id_cliente = $pedido_cliente->models_cliente_id;
-
         $cliente = DB::table('models_clientes')
-        ->join('models_clientes', 'models_clientes.id', '=', $id_cliente)
-        ->select('models_cliente.id', 'models_clientes.nome_razaosocial')
+        ->where('models_clientes.id', '=', $pedido_cliente[0]->models_cliente_id)
+        ->select('models_clientes.id', 'models_clientes.nome_razaosocial')
         ->get();
-
 
         return view('entrega.edit', [
             'entregas' => $entregas,
