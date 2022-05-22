@@ -98,7 +98,36 @@ class EntregaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $entregas = Entrega::findOrFail($id);
+        $models_funcionarios = ModelsFuncionario::all();
+        $funcionario = ModelsFuncionario::findOrFail($entregas->models_funcionario_id);
+
+        $pedido = DB::table('dados_entregas')
+        ->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
+        ->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
+        ->get();
+
+        $pedido_cliente = DB::table('dados_entregas')
+        ->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
+        ->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
+        ->get();
+
+        $id_cliente = $pedido_cliente->models_cliente_id;
+
+        $cliente = DB::table('models_clientes')
+        ->join('models_clientes', 'models_clientes.id', '=', $id_cliente)
+        ->select('models_cliente.id', 'models_clientes.nome_razaosocial')
+        ->get();
+
+
+        return view('entrega.edit', [
+            'entregas' => $entregas,
+            'funcionario' => $funcionario,
+            'models_funcionarios' => $models_funcionarios,
+            'pedido' => $pedido,
+            'pedido_cliente' => $pedido_cliente,
+            'cliente' => $cliente
+        ]);
     }
 
     /**
