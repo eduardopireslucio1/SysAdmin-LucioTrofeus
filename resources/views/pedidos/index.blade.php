@@ -36,7 +36,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Cliente</th>
                         <th>Data de entrega</th>
                         <th>Valor total</th>

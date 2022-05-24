@@ -36,7 +36,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Funcionário responsável</th>
                         <th>Data da entrega</th>
                         <th>Taxa de frete</th>

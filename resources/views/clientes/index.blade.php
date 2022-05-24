@@ -53,7 +53,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nome / Razão Social</th>
                         <th> CPF/CNPJ </th>
                         <th>Telefone</th>

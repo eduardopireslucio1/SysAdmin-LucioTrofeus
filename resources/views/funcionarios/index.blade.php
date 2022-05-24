@@ -49,7 +49,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Data de admissão</th>
                         <th>Carga horária/dia</th>

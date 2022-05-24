@@ -49,7 +49,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Quantidade</th>
@@ -80,7 +80,7 @@ form {
                     </tr>
                     @endforeach
                     @if($excluiu == true)
-                    <div class="alert alert-danger">
+                    <div class="alert alert-success">
                         <ul>
                             MATERIAL EXCLUÍDO COM SUCESSO!<br>
                         </ul>

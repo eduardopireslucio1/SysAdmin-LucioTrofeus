@@ -50,7 +50,7 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Preço</th>
                         <th>Cadastrado em</th>

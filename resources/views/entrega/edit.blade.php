@@ -13,7 +13,7 @@
 
         <div class="row" style="margin-bottom:2vh">
             <div class="col-4">
-                <form action="/admin/entregas/{{$entregas->id}}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/entrega/{{$entregas->id}}" method="POST" enctype="multipart/form-data">
                     <strong>Nome do funcionário responsável:</strong>
                     <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
                         style="margin-bottom:2vh" name="models_funcionario_id" placeholder="Selecione um funcionário"

@@ -78,7 +78,7 @@ class EntregaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('entrega.show');
     }
 
     public function entregas(){
@@ -98,11 +98,11 @@ class EntregaController extends Controller
      */
     public function edit($id)
     {
+        $id = (int)$id;
         $entregas = Entrega::findOrFail($id);
         $models_funcionarios = ModelsFuncionario::all();
-        $funcionario = ModelsFuncionario::findOrFail($entregas->models_funcionario_id);
-        $dados_entregas = DadosEntrega::findOrFail($entregas->id);
-
+        $funcionario = ModelsFuncionario::find($entregas->models_funcionario_id);
+        $dados_entregas = DadosEntrega::firstWhere('entrega_id', $entregas->id);
         $pedido = DB::table('pedidos')
         ->where('pedidos.id', '=', $dados_entregas->pedido_id)
         ->select('pedidos.models_cliente_id', 'pedidos.id')
