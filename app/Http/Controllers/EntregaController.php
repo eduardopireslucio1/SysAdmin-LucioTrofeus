@@ -97,7 +97,19 @@ class EntregaController extends Controller
         ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
         ->orderByRaw('created_at DESC')
         ->get();
-        return view('entrega.index')->with('entregas', $entregas);
+
+        //$models_funcionarios = ModelsFuncionario::all();
+        //$entregas = Entrega::all();
+        //$funcionario_entrega = $entregas->funcionario;
+        //dd($funcionario_entrega);
+        //foreach($models_funcionarios as $funcionario){
+        //    $funcionario_entrega = Entrega::find('models_funcionario_id', $models_funcionarios->id);
+        //}
+        //$nome_funcionario = $funcionario_entrega->nome;
+
+        return view('entrega.index',[
+            'entregas'=>$entregas
+        ]);
     }
 
     /**

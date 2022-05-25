@@ -20,4 +20,9 @@ class ModelsFuncionario extends Model
         'cargo',
         'salario',
     ];
+
+    public function entregas(){
+        return $this->hasMany(Entrega::class);
+    }
+
 }
