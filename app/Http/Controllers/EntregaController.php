@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\ModelsFuncionario;
-use App\Models\ModelsClientes;
+use App\Models\ModelsCliente;
 use App\Models\Entrega;
 use App\Models\DadosEntrega;
 use Illuminate\Support\Facades\DB;
@@ -78,7 +78,17 @@ class EntregaController extends Controller
      */
     public function show($id)
     {
-        return view('entrega.show');
+        $entrega = Entrega::findOrFail($id);
+        $funcionario = ModelsFuncionario::find($entrega->models_funcionario_id);
+        $dados_entregas = DadosEntrega::firstWhere('entrega_id', $entrega->id);
+        $pedido = Pedido::firstWhere('id', $dados_entregas->pedido_id);
+        $pedido_cliente = $pedido->models_cliente;
+        $nome_cliente = $pedido_cliente->nome_razaosocial;
+
+        return view('entrega.show', [
+            'pedido'=>$pedido,
+            'nome_cliente'=>$nome_cliente
+        ]);
     }
 
     public function entregas(){
@@ -103,20 +113,25 @@ class EntregaController extends Controller
         $models_funcionarios = ModelsFuncionario::all();
         $funcionario = ModelsFuncionario::find($entregas->models_funcionario_id);
         $dados_entregas = DadosEntrega::firstWhere('entrega_id', $entregas->id);
+        
         $pedido = DB::table('pedidos')
         ->where('pedidos.id', '=', $dados_entregas->pedido_id)
         ->select('pedidos.models_cliente_id', 'pedidos.id')
         ->get();
 
-        $pedido_cliente = DB::table('dados_entregas')
-        ->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
-        ->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
-        ->get();
+        //$pedido_cliente = DB::table('dados_entregas')
+        //->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
+        //->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
+        //->get();
 
-        $cliente = DB::table('models_clientes')
-        ->where('models_clientes.id', '=', $pedido_cliente[0]->models_cliente_id)
-        ->select('models_clientes.id', 'models_clientes.nome_razaosocial')
-        ->get();
+        //$cliente = DB::table('models_clientes')
+        //->where('models_clientes.id', '=', $pedido_cliente[0]->models_cliente_id)
+        //->select('models_clientes.id', 'models_clientes.nome_razaosocial')
+        //->get();
+        
+        $pedido = Pedido::find($pedido[0]->id);
+        $pedido_cliente = $pedido->models_cliente;
+        $nome_cliente = $pedido_cliente->nome_razaosocial;
 
         return view('entrega.edit', [
             'entregas' => $entregas,
@@ -124,7 +139,7 @@ class EntregaController extends Controller
             'models_funcionarios' => $models_funcionarios,
             'pedido' => $pedido,
             'pedido_cliente' => $pedido_cliente,
-            'cliente' => $cliente
+            'nome_cliente' => $nome_cliente
         ]);
     }
 
@@ -137,7 +152,20 @@ class EntregaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $entrega = Entrega::findOrFail($id);
+
+        $entrega->update([
+            'models_funcionario_id'=>$request->models_funcionario_id,
+            'dt_entrega'=>$request->dt_entrega,
+            'taxa_frente'=>$request->taxa_frete,
+            'descricao'=>$request->descricao,
+            'status'=>$request->status,
+            'cidade'=>$request->cidade,
+            'endereco'=>$request->endereco,
+            'numero'=> $request->numero
+        ]);
+
+        return redirect('/admin/entregas/')->with('msg', 'Entrega editada com sucesso!');
     }
 
     /**

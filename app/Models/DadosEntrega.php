@@ -13,4 +13,6 @@ class DadosEntrega extends Model
         'pedido_id',
         'entrega_id',
     ];
+
+    
 }

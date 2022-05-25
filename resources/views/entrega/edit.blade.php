@@ -8,18 +8,20 @@
 
         <div class="form-group">
             <strong>Pedido:</strong>
-            <a href="/admin/pedido/{{$pedido[0]->id}}">{{$pedido[0]->id}} - {{ $cliente[0]->nome_razaosocial}}</a>
+            <a href="/admin/pedido/{{$pedido->id}}">{{$pedido->id}} - {{ $nome_cliente}}</a>
         </div>
 
         <div class="row" style="margin-bottom:2vh">
             <div class="col-4">
                 <form action="/admin/entrega/{{$entregas->id}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <strong>Nome do funcionário responsável:</strong>
                     <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
                         style="margin-bottom:2vh" name="models_funcionario_id" placeholder="Selecione um funcionário"
                         class="selectpicker" data-live-search="true" style="width:100%">
                         <option data-valor="{{$funcionario->nome}}" value="{{$funcionario->nome}}">
-                            {{$funcionario->nome}}</option>
+                            {{$funcionario->nome}} </option>
                         @foreach ($models_funcionarios as $funcionario)
                         <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
                         @endforeach
@@ -115,7 +117,6 @@
 
         </form>
     </div>
-</div>
 </div>
 <style>
 input[type=checkbox] {

@@ -106,7 +106,7 @@ Route::prefix('admin')->group(function(){
     //Route::post('entrega',[EntregaController::class, 'store'])->middleware('auth');
     // Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->middleware('auth');
     Route::get('/entrega/edit/{id}', [EntregaController::class, 'edit'])->middleware('auth');
-    // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
+    Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/entrega/{id}',[EntregaController::class, 'show'])->middleware('auth');
     
 });
