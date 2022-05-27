@@ -98,15 +98,6 @@ class EntregaController extends Controller
         ->orderByRaw('created_at DESC')
         ->get();
 
-        //$models_funcionarios = ModelsFuncionario::all();
-        //$entregas = Entrega::all();
-        //$funcionario_entrega = $entregas->funcionario;
-        //dd($funcionario_entrega);
-        //foreach($models_funcionarios as $funcionario){
-        //    $funcionario_entrega = Entrega::find('models_funcionario_id', $models_funcionarios->id);
-        //}
-        //$nome_funcionario = $funcionario_entrega->nome;
-
         return view('entrega.index',[
             'entregas'=>$entregas
         ]);

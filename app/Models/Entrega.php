@@ -21,7 +21,7 @@ class Entrega extends Model
 
     ];
 
-    public function funcionario(){
+    public function models_funcionario(){
         return $this->belongsTo(ModelsFuncionario::class);
     }
 }

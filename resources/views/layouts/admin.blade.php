@@ -44,7 +44,7 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<script src="{{asset('js/app.js')"></script>
+<script src="{{asset('js/app.js')}}"></script>
 @yield('js')
   <style>
     .main-sidebar .lucio_logo{

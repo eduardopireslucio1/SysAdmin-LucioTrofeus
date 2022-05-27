@@ -30,7 +30,13 @@ class ClienteController extends Controller
     public function create(Request $request)
     {   
         $opcao = $request->opcao;
-        return view('clientes.create', compact('opcao'));
+
+        if($opcao == "cnpj") {
+            return view('clientes.clientecnpj', compact('opcao'));
+        } 
+
+        return view('clientes.clientecpf', compact('opcao'));
+    
     }
 
     /**
