@@ -84,10 +84,14 @@ class EntregaController extends Controller
         $pedido = Pedido::firstWhere('id', $dados_entregas->pedido_id);
         $pedido_cliente = $pedido->models_cliente;
         $nome_cliente = $pedido_cliente->nome_razaosocial;
+        $nome_funcionario = $funcionario->nome;
 
         return view('entrega.show', [
             'pedido'=>$pedido,
-            'nome_cliente'=>$nome_cliente
+            'nome_cliente'=>$nome_cliente,
+            'pedido_cliente'=>$pedido_cliente,
+            'nome_funcionario'=>$nome_funcionario,
+            'entrega'=>$entrega
         ]);
     }
 
@@ -165,7 +169,6 @@ class EntregaController extends Controller
             'status'=>$request->status,
             'cidade'=>$request->cidade,
             'endereco'=>$request->endereco,
-            'numero'=> $request->numero
         ]);
 
         return redirect('/admin/entregas/')->with('msg', 'Entrega editada com sucesso!');

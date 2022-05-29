@@ -26,7 +26,7 @@ class EntregaStoreRequest extends FormRequest
         return [
             'models_funcionario_id'=>'required|string|max:50',
             'dt_entrega'=>'required|string|max:50',
-            'descricao'=>'nullable|string|max:50',
+            'descricao'=>'nullable|string|max:200',
             'status'=>'required|string|max:50',
             'cidade'=>'required|string|max:50',
             'endereco'=>'nullable|string|max:50',

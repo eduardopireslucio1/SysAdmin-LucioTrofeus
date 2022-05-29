@@ -20,7 +20,7 @@
                     <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
                         style="margin-bottom:2vh" name="models_funcionario_id" placeholder="Selecione um funcionário"
                         class="selectpicker" data-live-search="true" style="width:100%">
-                        <option data-valor="{{$funcionario->nome}}" value="{{$funcionario->nome}}">
+                        <option data-valor="{{$funcionario->nome}}" value="{{$entregas->models_funcionario_id}}">
                             {{$funcionario->nome}} </option>
                         @foreach ($models_funcionarios as $funcionario)
                         <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
