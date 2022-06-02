@@ -40,6 +40,7 @@
             <h4>Clientes com mais pedidos:</h4>
             <div id="clientes">
             </div>
+            <a href="{{route('pdf', ['opcao' => 'maispedidos'])}}" class="btn btn-primary"> PDF </a>
         </div>
     </div>
     <hr>
@@ -48,8 +49,10 @@
             <h4>Produtos mais vendidos:</h4>
             <div id="produtos">
             </div>
+            <a href="{{route('pdf', ['opcao' => 'produtosmaisvendidos'])}}" class="btn btn-primary"> PDF </a>
         </div>
     </div>
+
 
 </div>
 

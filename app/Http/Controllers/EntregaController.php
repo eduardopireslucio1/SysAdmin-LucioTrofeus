@@ -164,7 +164,7 @@ class EntregaController extends Controller
         $entrega->update([
             'models_funcionario_id'=>$request->models_funcionario_id,
             'dt_entrega'=>$request->dt_entrega,
-            'taxa_frente'=>$request->taxa_frete,
+            'taxa_frete'=>$request->taxa_frete,
             'descricao'=>$request->descricao,
             'status'=>$request->status,
             'cidade'=>$request->cidade,

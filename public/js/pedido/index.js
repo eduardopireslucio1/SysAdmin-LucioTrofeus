@@ -75,6 +75,10 @@ function renderTable() {
     `
     table += '<tbody>'
     itensArray.forEach((i , index) => {
+
+        var valorItem = Intl.NumberFormat('pt-br',{style: 'currency', currency: 'BRL'}).format(i.valor);
+        var valorTotal = Intl.NumberFormat('pt-br',{style: 'currency', currency: 'BRL'}).format(i.valor_total);
+
         subtotal += i.quantidade * i.valor;
         table += `
         <tr>
@@ -82,15 +86,18 @@ function renderTable() {
             <td>${i.descricaoProduto}</td>
             <td>${i.quantidade}</td>
             <td>${i.tamanho} cm</td>
-            <td>${i.valor}</td>
-            <td>R$ ${i.valor_total}</td>
+            <td>${valorItem}</td>
+            <td>${valorTotal}</td>
             <td><button class="btn btn-danger" onclick="remover(${index})">Remover</button></td>
         </tr>`
     })
+
+    var subTotal = Intl.NumberFormat('pt-br',{style: 'currency', currency: 'BRL'}).format(subtotal);
+
     table += `
     <tr>
         <th colspan="5">Total</th>
-        <th>R$ ${subtotal.toFixed(2)}</th>
+        <th>R$ ${subTotal}</th>
     </tr>
     `
     table += '</tbody>'

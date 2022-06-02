@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ModelsCliente;
 use App\Models\Pedido;
+use App\Models\ModelsProduto;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Dompdf\Dompdf;
@@ -12,7 +13,9 @@ use Dompdf\Options;
 
 class PdfController extends Controller
 {
-    public function geraPdf(){
+    public function geraPdf(Request $request){
+        $opcao = $request->opcao;
+
         $pedido = Pedido::all();
 
         $clientes = DB::table('models_clientes')
@@ -23,21 +26,23 @@ class PdfController extends Controller
                 ->limit(5)
                 ->get();
 
-        $pdf = PDF::loadView('relatorios.clientesmaispedidos', compact('clientes'));
+        $produtosMaisVendidos = ModelsProduto::all();
+
+
+        switch($opcao){
+            case 'maispedidos':
+                $pdf = PDF::loadView('relatorios.clientesmaispedidos', compact('clientes'));
+                break;
+            case 'produtosmaisvendidos':
+                $pdf = PDF::loadView('relatorios.produtosmaisvendidos', compact('produtosMaisVendidos'));
+                break;
+        }
 
         $pdf->setPaper('A4', 'landscape');
-        $options = new Options();
-        $options->set('isJavascriptEnabled', TRUE);
-        $options->set('defaultFont', 'Verdana');
-        $options->set('javascript-delay', 3000);
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($pdf);
-        $dompdf->render('');
+          
 
-        return $dompdf->stream('Clientes_com_mais_pedidos');
-    
+        return $pdf->stream();
 
-        // return view('relatorios.clientesmaispedidos');
         
     }
 }

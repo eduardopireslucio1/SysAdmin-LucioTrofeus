@@ -14,21 +14,19 @@
 
 
 <body>
-        <h4 class="display-4 text-center">Clientes com mais pedidos:</h4>
+        <h4 class="display-4 text-center">Produtos mais vendidos:</h4>
             <table class="table table-dark text-center">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nome Cliente </th>
-                        <th scope="col">Quantidade de Pedidos</th>
+                        <th scope="col">Nome </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clientes as $cliente)
+                    @foreach ($produtosMaisVendidos as $produto)
                         <tr>
-                            <td>{{$cliente->id}}</td>
-                            <td>{{$cliente->nome_razaosocial}} </td>
-                            <td>{{$cliente->qtd_pedidos}}</td>
+                            <td>{{$produto->id}}</td>
+                            <td>{{$produto->nome}} </td>
                         </tr>
                     @endforeach
                 </tbody>

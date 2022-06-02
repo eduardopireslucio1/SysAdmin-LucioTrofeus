@@ -37,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('pdf','PdfController@geraPdf');
+Route::get('pdf/{opcao}','PdfController@geraPdf')->name('pdf');
 
 Route::prefix('admin')->group(function(){
     Route::resource('produtos', 'ProdutoController');
