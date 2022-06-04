@@ -26,8 +26,15 @@ class PdfController extends Controller
                 ->limit(5)
                 ->get();
 
-        $produtosMaisVendidos = ModelsProduto::all();
+        $models_produtos = ModelsProduto::all();
 
+        $produtosMaisVendidos = DB::table('itens_pedidos')
+         ->join('models_produtos', 'models_produtos.id','=', 'itens_pedidos.models_produto_id')
+         ->select('models_produtos.id', 'models_produtos.nome', DB::raw('sum(itens_pedidos.quantidade) as soma_quantidade'))
+         ->groupBy('models_produtos.id', 'models_produtos.nome')
+         ->orderByDesc('soma_quantidade')
+         ->limit(5)
+         ->get();
 
         switch($opcao){
             case 'maispedidos':

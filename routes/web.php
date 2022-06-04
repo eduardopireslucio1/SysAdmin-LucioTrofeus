@@ -129,6 +129,7 @@ Route::prefix('admin')->group(function(){
     Route::get('melhoresClientes',[RelatorioController::class, 'melhoresClientes']);
     Route::get('produtosMaisVendidos',[RelatorioController::class, 'produtosMaisVendidos']);
     Route::get('faturamentoPorPeriodo',[RelatorioController::class, 'faturamentoPorPeriodo']);
+    Route::get('pedidosPorPeriodo', [RelatorioController::class, 'pedidosPorPeriodo']);
 
 });
 

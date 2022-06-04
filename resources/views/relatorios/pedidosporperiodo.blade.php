@@ -14,7 +14,7 @@
 
 
 <body>
-        <h4 class="display-4 text-center">Produtos mais vendidos:</h4>
+        <h4 class="display-4 text-center">Pedidos mais vendidos:</h4>
             <table class="table table-dark text-center">
                 <thead>
                     <tr>

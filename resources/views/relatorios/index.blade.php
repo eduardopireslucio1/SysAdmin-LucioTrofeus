@@ -34,6 +34,16 @@
             <span class="" id="total"></span>
         </div>
     </div>
+    <div class="col-4">
+        <h4>Pedidos por período:</h4>
+        <label for="">Data inicial:</label>
+        <input class="form-control datetimepicker-input" type="date" id="pedido_data_inicial">
+        <label for="">Data final:</label>
+        <input class="form-control datetimepicker-input" type="date" id="pedido_data_final">
+        <button style="margin-top:10px" class="btn btn-primary" onclick="getPedidosByPeriod()">Filtrar</button>
+    </div>
+    <div class="pedidos">
+    </div>
     <hr>
     <div class="row">
         <div class="col-12">

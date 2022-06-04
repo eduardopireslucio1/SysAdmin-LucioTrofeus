@@ -48,6 +48,15 @@ class RelatorioController extends Controller
          return response()->Json($produtos,Response::HTTP_OK);
      }
 
+     public function pedidosPorPeriodo(Request $request):JsonResponse{
+         $pedidos = DB::table('pedidos')
+         ->select('id', 'models_cliente_id', 'valor_total', 'data_entrega', 'status')
+         ->whereBetween('created_at', [$request->query('pedido_data_inicial') . '00:00:00', $request->query('pedido_data_final') . ' 23:59:59'])
+         ->get();
+
+         return response()->Json($pedidos,Response::HTTP_OK);
+     }
+
      public function faturamentoPorPeriodo(Request $request):JsonResponse{
          $faturamento = DB::table('pedidos')
          ->select(DB::raw('sum(valor_total) as total'))
