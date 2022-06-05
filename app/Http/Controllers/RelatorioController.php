@@ -21,7 +21,9 @@ class RelatorioController extends Controller
 {
     public function index(Request $request)
     {
-        return view('relatorios.index');
+        $faturamento_pedidos = null;
+
+        return view('relatorios.index', compact('faturamento_pedidos'));
     }
 
     public function pedidosPorPeriodo(Request $request){
@@ -41,8 +43,10 @@ class RelatorioController extends Controller
         $valor_bruto = null;
 
         foreach($pedidos as $pedido){
-            $valor_total = $pedido->valor_total;
-            $valor_bruto = $valor_total + $valor_bruto;
+            if($pedido->status == 3){
+                $valor_total = $pedido->valor_total;
+                $valor_bruto = $valor_bruto + $valor_total;
+            }
         }
 
         $pdf = PDF::loadView('relatorios.pedidosporperiodo', compact('pedidos','pedido_data_inicial', 'pedido_data_final', 'valor_bruto'));
@@ -81,6 +85,29 @@ class RelatorioController extends Controller
 
     }
 
+    public function faturamentoPorPeriodo(Request $request){
+
+        $faturamento_pedidos = null;
+        $query = Pedido::query();
+
+        $faturamento_data_inicial = $request->get('faturamento_data_inicial');
+        $faturamento_data_final = $request->get('faturamento_data_final');
+
+        if($faturamento_data_inicial && $faturamento_data_final){
+            $query->whereDate('data_entrega', '>=', $faturamento_data_inicial);
+            $query->whereDate('data_entrega', '<=', $faturamento_data_final)->orderByRaw('data_entrega');
+        }
+
+        $pedidos = $query->paginate();
+
+        foreach($pedidos as $pedido){
+            $faturamento_pedidos= $faturamento_pedidos + $pedido->valor_total;
+        }
+
+        return view('relatorios.index', compact('faturamento_pedidos'));
+
+    }
+
     public function melhoresClientes(Request $request):JsonResponse{
         $clientes = DB::table('models_clientes')
                 ->join('pedidos', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
@@ -103,14 +130,5 @@ class RelatorioController extends Controller
          ->get();
 
          return response()->Json($produtos,Response::HTTP_OK);
-     }
-
-     public function faturamentoPorPeriodo(Request $request):JsonResponse{
-         $faturamento = DB::table('pedidos')
-         ->select(DB::raw('sum(valor_total) as total'))
-         ->whereBetween('created_at', [$request->query('dataInicial') . ' 00:00:00', $request->query('dataFinal') . ' 23:59:59'])
-         ->first();
-
-         return response()->Json($faturamento,Response::HTTP_OK);
      }
 }

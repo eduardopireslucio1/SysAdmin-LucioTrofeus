@@ -68,24 +68,23 @@ const getBestProducts = () => {
     })
 }
 
-const getTotalByPeriod = () => {
-    const urlParams = new URLSearchParams({
-        dataInicial: $('#data_inicial').val(),
-        dataFinal: $('#data_final').val()
-    }).toString()
-    fetch('/admin/faturamentoPorPeriodo?'+urlParams, {
-        method: "GET"
-    })
-    .then(async (response) => {
-        const json = await response.json()
-        $('#total').text(json.total || 0)
-    }).catch((err) => {
-        alert(err)
-    })
-}
+// const getTotalByPeriod = () => {
+//     const urlParams = new URLSearchParams({
+//         dataInicial: $('#data_inicial').val(),
+//         dataFinal: $('#data_final').val()
+//     }).toString()
+//     fetch('/admin/faturamentoPorPeriodo?'+urlParams, {
+//         method: "GET"
+//     })
+//     .then(async (response) => {
+//         const json = await response.json()
+//         $('#total').text(json.total || 0)
+//     }).catch((err) => {
+//         alert(err)
+//     })
+// }
 
 $(document).ready(() => {
     getBestClients()
     getBestProducts()
-    getTotalByPeriod()
 })
