@@ -33,16 +33,18 @@
             <label style="margin-right:5px" for="">Total R$:</label>
             <span class="" id="total"></span>
         </div>
-    </div>
-    <div class="col-4">
+        <div class="col-4">
         <h4>Pedidos por período:</h4>
-        <label for="">Data inicial:</label>
-        <input class="form-control datetimepicker-input" type="date" id="pedido_data_inicial">
-        <label for="">Data final:</label>
-        <input class="form-control datetimepicker-input" type="date" id="pedido_data_final">
-        <button style="margin-top:10px" class="btn btn-primary" onclick="getPedidosByPeriod()">Filtrar</button>
+        <form action="{{route('pedidosPorPeriodo')}}" method="GET" enctype="multipart/form-data">
+            <label for="">Data inicial:</label>
+            <input class="form-control datetimepicker-input" type="date" id="pedido_data_inicial"
+                value="{{ request('pedido_data_inicial') }}" name="pedido_data_inicial">
+            <label for="">Data final:</label>
+            <input class="form-control datetimepicker-input" type="date" id="pedido_data_final"
+                value="{{ request('pedido_data_final') }}" name="pedido_data_final">
+            <button style="margin-top:10px" class="btn btn-primary" type="submit">Gerar relatório</button>
+        </form>
     </div>
-    <div class="pedidos">
     </div>
     <hr>
     <div class="row">

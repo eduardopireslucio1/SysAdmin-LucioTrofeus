@@ -10,17 +10,38 @@ use App\Models\ItensPedido;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Carbon\Carbon;
+use DateTime;
+use PDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class RelatorioController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // $pedidos = Pedido::all();
-        // return view('pedidos.index')->with('pedidos',$pedidos);
-
         return view('relatorios.index');
+    }
 
+    public function pedidosPorPeriodo(Request $request){
 
+        $query = Pedido::query();
+        $models_clientes = ModelsCliente::all();
+
+        $pedido_data_inicial = $request->get('pedido_data_inicial');
+        $pedido_data_final = $request->get('pedido_data_final');
+
+        if($pedido_data_inicial && $pedido_data_final ){
+            $query->whereDate('data_entrega', '>=', $pedido_data_inicial);
+            $query->whereDate('data_entrega', '<=', $pedido_data_final);
+        }
+
+        $pedidos = $query->paginate();
+        
+        $pdf = PDF::loadView('relatorios.pedidosporperiodo', compact('pedidos','pedido_data_inicial', 'pedido_data_final'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->stream();
 
     }
 
@@ -46,15 +67,6 @@ class RelatorioController extends Controller
          ->get();
 
          return response()->Json($produtos,Response::HTTP_OK);
-     }
-
-     public function pedidosPorPeriodo(Request $request):JsonResponse{
-         $pedidos = DB::table('pedidos')
-         ->select('id', 'models_cliente_id', 'valor_total', 'data_entrega', 'status')
-         ->whereBetween('created_at', [$request->query('pedido_data_inicial') . '00:00:00', $request->query('pedido_data_final') . ' 23:59:59'])
-         ->get();
-
-         return response()->Json($pedidos,Response::HTTP_OK);
      }
 
      public function faturamentoPorPeriodo(Request $request):JsonResponse{

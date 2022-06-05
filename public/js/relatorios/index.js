@@ -44,28 +44,28 @@ const renderBestProducts = (json) => {
     $('#produtos').html(table)
 }
 
-const renderPedidosPorPeriodo = (json) => {
-    let table = `<table class="table table-dark table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Valor total</th>
-            <th>Status</th>
-        </tr>
-    `
-    json.forEach((a,i) => {
-        table += `
-            <tr>
-                <td>${a.id}</td>
-                <td>${a.models_cliente_id}</td>
-                <td>${a.valor_total}</td>
-                <td>${a.status}</td>
-            </tr>
-        `
-    })
-    table += '</table>'
-    $('#pedidos').html(table)
-}
+// const renderPedidosPorPeriodo = (json) => {
+//     let table = `<table class="table table-dark table-striped">
+//         <tr>
+//             <th>ID</th>
+//             <th>Cliente</th>
+//             <th>Valor total</th>
+//             <th>Status</th>
+//         </tr>
+//     `
+//     json.forEach((a,i) => {
+//         table += `
+//             <tr>
+//                 <td>${a.id}</td>
+//                 <td>${a.models_cliente_id}</td>
+//                 <td>${a.valor_total}</td>
+//                 <td>${a.status}</td>
+//             </tr>
+//         `
+//     })
+//     table += '</table>'
+//     $('#pedidos').html(table)
+// }
 
 const getBestClients = () => {
     fetch('/admin/melhoresClientes', {
@@ -107,22 +107,22 @@ const getTotalByPeriod = () => {
     })
 }
 
-//const getPedidosByPeriod = () => {
+// const getPedidosByPeriod = () => {
 //    const urlParams = new URLSearchParams({
 //        dataInicial: $('#pedido_data_inicial').val(),
 //        dataFinal: $('#pedido_data_final').val()
- //   }).toString()
- //   fetch('/admin/pedidosPorPeriodo?'+urlParams, {
-   //     method: "GET"
-  //  })
-  //  .then(async (response) => {
-  //      const json = await response.json()
-   //     $('#pedidos').text(json.pedidos || 0)
-  //      renderPedidosPorPeriodo(json)
-   // }).catch((err) => {
-   //     alert(err)
-   // })
-//}
+//    }).toString()
+//    fetch('/admin/pedidosPorPeriodo?'+urlParams, {
+//        method: "GET"
+//    })
+//    .then(async (response) => {
+//        const json = await response.json()
+//        $('#pedidos').text(json.pedidos || 0)
+//        renderPedidosPorPeriodo(json)
+//    }).catch((err) => {
+//        alert(err)
+//    })
+// }
 
 $(document).ready(() => {
     getBestClients()

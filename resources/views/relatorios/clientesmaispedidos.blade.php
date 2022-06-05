@@ -15,7 +15,7 @@
 
 <body>
         <h4 class="display-4 text-center">Clientes com mais pedidos:</h4>
-            <table class="table table-dark text-center">
+            <table class="table text-center">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

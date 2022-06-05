@@ -38,6 +38,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('pdf/{opcao}','PdfController@geraPdf')->name('pdf');
+Route::get('pedidosPorPeriodo','RelatorioController@pedidosPorPeriodo')->name('pedidosPorPeriodo');
 
 Route::prefix('admin')->group(function(){
     Route::resource('produtos', 'ProdutoController');
@@ -129,7 +130,6 @@ Route::prefix('admin')->group(function(){
     Route::get('melhoresClientes',[RelatorioController::class, 'melhoresClientes']);
     Route::get('produtosMaisVendidos',[RelatorioController::class, 'produtosMaisVendidos']);
     Route::get('faturamentoPorPeriodo',[RelatorioController::class, 'faturamentoPorPeriodo']);
-    Route::get('pedidosPorPeriodo', [RelatorioController::class, 'pedidosPorPeriodo']);
 
 });
 
