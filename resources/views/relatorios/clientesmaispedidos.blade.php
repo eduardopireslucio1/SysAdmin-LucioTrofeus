@@ -18,6 +18,7 @@
             <table class="table text-center">
                 <thead>
                     <tr>
+                        <th scope="col">Posição</th>
                         <th scope="col">ID</th>
                         <th scope="col">Nome Cliente </th>
                         <th scope="col">Quantidade de Pedidos</th>
@@ -25,7 +26,11 @@
                 </thead>
                 <tbody>
                     @foreach ($clientes as $cliente)
+                    @php
+                    $index = $index + 1;
+                    @endphp
                         <tr>
+                            <td>{{$index}}º</td>
                             <td>{{$cliente->id}}</td>
                             <td>{{$cliente->nome_razaosocial}} </td>
                             <td>{{$cliente->qtd_pedidos}}</td>

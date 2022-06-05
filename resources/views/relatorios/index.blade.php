@@ -22,34 +22,47 @@
             </div>
         </div>
         <div class="col-4">
-            <h4>Faturamento por período:</h4>
+            <h4>Faturamento por período</h4>
             <label for="">Data inicial:</label>
             <input class="form-control datetimepicker-input" type="date" id="data_inicial">
             <label for="">Data final:</label>
-            <input class="form-control datetimepicker-input" type="date" id="data_final">
-            <button style="margin-top:10px" class="btn btn-primary" onclick="getTotalByPeriod()">Filtrar</button>
-        </div>
-        <div class="total">
+            <input class="form-control datetimepicker-input" type="date" id="data_final"><br>
+            <div class="total">
             <label style="margin-right:5px" for="">Total R$:</label>
             <span class="" id="total"></span>
         </div>
+            <button style="margin-top:10px" class="btn btn-primary" onclick="getTotalByPeriod()">Filtrar</button>
+        </div>
+        
         <div class="col-4">
-        <h4>Pedidos por período:</h4>
-        <form action="{{route('pedidosPorPeriodo')}}" method="GET" enctype="multipart/form-data">
-            <label for="">Data inicial:</label>
-            <input class="form-control datetimepicker-input" type="date" id="pedido_data_inicial"
-                value="{{ request('pedido_data_inicial') }}" name="pedido_data_inicial">
-            <label for="">Data final:</label>
-            <input class="form-control datetimepicker-input" type="date" id="pedido_data_final"
-                value="{{ request('pedido_data_final') }}" name="pedido_data_final">
-            <button style="margin-top:10px" class="btn btn-primary" type="submit">Gerar relatório</button>
-        </form>
-    </div>
+            <h4>Pedidos por período</h4>
+            <form action="{{route('pedidosPorPeriodo')}}" method="GET" enctype="multipart/form-data">
+                <label for="">Data inicial:</label>
+                <input class="form-control datetimepicker-input" type="date" id="material_data_inicial"
+                    value="{{ request('material_data_inicial') }}" name="material_data_inicial">
+                <label for="">Data final:</label>
+                <input class="form-control datetimepicker-input" type="date" id="pedido_data_final"
+                    value="{{ request('pedido_data_final') }}" name="pedido_data_final">
+                <button style="margin-top:10px" class="btn btn-primary" type="submit">Gerar relatório</button>
+            </form>
+        </div>
+        <div class="col-4">
+            <h4>Materiais gasto por período</h4>
+            <form action="{{route('gastoDeMaterialPorPeriodo')}}" method="GET" enctype="multipart/form-data">
+                <label for="">Data inicial:</label>
+                <input class="form-control datetimepicker-input" type="date" id="material_data_inicial"
+                    value="{{ request('material_data_inicial') }}" name="material_data_inicial">
+                <label for="">Data final:</label>
+                <input class="form-control datetimepicker-input" type="date" id="material_data_final"
+                    value="{{ request('material_data_final') }}" name="material_data_final">
+                <button style="margin-top:10px" class="btn btn-primary" type="submit">Gerar relatório</button>
+            </form>
+        </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-12">
-            <h4>Clientes com mais pedidos:</h4>
+            <h4>Clientes com mais pedidos</h4>
             <div id="clientes">
             </div>
             <a href="{{route('pdf', ['opcao' => 'maispedidos'])}}" class="btn btn-primary"> PDF </a>
@@ -58,7 +71,7 @@
     <hr>
     <div class="row">
         <div class="col-12">
-            <h4>Produtos mais vendidos:</h4>
+            <h4>Produtos mais vendidos</h4>
             <div id="produtos">
             </div>
             <a href="{{route('pdf', ['opcao' => 'produtosmaisvendidos'])}}" class="btn btn-primary"> PDF </a>

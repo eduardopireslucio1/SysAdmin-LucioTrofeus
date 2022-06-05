@@ -47,7 +47,7 @@
             </div>
 
             <div class="form-group">
-                <label>Preço (opcional):</label>
+                <label>Preço (unidade):</label>
                 <input type="text" name="preco"
                     class="form-control @error('preco') is-invalid @enderror" id="preco">
                 @error('preco')

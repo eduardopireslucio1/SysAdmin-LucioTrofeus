@@ -15,31 +15,35 @@
 
 
 <body>
-    <h1 class="display-4 text-center">Pedidos por período:</h1>
-        <h5>Data inicial: {{ \Carbon\Carbon::parse($pedido_data_inicial)->format('d/m/Y')}}</h5>
-        <h5>Data final: {{ \Carbon\Carbon::parse($pedido_data_final)->format('d/m/Y')}}</h5>
+    <h1 class="display-4 text-center">Gasto de material por período:</h1>
+        <h5>Data inicial: {{ \Carbon\Carbon::parse($material_data_inicial)->format('d/m/Y')}}</h5>
+        <h5>Data final: {{ \Carbon\Carbon::parse($material_data_final)->format('d/m/Y')}}</h5>
         <h5>Valor total: R$ {{number_format($valor_bruto, 2, ',', '.')}}</h5>
-    
-    <div class="pedidos">
+    <div class="materiais">
         <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Cliente </th>
-                    <th scope="col">Data da entrega: </th>
-                    <th scope="col">Valor do pedido</th>
+                    <th scope="col">Nome </th>
+                    <th scope="col">Descrição </th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Total</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pedidos as $pedido)
-                @if($pedido->status == 3)
+                @foreach ($materiais as $material)
+                @php
+                $valor_total = $material->preco * $material->quantidade
+                @endphp
                 <tr>
-                    <td>{{$pedido->id}}</td>
-                    <td>{{$pedido->models_cliente->nome_razaosocial}} </td>
-                    <td>{{ \Carbon\Carbon::parse($pedido->data_entrega)->format('d/m/Y')}}</td>
-                    <td>R$ {{number_format($pedido->valor_total, 2, ',', '.')}}</td>
+                    <td>{{$material->id}}</td>
+                    <td>{{$material->nome}} </td>
+                    <td>{{$material->descricao}}</td>
+                    <td>{{$material->quantidade}}</td>
+                    <td>R$ {{number_format($material->preco, 2, ',', '.')}}</td>
+                    <td>R$ {{number_format($valor_total, 2, ',', '.')}}</td>
                 </tr>
-                @endif
                 @endforeach
             </tbody>
         </table>

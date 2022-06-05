@@ -34,13 +34,13 @@ form {
             <div class="painel-heading" style="margin-top:8px !important;color: black">
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title"><b>Materiais</b>
+                        <h3 class="card-title"><b>Registro de material</b>
                         </h3>
                     </div>
                 </div>
             </div>
         </div>
-        <p class="text" style="color: #007FFF"><strong>Lista de funcionários:</strong>
+        <p class="text" style="color: #007FFF"><strong>Lista de materiais:</strong>
             <a id="btn-funcionario" href="{{route('material.create')}}" class="btn btn-success btn-sm"
                 style="float: right; "><strong>Cadastrar</strong></a>
     </div>

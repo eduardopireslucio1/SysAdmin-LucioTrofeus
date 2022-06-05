@@ -39,6 +39,7 @@ Auth::routes();
 
 Route::get('pdf/{opcao}','PdfController@geraPdf')->name('pdf');
 Route::get('pedidosPorPeriodo','RelatorioController@pedidosPorPeriodo')->name('pedidosPorPeriodo');
+Route::get('gastoDeMaterialPorPeriodo','RelatorioController@gastoDeMaterialPorPeriodo')->name('gastoDeMaterialPorPeriodo');
 
 Route::prefix('admin')->group(function(){
     Route::resource('produtos', 'ProdutoController');

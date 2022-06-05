@@ -16,6 +16,8 @@ class PdfController extends Controller
     public function geraPdf(Request $request){
         $opcao = $request->opcao;
 
+        $index = null;
+
         $pedido = Pedido::all();
 
         $clientes = DB::table('models_clientes')
@@ -38,10 +40,10 @@ class PdfController extends Controller
 
         switch($opcao){
             case 'maispedidos':
-                $pdf = PDF::loadView('relatorios.clientesmaispedidos', compact('clientes'));
+                $pdf = PDF::loadView('relatorios.clientesmaispedidos', compact('clientes', 'index'));
                 break;
             case 'produtosmaisvendidos':
-                $pdf = PDF::loadView('relatorios.produtosmaisvendidos', compact('produtosMaisVendidos'));
+                $pdf = PDF::loadView('relatorios.produtosmaisvendidos', compact('produtosMaisVendidos', 'index'));
                 break;
         }
 
@@ -50,6 +52,5 @@ class PdfController extends Controller
 
         return $pdf->stream();
 
-        
     }
 }
