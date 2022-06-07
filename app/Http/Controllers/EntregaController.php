@@ -54,9 +54,13 @@ class EntregaController extends Controller
             'taxa_frete'=>$dados['taxa_frete'],
             'descricao'=>$dados['descricao'],
             'status'=>$dados['status'],
+            'cep'=>$dados['cep'],
             'cidade'=>$dados['cidade'],
+            'estado'=>$dados['estado'],
             'endereco'=>$dados['endereco'],
             'numero'=>$dados['numero'],
+            'tipo_frete'=>$dados['tipo_frete'],
+            'cod_rastreio'=>$dados['cod_rastreio']
         ]);
 
         $id_entrega = $entrega->id;
@@ -167,8 +171,12 @@ class EntregaController extends Controller
             'taxa_frete'=>$request->taxa_frete,
             'descricao'=>$request->descricao,
             'status'=>$request->status,
+            'cep'=>$request->cep,
             'cidade'=>$request->cidade,
+            'estado'=>$request->estado,
             'endereco'=>$request->endereco,
+            'tipo_frete'=>$request->tipo_frete,
+            'cod_rastreio'=>$request->cod_rastreio
         ]);
 
         return redirect('/admin/entregas/')->with('msg', 'Entrega editada com sucesso!');

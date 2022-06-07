@@ -15,9 +15,13 @@ class Entrega extends Model
         'taxa_frete',
         'descricao',
         'status',
+        'cep',
         'cidade',
+        'estado',
         'endereco',
-        'numero'
+        'numero',
+        'tipo_frete',
+        'cod_rastreio'
 
     ];
 

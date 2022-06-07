@@ -32,14 +32,14 @@
                 <div class="row" style="margin-bottom:2vh">
                     <div class="col-3">
                         <label for="">Funcionário</label>
-                        <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
-                            name="models_funcionario_id" placeholder="Selecione um funcionário" class="selectpicker"
-                            data-live-search="true" style="width:100%">
-                            <option data-valor="" value=""></option>
-                            @foreach ($models_funcionarios as $funcionario)
-                            <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
-                            @endforeach
-                        </select>
+                            <select class="form-control select2bs4 select2-hidden-accessible" id="models_funcionario_id"
+                                name="models_funcionario_id" placeholder="Selecione um funcionário" class="selectpicker"
+                                data-live-search="true" style="width:100%">
+                                <option data-valor="" value=""></option>
+                                @foreach ($models_funcionarios as $funcionario)
+                                <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="col-3">
                         <label for="">Pedido</label>
@@ -75,22 +75,33 @@
 
                 <div class="row" style="margin-bottom:2vh">
                     <div class="col-3">
-                        <label>Taxa de frete: </label>
-                        <input placeholder="Taxa de frete" type="text" name="taxa_frete"
-                            class="form-control @error('taxa_frete') is-invalid @enderror"
-                            id="taxa_frete">{{old('taxa_frete')}}</input>
-                        @error('taxa_frete')
+                        <label>CEP:</label>
+                        <input placeholder="CEP" type="text" name="cep"
+                            class="form-control @error('cep') is-invalid @enderror" id="cep">{{old('cep')}}</input>
+                        @error('cep')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
+
                     <div class="col-3">
                         <label>Cidade:</label>
                         <input placeholder="Cidade" type="text" name="cidade"
                             class="form-control @error('cidade') is-invalid @enderror"
                             id="cidade">{{old('cidade')}}</input>
                         @error('cidade')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-2">
+                        <label>Estado:</label>
+                        <input placeholder="Estado" type="text" name="estado"
+                            class="form-control @error('estado') is-invalid @enderror"
+                            id="estado">{{old('estado')}}</input>
+                        @error('estado')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -107,7 +118,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="col-3">
+                    <div class="col-1">
                         <label>Número:</label>
                         <input placeholder="Número" type="text" name="numero"
                             class="form-control @error('numero') is-invalid @enderror"
@@ -118,20 +129,56 @@
                         </span>
                         @enderror
                     </div>
+                </div>
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-3">
+                        <label>Tipo de frete:</label>
+                        <select class="form-control select2bs4 select2-hidden-accessible" id="tipo_frete"
+                            name="tipo_frete" placeholder="Selecione um tipo de frete" class="selectpicker"
+                            data-live-search="true" style="width:100%">
+                            <option data-valor="" value=""></option>
+                            <option value="PAC">PAC</option>
+                            <option value="SEDEX">SEDEX</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label>Código de rastreio:</label>
+                        <input placeholder="Código de rastreio" type="text" name="cod_rastreio"
+                            class="form-control @error('cod_rastreio') is-invalid @enderror"
+                            id="cod_rastreio">{{old('cod_rastreio')}}</input>
+                        @error('cod_rastreio')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-2">
+                        <label>Taxa de frete: </label>
+                        <input placeholder="Taxa de frete" type="text" name="taxa_frete"
+                            class="form-control @error('taxa_frete') is-invalid @enderror"
+                            id="taxa_frete">{{old('taxa_frete')}}</input>
+                        @error('taxa_frete')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:2vh">
                     <div class="col-6">
+                        <label>Descrição: </label>
                         <br><textarea style="resize: none" rows="5" class="form-control" id="descricao" name="descricao"
                             placeholder="Descrição"></textarea>
                     </div>
                 </div>
+                <div class="row" style="margin-bottom:2vh">
+                    <div class="col-4">
+                        <button class="btn btn-success" type="submit">Salvar</button>
+                    </div>
+                </div>
         </div>
-
-        <div class="col-4">
-            <button class="btn btn-success" type="submit">Salvar</button>
-        </div>
-        </form>
     </div>
+    </form>
 </div>
-
-
 
 @endsection
