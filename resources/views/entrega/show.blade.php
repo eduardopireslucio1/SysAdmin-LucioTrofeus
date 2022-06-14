@@ -17,15 +17,15 @@
                             <thead>
                                 <tr>
                                     <th class="col-3">ID - Nome do funcionário</th>
-                                    <th class="col-3">ID - Nome do cliente</th>
+                                    <th class="col-3">ID Pedido - Nome do cliente</th>
                                     <th class="col-3">Data da entrega</th>
                                     <th class="col-3">Taxa de frete:</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{$pedido->id}} - {{$nome_cliente}}</td>
                                     <td>{{$pedido_cliente->id}} - {{$nome_funcionario}}</td>
+                                    <td>{{$pedido->id}} - {{$nome_cliente}}</td>
                                     <td>{{ \Carbon\Carbon::parse($entrega->dt_entrega)->format('d/m/Y')}}</td>
                                     <td>{{$entrega->taxa_frete}}</td>
                                 </tr>
@@ -45,7 +45,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{$entrega->taxa_frete}}</td>
+                                    <td>R$ {{number_format($entrega->taxa_frete, 2, ',', '.')}}</td>
                                     <td>{{$entrega->cidade}}</td>
                                     <td>{{$entrega->endereco}}</td>
                                     <td>{{$entrega->numero}}</td>

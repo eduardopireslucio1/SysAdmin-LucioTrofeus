@@ -141,8 +141,8 @@
 <script>
 
 var cleave = new Cleave('#cep', {
-                delimiters: ['.', '-'],
-                blocks: [2, 3, 3],
+                delimiters: ['-'],
+                blocks: [5, 3],
                 numericOnly: true
             });
 
