@@ -94,6 +94,7 @@ class EntregaController extends Controller
             'pedido'=>$pedido,
             'nome_cliente'=>$nome_cliente,
             'pedido_cliente'=>$pedido_cliente,
+            'funcionario'=>$funcionario,
             'nome_funcionario'=>$nome_funcionario,
             'entrega'=>$entrega
         ]);

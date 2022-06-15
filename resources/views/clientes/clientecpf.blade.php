@@ -10,7 +10,7 @@
     <div class="card-body">
         <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row" id="margem">
+            <div class="row" id="margem" style="margin-bottom:2vh">
                 <div class="col-4">
                     <label>CPF:<span class="obrigatorio">*</span> </label>
                     <input placeholder="CPF" type="text" name="cpf"
@@ -44,7 +44,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="row" id="margem">
+            <div class="row" id="margem" style="margin-bottom:2vh">
                 <div class="col-4">
                     <label>CEP: <span class="obrigatorio">*</span></label>
                     <input placeholder="CEP" type="text" name="cep"
@@ -79,7 +79,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="row" id="margem">
+            <div class="row" id="margem" style="margin-bottom:2vh">
                 <div class="col-4">
                     <label>Logradouro: <span class="obrigatorio">*</span></label>
                     <input placeholder="Logradouro" type="text" name="logradouro"
@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="row" id="margem">
+            <div class="row" id="margem" style="margin-bottom:2vh">
                 <div class="col-12">
                     <label>Observação:</label>
                     <textarea placeholder="Observação" type="text" name="observacao"
@@ -148,7 +148,7 @@ var cleave = new Cleave('#cep', {
 
 
 var cleave = new Cleave('#cpf', {
-    delimiters: ['.', '.', '.', '-'],
+    delimiters: ['.', '.', '-'],
     blocks: [3, 3, 3, 2],
     numericOnly: true
 });
