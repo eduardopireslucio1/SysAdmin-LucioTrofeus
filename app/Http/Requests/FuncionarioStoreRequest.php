@@ -28,7 +28,7 @@ class FuncionarioStoreRequest extends FormRequest
             'cpf'=>'required|string|regex:"\d{3}.\d{3}.\d{3}-?\d{2}"',
             'dt_nascimento'=>'required|string|max:15',
             'dt_admissao'=>'required|string|max:15',
-            'carga_horaria'=>'required|string|max:2',
+            'carga_horaria'=>'required|string|max:5',
             'cargo'=>'required|string|max:50',
             'salario'=>'required|regex:/^\d+(\.\d{1,2})?$/',
         ];

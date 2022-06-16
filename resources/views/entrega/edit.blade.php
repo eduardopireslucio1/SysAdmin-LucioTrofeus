@@ -7,7 +7,7 @@
         <div class="painel-heading" style="margin-top:8px !important;color: black">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3><strong>Editar entrega</strong></h3>
+                    <h3><strong>Edição da entrega</strong></h3>
                 </div>
             </div>
 

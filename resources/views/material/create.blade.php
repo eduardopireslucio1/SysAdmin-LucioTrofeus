@@ -13,48 +13,52 @@
         <form action="{{route('material.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="form-group">
-                <label>Nome: <span class="obrigatorio">*</span></label>
-                <input placeholder="Ex: Cola" type="text" name="nome"
-                    class="form-control @error('nome') is-invalid @enderror" id="nome">
-                @error('nome')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            <div class="row" style="margin-bottom:6vh">
+                <div class="col-3">
+                    <label>Nome: <span class="obrigatorio">*</span></label>
+                    <input placeholder="Ex: Cola" type="text" name="nome"
+                        class="form-control @error('nome') is-invalid @enderror" id="nome">
+                    @error('nome')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="col-3">
+                    <label>Descrição:</label>
+                    <input type="text" name="descricao" class="form-control @error('descricao') is-invalid @enderror"
+                        id="descricao">
+                    @error('descricao')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Descrição:</label>
-                <input type="text" name="descricao"
-                    class="form-control @error('descricao') is-invalid @enderror" id="descricao">
-                @error('descricao')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+            <div class="row" style="margin-bottom:6vh">
+                <div class="col-3">
+                    <label>Quantidade: <span class="obrigatorio">*</span></label>
+                    <input type="text" name="quantidade" class="form-control @error('quantidade') is-invalid @enderror"
+                        id="quantidade">
+                    @error('quantidade')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <label>Quantidade: <span class="obrigatorio">*</span></label>
-                <input type="text" name="quantidade"
-                    class="form-control @error('quantidade') is-invalid @enderror" id="quantidade">
-                @error('quantidade')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label>Preço (unidade):</label>
-                <input type="text" name="preco"
-                    class="form-control @error('preco') is-invalid @enderror" id="preco">
-                @error('preco')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="col-3">
+                    <label>Preço (unidade): <span class="obrigatorio">*</span></label>
+                    <input type="text" name="preco" class="form-control @error('preco') is-invalid @enderror"
+                        id="preco">
+                    @error('preco')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
 
             <button class="btn btn-primary" type="submit">Cadastrar</button>

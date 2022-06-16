@@ -27,7 +27,7 @@ class MaterialStoreRequest extends FormRequest
             'nome'=>'required|string|max:50',
             'descricao'=>'nullable|string',
             'quantidade'=>'required|string|max:50',
-            'preco'=>'nullable|regex:/^\d+(\.\d{1,2})?$/',
+            'preco'=>'required|regex:/^\d+(\.\d{1,2})?$/',
         ];
     }
 
@@ -35,7 +35,8 @@ class MaterialStoreRequest extends FormRequest
 
         return [
             'nome.required'=>'NOME não pode ser nulo!',
-            'quantidade.required'=>'QUANTIDADE não pode ser nula!'
+            'quantidade.required'=>'QUANTIDADE não pode ser nula!',
+            'preco.required'=>'PREÇO não pode ser nulo!'
         ];
 
     }

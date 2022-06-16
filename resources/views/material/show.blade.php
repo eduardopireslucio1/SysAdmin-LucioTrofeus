@@ -12,27 +12,33 @@
                         <h3 class="card-title"><b>Informações do Material</b></h3>
                     </div>
                 </div>
-                <div id="info-container" class="col-md-6">
-                    <div class="form-group">
-                        <strong>Nome:</strong><input type="text" class="form-control" disabled
-                            value="{{($models_materials->nome)}}">
-                    </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" style="margin-bottom:6vh">
+                            <div class="col-3">
+                                <strong>Nome:</strong><input type="text" class="form-control" disabled
+                                    value="{{($models_materials->nome)}}">
+                            </div>
 
-                    <div class="form-group">
-                        <strong>Descrição:</strong><input type="text" class="form-control" disabled
-                            value="{{($models_materials->descricao)}}">
-                    </div>
+                            <div class="col-3">
+                                <strong>Descrição:</strong><input type="text" class="form-control" disabled
+                                    value="{{($models_materials->descricao)}}">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <strong>Quantidade:</strong><input type="text" class="form-control" disabled
-                            value="{{($models_materials->quantidade)}}">
-                    </div>
+                        <div class="row" style="margin-bottom:6vh">
+                            <div class="col-3">
+                                <strong>Quantidade:</strong><input type="text" class="form-control" disabled
+                                    value="{{($models_materials->quantidade)}}">
+                            </div>
 
-                    <div class="form-group">
-                        <strong>Preço:</strong><input type="text" class="form-control" disabled
-                            value="R$ {{number_format($models_materials->preco, 2, ',', '.')}}">
-                    </div>
+                            <div class="col-3">
+                                <strong>Preço:</strong><input type="text" class="form-control" disabled
+                                    value="R$ {{number_format($models_materials->preco, 2, ',', '.')}}">
+                            </div>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

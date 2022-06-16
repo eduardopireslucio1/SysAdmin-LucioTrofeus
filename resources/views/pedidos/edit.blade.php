@@ -2,10 +2,14 @@
 @section('title','Lista de pedidos')
 
 @section('content')
-<div class="col-md-10 offset-md-0.5">
-    <div class="row">
-        <div id="info-container" class="col-md-6">
-            <h2><strong>Informações do Pedido</strong></h2>
+<div class="container-fluid">
+    <div class="padding:0px;" class="col-md-12">
+        <div class="painel-heading" style="margin-top:8px !important;color: black">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3><strong>Edição do pedido</strong></h3>
+                </div>
+            </div>
             <div class="form-group">
                 <strong>Nome do cliente:</strong><input type="text" class="form-control" disabled
                     value="{{($models_clientes->nome_razaosocial)}}">
@@ -88,6 +92,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    @endsection
+@endsection

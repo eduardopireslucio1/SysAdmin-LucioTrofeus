@@ -14,81 +14,86 @@
         <form action="{{route('funcionarios.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="form-group">
-                <label>Nome: <span class="obrigatorio">*</span></label>
-                <input placeholder="Ex: Marcos Lucio" type="text" name="nome"
-                    class="form-control @error('nome') is-invalid @enderror" id="nome">
-                @error('nome')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+            <div class="row" style="margin-bottom:6vh">
+                <div class="col-3">
+                    <label>Nome: <span class="obrigatorio">*</span></label>
+                    <input placeholder="Ex: Marcos Lucio" type="text" name="nome"
+                        class="form-control @error('nome') is-invalid @enderror" id="nome">
+                    @error('nome')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="col-3">
+                    <label>CPF: <span class="obrigatorio">*</span></label>
+                    <input data-id="cpf" placeholder="Ex: 111.111.111-11" type="text" name="cpf"
+                        onblur="validarCPF(this.value);" class="form-control @error('cpf') is-invalid @enderror"
+                        id="cpf">
+                    @error('cpf')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="col-3">
+                    <label>Data de Nascimento: <span class="obrigatorio">*</span></label>
+                    <input placeholder="" type="text" name="dt_nascimento"
+                        class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_nascimento">
+                    @error('dt_nascimento')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="col-3">
+                    <label>Data de Admissão: <span class="obrigatorio">*</span></label>
+                    <input placeholder="" type="text" name="dt_admissao"
+                        class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao">
+                    @error('dt_admissao')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>CPF: <span class="obrigatorio">*</span></label>
-                <input data-id="cpf" placeholder="Ex: 111.111.111-11" type="text" name="cpf" onblur="validarCPF(this.value);"
-                    class="form-control @error('cpf') is-invalid @enderror" id="cpf">
-                @error('cpf')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+            <div class="row" style="margin-bottom:6vh">
+                <div class="col-3">
+                    <label>Carga horária / dia: <span class="obrigatorio">*</span></label>
+                    <input placeholder="" type="text" name="carga_horaria"
+                        class="form-control @error('carga_horaria') is-invalid @enderror" id="carga_horaria">
+                    @error('carga_horaria')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <label>Data de Nascimento: <span class="obrigatorio">*</span></label>
-                <input placeholder="" type="text" name="dt_nascimento"
-                    class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_nascimento">
-                @error('dt_nascimento')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+                <div class="col-3">
+                    <label>Cargo: <span class="obrigatorio">*</span></label>
+                    <input placeholder="" type="text" name="cargo"
+                        class="form-control @error('cargo') is-invalid @enderror" id="cargo">
+                    @error('cargo')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <label>Data de Admissão: <span class="obrigatorio">*</span></label>
-                <input placeholder="" type="text" name="dt_admissao"
-                    class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao">
-                @error('dt_admissao')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label>Carga horária / dia: <span class="obrigatorio">*</span></label>
-                <input placeholder="" type="text" name="carga_horaria"
-                    class="form-control @error('carga_horaria') is-invalid @enderror" id="carga_horaria">
-                @error('carga_horaria')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label>Cargo: <span class="obrigatorio">*</span></label>
-                <input placeholder="" type="text" name="cargo"
-                    class="form-control @error('cargo') is-invalid @enderror" id="cargo">
-                @error('cargo')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label>Salário: <span class="obrigatorio">*</span></label>
-                <input placeholder="" type="text" name="salario"
-                    class="form-control @error('salario') is-invalid @enderror" id="salario">
-                @error('salario')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="col-3">
+                    <label>Salário: <span class="obrigatorio">*</span></label>
+                    <input placeholder="" type="text" name="salario"
+                        class="form-control @error('salario') is-invalid @enderror" id="salario">
+                    @error('salario')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
 
             <button class="btn btn-primary" type="submit">Cadastrar</button>
@@ -105,7 +110,6 @@
             </style>
 
             <script>
-
             var cleave = new Cleave('#cpf', {
                 delimiters: ['.', '.', '-'],
                 blocks: [3, 3, 3, 2],
@@ -123,8 +127,6 @@
                 blocks: [2, 2, 4],
                 numericOnly: true
             });
-
-
             </script>
 
         </form>
