@@ -129,22 +129,34 @@
                 </div>
             </div>
 
+            @if(!$validar_cpf)
+            <div class="row">
+                <div class="col-3">
+                    <div class="alert alert-danger">
+                        <ul>
+                            CPF Inválido!<br>
+                            Digite novamente!
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <button class="btn btn-primary" type="submit">Cadastrar</button>
     </div>
 </div>
 </form>
-    </div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 
 <script>
-
 var cleave = new Cleave('#cep', {
-                delimiters: ['-'],
-                blocks: [5, 3],
-                numericOnly: true
-            });
+    delimiters: ['-'],
+    blocks: [5, 3],
+    numericOnly: true
+});
 
 
 var cleave = new Cleave('#cpf', {
@@ -160,35 +172,16 @@ var cleave = new Cleave('#telefone', {
 });
 </script>
 
+<style>
+input[type=checkbox] {
+    cursor: pointer;
+    width: 22px;
+}
 
-
-
-
-
-            <style>
-            input[type=checkbox] {
-                cursor: pointer;
-                width: 22px;
-            }
-
-            .obrigatorio {
-                color: red;
-            }
-            </style>
+.obrigatorio {
+    color: red;
+}
+</style>
 
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-

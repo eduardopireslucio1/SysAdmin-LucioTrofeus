@@ -6,6 +6,7 @@ use App\Models\ModelsCliente;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClienteStoreRequest;
 use Illuminate\Support\Facades\DB;
+use App\Validation\CPF;
 
 class ClienteController extends Controller
 {
@@ -29,13 +30,14 @@ class ClienteController extends Controller
      */
     public function create(Request $request)
     {   
+        $validar_cpf = true;
         $opcao = $request->opcao;
 
         if($opcao == "cnpj") {
             return view('clientes.clientecnpj', compact('opcao'));
         } 
 
-        return view('clientes.clientecpf', compact('opcao'));
+        return view('clientes.clientecpf', compact('opcao', 'validar_cpf'));
     
     }
 
@@ -53,6 +55,12 @@ class ClienteController extends Controller
      */
     public function store(ClienteStoreRequest $request)
     {        
+        $validar_cpf = CPF::validaCPF($request->cpf);
+
+        if(!$validar_cpf){
+            return view('clientes.clientecpf', compact('validar_cpf'));
+        }
+
 
         $modelsCliente = ModelsCliente::create([
             
@@ -99,9 +107,13 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = ModelsCliente::findOrFail($id);
+        $models_clientes = ModelsCliente::findOrFail($id);
+        $validar_cpf = true;
 
-        return view('clientes.edit', ['models_clientes' => $cliente]);
+        return view('clientes.edit', [
+            'models_clientes' => $models_clientes,
+            'validar_cpf' => $validar_cpf
+        ]);
     }
 
     /**
@@ -113,9 +125,15 @@ class ClienteController extends Controller
      */
     public function update(ClienteStoreRequest $request, $id)
     {
-        $cliente = ModelsCliente::findOrFail($id);
+        $models_clientes = ModelsCliente::findOrFail($id);
 
-        $cliente->update([
+        $validar_cpf = CPF::validaCPF($request->cpf);
+
+        if(!$validar_cpf){
+            return view('clientes.edit', compact('validar_cpf', 'models_clientes'));
+        }
+
+        $models_clientes->update([
             
             'nome_razaosocial'=>$request->nome_razaosocial,
             'fantasia'=>$request->fantasia,

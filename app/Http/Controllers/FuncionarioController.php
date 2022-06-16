@@ -9,6 +9,7 @@ use App\Http\Requests\FuncionarioStoreRequest;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use DateTime;
+use App\Validation\CPF;
 
 class FuncionarioController extends Controller
 {
@@ -22,7 +23,10 @@ class FuncionarioController extends Controller
         $temEntrega = false;
         $podeExcluirFuncionario = false;
         $models_funcionarios = DB::table('models_funcionarios')->orderByRaw('created_at DESC')->paginate(10);
-        return view('funcionarios.index')->with('models_funcionarios',$models_funcionarios)->with('temEntrega',$temEntrega)->with('podeExcluirFuncionario',$podeExcluirFuncionario);
+        return view('funcionarios.index')
+        ->with('models_funcionarios',$models_funcionarios)
+        ->with('temEntrega',$temEntrega)
+        ->with('podeExcluirFuncionario',$podeExcluirFuncionario);
     }
 
     /**
@@ -32,7 +36,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('funcionarios.create');
+        $validar_cpf = true;
+        return view('funcionarios.create')->with('validar_cpf', $validar_cpf);
     }
 
     /**
@@ -42,7 +47,14 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(FuncionarioStoreRequest $request)
-    {
+    {   
+
+        $validar_cpf = CPF::validaCPF($request->cpf);
+
+        if(!$validar_cpf){
+            return view('funcionarios.create')->with('validar_cpf', $validar_cpf);
+        }
+
         $Funcionario = ModelsFuncionario::create([
             
             'nome'=>$request->nome,
@@ -81,9 +93,13 @@ class FuncionarioController extends Controller
      */
     public function edit($id)
     {
-        $funcionario = ModelsFuncionario::findOrFail($id);
+        $validar_cpf = true;
+        $models_funcionarios = ModelsFuncionario::findOrFail($id);
 
-        return view('funcionarios.edit', ['models_funcionarios' => $funcionario]);
+        return view('funcionarios.edit', [
+            'models_funcionarios' => $models_funcionarios,
+            'validar_cpf' => $validar_cpf
+        ]);
     }
 
     /**
@@ -95,10 +111,15 @@ class FuncionarioController extends Controller
      */
     public function update(FuncionarioStoreRequest $request, $id)
     {
-        $Funcionario = ModelsFuncionario::findOrFail($id);
+        $models_funcionarios = ModelsFuncionario::findOrFail($id);
 
-        $Funcionario -> update([
-            
+        $validar_cpf = CPF::validaCPF($request->cpf);
+
+        if(!$validar_cpf){
+            return view('funcionarios.edit')->with('validar_cpf', $validar_cpf)->with('models_funcionarios', $models_funcionarios);
+        }
+
+        $models_funcionarios -> update([
             'nome'=>$request->nome,
             'cpf'=>$request->cpf,
             'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),

@@ -168,6 +168,19 @@
                             </div>
                         </div>
 
+                        @if(!$validar_cpf)
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        CPF Inválido!<br>
+                                        Digite novamente!
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
 
                         <input class="btn btn-primary" type="submit" value="Editar Cliente">
 
@@ -185,7 +198,6 @@
 </div>
 
 <script>
-
 var cleave = new Cleave('#cpf', {
     delimiters: ['.', '.', '-'],
     blocks: [3, 3, 3, 2],
