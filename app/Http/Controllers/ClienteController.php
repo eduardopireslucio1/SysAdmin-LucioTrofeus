@@ -55,10 +55,13 @@ class ClienteController extends Controller
      */
     public function store(ClienteStoreRequest $request)
     {        
-        $validar_cpf = CPF::validaCPF($request->cpf);
+        if(isset($request->cpf)){
 
-        if(!$validar_cpf){
+            $validar_cpf = CPF::validaCPF($request->cpf);
+    
+            if(!$validar_cpf){
             return view('clientes.clientecpf', compact('validar_cpf'));
+            }
         }
 
 
@@ -127,10 +130,12 @@ class ClienteController extends Controller
     {
         $models_clientes = ModelsCliente::findOrFail($id);
 
-        $validar_cpf = CPF::validaCPF($request->cpf);
+        if(isset($request->cpf)){
+            $validar_cpf = CPF::validaCPF($request->cpf);
 
-        if(!$validar_cpf){
+            if(!$validar_cpf){
             return view('clientes.edit', compact('validar_cpf', 'models_clientes'));
+            }   
         }
 
         $models_clientes->update([
