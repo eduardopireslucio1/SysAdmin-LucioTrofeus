@@ -27,6 +27,7 @@ class CreateModelsClientesTable extends Migration
             $table->string('logradouro');
             $table->string('numero');
             $table->text('observacao')->nullable();
+            $table->string('inTipo');
             $table->timestamps();
         });
     }

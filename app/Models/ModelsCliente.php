@@ -24,7 +24,8 @@ class ModelsCliente extends Model
         'uf',
         'logradouro',
         'numero',
-        'observacao'
+        'observacao',
+        'inTipo'
     ];
     
     function getDocument() {

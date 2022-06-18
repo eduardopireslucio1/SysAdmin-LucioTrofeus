@@ -10,6 +10,7 @@
     <div class="card-body">
         <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
+            <p name="opcao"></p>
             <div class="row" id="margem" style="margin-bottom:2vh">
                 <div class="col-4">
                     <label>CPF:<span class="obrigatorio">*</span> </label>

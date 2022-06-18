@@ -55,15 +55,20 @@ class ClienteController extends Controller
      */
     public function store(ClienteStoreRequest $request)
     {        
-        if(isset($request->cpf)){
 
+        if(isset($request->cpf)){
             $validar_cpf = CPF::validaCPF($request->cpf);
     
             if(!$validar_cpf){
             return view('clientes.clientecpf', compact('validar_cpf'));
             }
+
+            $inTipo = 'PF';
         }
 
+        if(isset($request->cnpj)){
+            $inTipo = 'PJ';
+        }
 
         $modelsCliente = ModelsCliente::create([
             
@@ -78,7 +83,8 @@ class ClienteController extends Controller
             'uf'=>$request->uf,
             'logradouro'=>$request->logradouro,
             'numero'=>$request->numero,
-            'observacao'=>$request->observacao
+            'observacao'=>$request->observacao,
+            'inTipo'=>$inTipo
 
         ]);
 
@@ -113,10 +119,14 @@ class ClienteController extends Controller
         $models_clientes = ModelsCliente::findOrFail($id);
         $validar_cpf = true;
 
-        return view('clientes.edit', [
-            'models_clientes' => $models_clientes,
-            'validar_cpf' => $validar_cpf
-        ]);
+        if(isset($models_clientes->cpf)){
+            return view('clientes.editclientecpf', compact('models_clientes', 'validar_cpf'));
+        }
+
+        if(isset($models_clientes->cnpj)){
+            return view('clientes.editclientecnpj', compact('models_clientes', 'validar_cpf'));
+        }
+
     }
 
     /**
@@ -134,9 +144,9 @@ class ClienteController extends Controller
             $validar_cpf = CPF::validaCPF($request->cpf);
 
             if(!$validar_cpf){
-            return view('clientes.edit', compact('validar_cpf', 'models_clientes'));
+                return view('clientes.editclientecpf', compact('models_clientes', 'validar_cpf'));
             }   
-        }
+        } 
 
         $models_clientes->update([
             

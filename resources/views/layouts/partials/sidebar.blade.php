@@ -50,19 +50,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('funcionarios.store')}}" class="nav-link {{activeSegment('funcionarios')}}">
-                        <i class="fa fa-user"></i>
+                    <a href="{{route('clientes.store')}}" class="nav-link {{activeSegment('clientes')}}">
+                        <i class="fa fa-fw fa-users"></i>
                         <p>
-                            Funcionários
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{route('material.store')}}" class="nav-link {{activeSegment('material')}}">
-                        <i class="fa fa-brush"></i>
-                        <p>
-                            Materiais
+                            Clientes
                         </p>
                     </a>
                 </li>
@@ -72,15 +63,6 @@
                         <i class="fa fa-fw fa-inbox"></i>
                         <p>
                             Produtos
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{route('clientes.store')}}" class="nav-link {{activeSegment('clientes')}}">
-                        <i class="fa fa-fw fa-users"></i>
-                        <p>
-                            Clientes
                         </p>
                     </a>
                 </li>
@@ -99,6 +81,24 @@
                         <i class="fas fa-box"></i>
                         <p>
                             Pedidos
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('funcionarios.store')}}" class="nav-link {{activeSegment('funcionarios')}}">
+                        <i class="fa fa-user"></i>
+                        <p>
+                            Funcionários
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('material.store')}}" class="nav-link {{activeSegment('material')}}">
+                        <i class="fa fa-brush"></i>
+                        <p>
+                            Materiais
                         </p>
                     </a>
                 </li>

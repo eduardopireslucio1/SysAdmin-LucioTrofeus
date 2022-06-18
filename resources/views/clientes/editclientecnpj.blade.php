@@ -17,9 +17,9 @@
                     <form action="/admin/clientes/{{$models_clientes->id}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="row" style="margin-bottom:6vh">
-                            @if(isset($models_clientes->cnpj))
-                            <div class="col-3">
+                        <div class="row" style="margin-bottom:3vh">
+
+                            <div class="col-4">
                                 <label>CNPJ:</label>
                                 <input placeholder="CNPJ" type="text" name="cnpj"
                                     class="form-control @error('cnpj') is-invalid @enderror" id="cnpj"
@@ -30,47 +30,8 @@
                                 </span>
                                 @enderror
                             </div>
-                            @else
-                            <div class="col-3">
-                                <label>CNPJ:</label>
-                                <input placeholder="CNPJ" type="text" name="cnpj"
-                                    class="form-control @error('cnpj') is-invalid @enderror" id="cnpj"
-                                    value="{{$models_clientes->cnpj}}" disabled>
-                                @error('cnpj')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
 
-                            @endif
-                            @if(isset($models_clientes->cpf))
-                            <div class="col-3">
-                                <label>CPF: </label>
-                                <input placeholder="CPF" type="text" name="cpf"
-                                    class="form-control @error('cpf') is-invalid @enderror" id="cpf"
-                                    value="{{$models_clientes->cpf}}">
-                                @error('cpf')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            @else
-                            <div class="col-3">
-                                <label>CPF: </label>
-                                <input placeholder="CPF" type="text" name="cpf"
-                                    class="form-control @error('cpf') is-invalid @enderror" id="cpf"
-                                    value="{{$models_clientes->cpf}}" disabled>
-                                @error('cpf')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            @endif
-
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label>Nome / Razão Social: </label>
                                 <input placeholder="Nome / Razão Social" type="text" name="nome_razaosocial"
                                     class="form-control @error('nome_razaosocial') is-invalid @enderror"
@@ -82,7 +43,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label>Fantasia: </label>
                                 <input placeholder="Fantasia" type="text" name="fantasia"
                                     class="form-control @error('fantasia') is-invalid @enderror" id="fantasia"
@@ -95,8 +56,8 @@
                             </div>
                         </div>
 
-                        <div class="row" style="margin-bottom:6vh">
-                            <div class="col-3">
+                        <div class="row" style="margin-bottom:3vh">
+                            <div class="col-4">
                                 <label>Telefone: </label>
                                 <input placeholder="Telefone" type="text" name="telefone"
                                     class="form-control @error('telefone') is-invalid @enderror" id="telefone"
@@ -108,7 +69,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label>CEP: </label>
                                 <input placeholder="CEP" type="text" name="cep"
                                     class="form-control @error('cep') is-invalid @enderror" id="cep"
@@ -120,19 +81,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-3">
-                                <label>Estado: </label>
-                                <input placeholder="UF" type="text" name="uf"
-                                    class="form-control @error('uf') is-invalid @enderror" id="uf"
-                                    value="{{$models_clientes->uf}}">
-                                @error('uf')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label>Cidade: </label>
                                 <input placeholder="Cidade" type="text" name="cidade"
                                     class="form-control @error('cidade') is-invalid @enderror" id="cidade"
@@ -143,10 +92,23 @@
                                 </span>
                                 @enderror
                             </div>
+
                         </div>
 
-                        <div class="row" style="margin-bottom:6vh">
-                            <div class="col-3">
+                        <div class="row" style="margin-bottom:3vh">
+                        <div class="col-4">
+                                <label>Estado: </label>
+                                <input placeholder="UF" type="text" name="uf"
+                                    class="form-control @error('uf') is-invalid @enderror" id="uf"
+                                    value="{{$models_clientes->uf}}">
+                                @error('uf')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            
+                            <div class="col-4">
                                 <label>Logradouro: </label>
                                 <input placeholder="Logradouro" type="text" name="logradouro"
                                     class="form-control @error('logradouro') is-invalid @enderror" id="logradouro"
@@ -158,7 +120,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-1">
                                 <label>Número: </label>
                                 <input placeholder="Número" type="text" name="numero"
                                     class="form-control @error('numero') is-invalid @enderror" id="numero"
@@ -181,8 +143,10 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
 
-                            <div class="col-3">
+                        <div class="row" style="margin-bottom:3vh">
+                            <div class="col-12">
                                 <label>Observação: </label>
                                 <input placeholder="Observação" type="text" name="observacao"
                                     class="form-control @error('observacao') is-invalid @enderror" id="observacao"
@@ -194,6 +158,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         @if(!$validar_cpf)
                         <div class="row">
@@ -221,32 +186,30 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-var cleave = new Cleave('#cpf', {
-    delimiters: ['.', '.', '-'],
-    blocks: [3, 3, 3, 2],
-    numericOnly: true
-});
+        <script>
+        var cleave = new Cleave('#cpf', {
+            delimiters: ['.', '.', '-'],
+            blocks: [3, 3, 3, 2],
+            numericOnly: true
+        });
 
-var cleave = new Cleave('#cnpj', {
-    delimiters: ['.', '.', '/', '-'],
-    blocks: [2, 3, 3, 4, 2],
-    numericOnly: true
-});
+        var cleave = new Cleave('#cnpj', {
+            delimiters: ['.', '.', '/', '-'],
+            blocks: [2, 3, 3, 4, 2],
+            numericOnly: true
+        });
 
-var cleave = new Cleave('#cep', {
-    delimiters: ['-'],
-    blocks: [5, 3],
-    numericOnly: true
-});
+        var cleave = new Cleave('#cep', {
+            delimiters: ['-'],
+            blocks: [5, 3],
+            numericOnly: true
+        });
 
-var cleave = new Cleave('#telefone', {
-    delimiters: ['(', ')', '-'],
-    blocks: [0, 2, 5, 4],
-    numericOnly: true
-});
-</script>
-@endsection
+        var cleave = new Cleave('#telefone', {
+            delimiters: ['(', ')', '-'],
+            blocks: [0, 2, 5, 4],
+            numericOnly: true
+        });
+        </script>
+        @endsection

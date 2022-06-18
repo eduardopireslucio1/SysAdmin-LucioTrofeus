@@ -101,7 +101,9 @@ class RelatorioController extends Controller
         $pedidos = $query->paginate();
 
         foreach($pedidos as $pedido){
-            $faturamento_pedidos= $faturamento_pedidos + $pedido->valor_total;
+            if($pedido->status == 3){
+                $faturamento_pedidos= $faturamento_pedidos + $pedido->valor_total;
+            }
         }
 
         return view('relatorios.index', compact('faturamento_pedidos'));
