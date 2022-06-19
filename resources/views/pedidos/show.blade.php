@@ -80,8 +80,9 @@
             </table>
     
 
-            <a id="btn-corel" href="{{url($url)}}" class="btn btn-success btn-sm"
-                style="float: right; "><strong>Download Corel</strong></a>
+            <a id="btn-corel" href"{{route('downloadCorel', ['corel' => $pedidos->corel])}}" target="_blank"> 
+                <button class="btn"><i class="fa fa-download"></i> Download arquivo corel</button>
+            </a>
 
            
         </div>

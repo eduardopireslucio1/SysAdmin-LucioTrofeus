@@ -95,15 +95,12 @@ class PedidoController extends Controller
         ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor', 'status')
         ->get();
 
-        $url = response()->download(public_path("/corel/". $pedidos->corel));
-
         $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
         
         return view('pedidos.show', [
             'models_clientes' => $models_clientes,
             'pedidos' => $pedidos,
             'itens_pedidos' => $itens_pedidos,
-            'url' => $url
         ]);
     }
 
