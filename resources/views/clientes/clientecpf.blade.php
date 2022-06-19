@@ -143,6 +143,18 @@
             </div>
             @endif
 
+            @if($cliente_cadastrado)
+            <div class="row">
+                <div class="col-3">
+                    <div class="alert alert-danger">
+                        <ul>
+                            Este CPF já está cadastrado!<br>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <button class="btn btn-primary" type="submit">Cadastrar</button>
     </div>
 </div>

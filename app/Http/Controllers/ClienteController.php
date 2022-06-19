@@ -31,13 +31,14 @@ class ClienteController extends Controller
     public function create(Request $request)
     {   
         $validar_cpf = true;
+        $cliente_cadastrado = null;
         $opcao = $request->opcao;
 
         if($opcao == "cnpj") {
-            return view('clientes.clientecnpj', compact('opcao'));
+            return view('clientes.clientecnpj', compact('opcao', 'cliente_cadastrado'));
         } 
 
-        return view('clientes.clientecpf', compact('opcao', 'validar_cpf'));
+        return view('clientes.clientecpf', compact('opcao', 'validar_cpf', 'cliente_cadastrado'));
     
     }
 
@@ -55,6 +56,26 @@ class ClienteController extends Controller
      */
     public function store(ClienteStoreRequest $request)
     {        
+
+        $models_clientes = ModelsCliente::all();
+        $validar_cpf = true;
+        $cliente_cadastrado = null;
+        
+        foreach($models_clientes as $cliente){
+            if($cliente->inTipo == 'PJ'){
+                if($cliente->cnpj == $request->cnpj){
+                    $cliente_cadastrado = true;
+                    return view('clientes.clientecnpj', compact('cliente_cadastrado', 'validar_cpf'));
+                }
+            }
+
+            if($cliente->inTipo == 'PF'){
+                if($cliente->cpf == $request->cpf){
+                    $cliente_cadastrado = true;
+                    return view('clientes.clientecpf', compact('cliente_cadastrado', 'validar_cpf'));
+                }
+            }
+        }
 
         if(isset($request->cpf)){
             $validar_cpf = CPF::validaCPF($request->cpf);
