@@ -104,6 +104,20 @@ class PedidoController extends Controller
         ]);
     }
 
+    public function download( $corel = '' )
+    {
+        $file_path = public_path() . "/corel/" . $corel;
+        $headers = array(
+            'Content-Type: cdr',
+            'Content-Disposition: attachment; filename='.$corel,
+        );
+        if ( file_exists( $file_path ) ) {
+            return \Response::download( $file_path, $corel, $headers );
+        } else {
+            exit( 'Requested file does not exist on our server!' );
+        }
+    }
+
     public static function pegarCorel($id){
         $pedidos = Pedido::findOrFail($id);
         return response()->download(public_path("corel/".$pedidos->corel));

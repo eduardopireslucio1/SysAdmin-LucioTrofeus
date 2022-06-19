@@ -78,18 +78,14 @@
                     <td>R$ {{number_format($pedidos->valor_total, 2, ',', '.')}}</td>
                 </tr>
             </table>
-    
 
-            <a id="btn-corel" href"{{route('downloadCorel', ['corel' => $pedidos->corel])}}" target="_blank"> 
+            <a id="btn-corel" href="{{ url('/corel/'. $pedidos->corel)  }}" target="_blank">
                 <button class="btn"><i class="fa fa-download"></i> Download arquivo corel</button>
             </a>
 
-           
+
         </div>
     </div>
-</div>
-</div>
-</div>
 </div>
 
 

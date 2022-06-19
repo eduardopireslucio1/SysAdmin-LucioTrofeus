@@ -106,27 +106,7 @@ Route::prefix('admin')->group(function(){
     
 });
 
-Route::get('pegarCorel/{$corel}', 'PedidoController@pegarCorel')->name('pegarCorel');
-
-Route::get('download/{corel}', function($corel)
-{
-    // Check if file exists in app/storage/file folder
-    $file_path = public_path() .'/corel/'. $corel;
-    if (file_exists($file_path))
-    {
-        // Send Download
-        return Response::download($file_path, $corel, [
-            'Content-Length: '. filesize($file_path)
-        ]);
-    }
-    else
-    {
-        // Error
-        exit('Requested file does not exist on our server!');
-    }
-})
-->where('corel', '[A-Za-z0-9\-\_\.]+')->name('downloadCorel');
-
+Route::get( '/download/{corel}', 'PedidoController@download');
 
 Route::prefix('admin')->group(function(){
     Route::resource('entrega', 'EntregaController');
