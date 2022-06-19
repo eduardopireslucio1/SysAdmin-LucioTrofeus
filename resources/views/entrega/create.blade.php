@@ -15,6 +15,8 @@
     rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
 <script src="/js/entrega/entrega.js"></script>
+<script src="/js/integracao/integracao.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 @section('content')
 
@@ -77,7 +79,7 @@
                 <div class="row" style="margin-bottom:2vh">
                     <div class="col-3">
                         <label>CEP:</label>
-                        <input placeholder="CEP" type="text" name="cep"
+                        <input placeholder="CEP" type="text" name="cep" onblur="checkCep(this.value)" autocomplete="off"
                             class="form-control @error('cep') is-invalid @enderror" id="cep">{{old('cep')}}</input>
                         @error('cep')
                         <span class="invalid-feedback" role="alert">

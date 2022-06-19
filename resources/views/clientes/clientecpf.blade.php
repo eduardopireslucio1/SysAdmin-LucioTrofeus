@@ -5,6 +5,7 @@
 @section('content')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/cliente/clientes.js"></script>
+<script src="/js/integracao/integracao.js"></script>
 <div class="container-fluid">
     <div class="row" style="margin-bottom:6vh">
         <div class="col-12">
@@ -56,7 +57,7 @@
                         <div class="row" id="margem" style="margin-bottom:2vh">
                             <div class="col-4">
                                 <label>CEP: <span class="obrigatorio">*</span></label>
-                                <input placeholder="CEP" type="text" name="cep"
+                                <input placeholder="CEP" type="text" name="cep" onblur="checkCep(this.value)" autocomplete="off"
                                     class="form-control @error('cep') is-invalid @enderror"
                                     id="cep">{{old('cep')}}</input>
                                 @error('cep')
