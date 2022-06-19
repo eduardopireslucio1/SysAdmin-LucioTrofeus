@@ -97,7 +97,7 @@ function renderTable() {
     table += `
     <tr>
         <th colspan="5">Total</th>
-        <th>R$ ${subTotal}</th>
+        <th>${subTotal}</th>
     </tr>
     `
     table += '</tbody>'
