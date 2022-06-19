@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de Funcionarios')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -49,24 +49,26 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Data de admissão</th>
-                        <th>Carga horária/dia</th>
-                        <th>Cargo</th>
-                        <th>Salário</th>
-                        <th>Ação</th>
+                        <th class="col-1">ID</th>
+                        <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1; alinhadoEsquerda">Data de admissão</th>
+                        <th class="col-1; alinhadoEsquerda">Carga horária/dia</th>
+                        <th class="col-1; alinhadoCentro">Cargo</th>
+                        <th class="col-1"></th>
+                        <th class="col-1">Salário</th>
+                        <th class="col-2">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($models_funcionarios as $funcionario)
                     <tr>
                         <td>{{$funcionario->id}}</td>
-                        <td>{{ucwords($funcionario->nome)}}</td>
-                        <td>{{ \Carbon\Carbon::parse($funcionario->dt_admissao)->format('d/m/Y')}}</td>
-                        <td>{{$funcionario->carga_horaria}}</td>
-                        <td>{{$funcionario->cargo}}</td>
-                        <td>R$ {{number_format($funcionario->salario, 2, ',', '.')}}</td>
+                        <td class="alinhadoCentro">{{ucwords($funcionario->nome)}}</td>
+                        <td class="alinhadoEsquerda">{{ \Carbon\Carbon::parse($funcionario->dt_admissao)->format('d/m/Y')}}</td>
+                        <td class="alinhadoEsquerda">{{$funcionario->carga_horaria}}</td>
+                        <td class="alinhadoCentro">{{$funcionario->cargo}}</td>
+                        <td class="alinhadoDireita">R$</td>
+                        <td class="alinhadoDireita">{{number_format($funcionario->salario, 2, ',', '.')}}</td>
                         <td>
                             <a href="/admin/funcionarios/edit/{{$funcionario->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>

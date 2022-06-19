@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de Produtos')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -50,22 +50,24 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Cadastrado em</th>
-                        <th>Atualizado em</th>
-                        <th>Ação</th>
+                        <th class="col-1">ID</th>
+                        <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1"></th>
+                        <th class="col-1">Preço</th>
+                        <th class="col-2; alinhadoCentro">Cadastrado em</th>
+                        <th class="col-2; alinhadoCentro">Atualizado em</th>
+                        <th class="col-2">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($models_produtos as $produto)
                     <tr>
                         <td>{{$produto->id}}</td>
-                        <td>{{ucfirst($produto->nome)}}</td>
-                        <td>R$ {{number_format($produto->preco, 2, ',', '.')}}</td>
-                        <td>{{$produto->created_at->format('d/m/Y')}}</td>
-                        <td>{{$produto->updated_at->format('d/m/Y')}}</td>
+                        <td class="alinhadoCentro">{{ucfirst($produto->nome)}}</td>
+                        <td class="alinhadoDireita">R$</td>
+                        <td class="alinhadoDireita">{{number_format($produto->preco, 2, ',', '.')}}</td>
+                        <td class="alinhadoCentro">{{$produto->created_at->format('d/m/Y')}}</td>
+                        <td class="alinhadoCentro">{{$produto->updated_at->format('d/m/Y')}}</td>
                         <td>
                             <a href="/admin/produtos/edit/{{$produto->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de entregas')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -36,25 +36,27 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Funcionário responsável</th>
-                        <th>Data da entrega</th>
-                        <th>Taxa de frete</th>
-                        <th>Cidade</th>
-                        <th>Informações</th>
-                        <th>Editar</th>
-                        <th>Status</th>
+                        <th class="col-1">ID</th>
+                        <th class="alinhadoCentro" class="col-4">Funcionário responsável</th>
+                        <th class="col-2">Data da entrega</th>
+                        <th class=""></th>
+                        <th class="col-1">Taxa de frete</th>
+                        <th class="col-1">Cidade</th>
+                        <th class="col-1">Informações</th>
+                        <th class="col-1">Editar</th>
+                        <th class="col-1">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($entregas as $entrega)
                     <tr>
                         <td>{{$entrega->id}}</td>
-                        <td>{{$entrega->nome}}</td>
-                        <td>{{ \Carbon\Carbon::parse($entrega->dt_entrega)->format('d/m/Y')}}</td>
-                        <td>R$ {{number_format($entrega->taxa_frete, 2, ',', '.')}}</td>
+                        <td class="alinhadoCentro">{{$entrega->nome}}</td>
+                        <td class="">{{ \Carbon\Carbon::parse($entrega->dt_entrega)->format('d/m/Y')}}</td>
+                        <td class="alinhadoDireita">R$ </td>
+                        <td class="alinhadoDireita">{{number_format($entrega->taxa_frete, 2, ',', '.')}}</td>
                         <td>{{$entrega->cidade}}</td>
-                        <td><a href="/admin/entrega/{{$entrega->id}}" class="btn btn-info"><i class="fas fa-eye"
+                        <td class="alinhadoCentro"><a href="/admin/entrega/{{$entrega->id}}" class="btn btn-info"><i class="fas fa-eye"
                                     style="color:white"></i></a></td>
                         <td><a href="/admin/entrega/edit/{{$entrega->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a></td>

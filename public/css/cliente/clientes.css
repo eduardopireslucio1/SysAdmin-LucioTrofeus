@@ -10,3 +10,9 @@ input[type=checkbox] {
 .obrigatorio {
     color: red;
 }
+
+
+.alinhadoDireita {text-align:right;}
+.alinhadoCentro {text-align:center;}
+.alinhadoEsquerda {text-align:left;}
+

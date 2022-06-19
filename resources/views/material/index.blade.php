@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de Materiais')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -49,22 +49,24 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>Ação</th>
+                        <th class="col-1">ID</th>
+                        <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1; alinhadoEsquerda">Descrição</th>
+                        <th class="alinhadoCentro" class="col-1">Quantidade</th>
+                        <th class="col-1"></th>
+                        <th class="col-1">Preço</th>
+                        <th class="col-2">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($models_materials as $material)
                     <tr>
                         <td>{{$material->id}}</td>
-                        <td>{{ucwords($material->nome)}}</td>
-                        <td>{{$material->descricao}}</td>
-                        <td>{{$material->quantidade}}</td>
-                        <td>R$ {{number_format($material->preco, 2, ',', '.')}}</td>
+                        <td class="alinhadoCentro">{{ucwords($material->nome)}}</td>
+                        <td class="alinhadoEsquerda">{{$material->descricao}}</td>
+                        <td class="alinhadoCentro">{{$material->quantidade}}</td>
+                        <td class="alinhadoDireita">R$</td>
+                        <td class="alinhadoDireita">{{number_format($material->preco, 2, ',', '.')}}</td>
                         <td>
                             <a href="/admin/material/edit/{{$material->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>

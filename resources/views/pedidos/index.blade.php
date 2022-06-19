@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de pedidos')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -36,23 +36,25 @@ form {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Data de entrega</th>
-                        <th>Valor total</th>
-                        <th>Informações</th>
-                        <th>Editar</th>
-                        <th>Status</th>
+                        <th class="col-1">ID</th>
+                        <th class="col-3; alinhadoCentro">Cliente</th>
+                        <th class="col-2">Data de entrega</th>
+                        <th class="col-1"></th>
+                        <th class="col-1">Valor total</th>
+                        <th class="col-1">Informações</th>
+                        <th class="col-1">Editar</th>
+                        <th class="col-1">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pedidos as $pedido)
                     <tr>
                         <td>{{$pedido->id}}</td>
-                        <td>{{$pedido->nome_razaosocial}}</td>
+                        <td class="alinhadoCentro">{{$pedido->nome_razaosocial}}</td>
                         <td>{{ \Carbon\Carbon::parse($pedido->data_entrega)->format('d/m/Y')}}</td>
-                        <td>R$ {{number_format($pedido->valor_total, 2, ',', '.')}}</td>
-                        <td><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
+                        <td class="alinhadoDireita">R$</td>
+                        <td class="alinhadoDireita">{{number_format($pedido->valor_total, 2, ',', '.')}}</td>
+                        <td class="alinhadoCentro"><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
                                     style="color:white"></i></a></td>
                         <td><a href="/admin/pedido/edit/{{$pedido->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a></td>
@@ -73,6 +75,7 @@ form {
         </div>
     </div>
 </div>
+
 
 
 @endsection
