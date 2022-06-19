@@ -15,7 +15,8 @@ class Pedido extends Model
         'imagem_cartaz',
         'data_entrega',
         'descricao',
-        'status'
+        'status', 
+        'corel'
 
     ];
 

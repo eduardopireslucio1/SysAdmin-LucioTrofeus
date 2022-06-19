@@ -23,6 +23,7 @@ class CreatePedidosTable extends Migration
             $table->date('data_entrega');
             $table->string('descricao')->nullable();
             $table->string('status');
+            $table->string('corel')->nullable();
         });
     }
 

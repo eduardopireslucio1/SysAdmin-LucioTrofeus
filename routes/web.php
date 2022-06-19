@@ -101,8 +101,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/pedido/edit/{id}', [PedidoController::class, 'edit'])->middleware('auth');
     // Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
     Route::get('/pedido/{id}',[PedidoController::class, 'show'])->middleware('auth');
+
+   
     
 });
+
+Route::get('pegarCorel/{$corel}', 'PedidoController@pegarCorel')->name('pegarCorel');
 
 Route::prefix('admin')->group(function(){
     Route::resource('entrega', 'EntregaController');

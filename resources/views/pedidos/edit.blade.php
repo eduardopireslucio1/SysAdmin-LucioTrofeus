@@ -80,6 +80,19 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+
+                        <div class="">
+                            <label>Enviar arquivo corel: </label>
+                            <div class="custom-file">
+                                <input type="file" id="corel" class="custom-file-input" name="corel" value="">
+                                <label for="corel" class="custom-file-label">Enviar corel </label>
+                            </div>
+                            @error('corel')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                     <input class="btn btn-primary" type="submit" value="Editar Pedido">
                     <style>

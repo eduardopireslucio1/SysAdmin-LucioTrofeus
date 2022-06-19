@@ -23,7 +23,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                            <td><a href="/admin/clientes/{{$models_clientes->id}}">{{$models_clientes->nome_razaosocial}}</a></td>
+                                <td><a
+                                        href="/admin/clientes/{{$models_clientes->id}}">{{$models_clientes->nome_razaosocial}}</a>
+                                </td>
                                 <td>{{ \Carbon\Carbon::parse($pedidos->data_entrega)->format('d/m/Y')}}</td>
                                 <td>{{$pedidos->descricao}}</td>
                                 @if($pedidos->status == 0)
@@ -76,6 +78,12 @@
                     <td>R$ {{number_format($pedidos->valor_total, 2, ',', '.')}}</td>
                 </tr>
             </table>
+    
+
+            <a id="btn-corel" href="{{url($url)}}" class="btn btn-success btn-sm"
+                style="float: right; "><strong>Download Corel</strong></a>
+
+           
         </div>
     </div>
 </div>

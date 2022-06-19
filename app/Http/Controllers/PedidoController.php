@@ -9,6 +9,7 @@ use App\Models\Pedido;
 use Illuminate\Http\Request;
 use App\Models\ItensPedido;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PedidoController extends Controller
 {
@@ -43,17 +44,23 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
+
+        // if($dados->hasFile('imagem_cartaz' && $dados->file('imagem_cartaz')->isValid())){
+        //     $imagemCartaz = $dados->imagem_cartaz;
+        //     $extension = $imagemCartaz->extension();
+        //     $imagemName = $imagemCartaz->getClientoriginalName(). "." . $extension;
+        //     $imagemCartaz->move(public_path('images/pedidos'), $imagemName);
+        // }
+
         $pedido = Pedido::create([
             'models_cliente_id'=>$dados['models_cliente_id'],
             'valor_total'=>$dados['valor_total'],
-            'imagem_cartaz'=>'',
+            // 'imagem_cartaz'=>$imagemName,
             'data_entrega'=>$dados['data_entrega'],
             'descricao'=>$dados['descricao'],
-            'status'=>$dados['status']
+            'status'=>$dados['status'],
     
         ]);
-        // dd($pedido);
-        
 
         $id_pedido = $pedido->id;
         $itens_pedido = $dados['itens'];
@@ -70,11 +77,6 @@ class PedidoController extends Controller
             ]);
 
         }
-
-        // if(!$pedido){
-        //     return redirect()->back()->with('Não foi possível cadastrar esse cliente!');
-        // }
-        // return redirect()->route('clientes.store')->with('Cliente cadastrado com sucesso!');
 
     }
 
@@ -93,9 +95,21 @@ class PedidoController extends Controller
         ->select('itens_pedidos.id', 'itens_pedidos.models_produto_id', 'models_produtos.nome', 'quantidade', 'tamanho', 'valor', 'status')
         ->get();
 
+        $url = response()->download(public_path("/corel/". $pedidos->corel));
+
         $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
         
-        return view('pedidos.show', ['models_clientes' => $models_clientes, 'pedidos' => $pedidos,'itens_pedidos' => $itens_pedidos]);
+        return view('pedidos.show', [
+            'models_clientes' => $models_clientes,
+            'pedidos' => $pedidos,
+            'itens_pedidos' => $itens_pedidos,
+            'url' => $url
+        ]);
+    }
+
+    public static function pegarCorel($id){
+        $pedidos = Pedido::findOrFail($id);
+        return response()->download(public_path("corel/".$pedidos->corel));
     }
 
     public function pedidos(Pedido $pedido)
@@ -117,7 +131,6 @@ class PedidoController extends Controller
     public function edit($id)
     {
         $pedidos = Pedido::findOrFail($id);
-
         $models_clientes = ModelsCliente::findOrFail($pedidos->models_cliente_id);
 
         $itens_pedidos = DB::table('itens_pedidos')
@@ -140,16 +153,23 @@ class PedidoController extends Controller
     {
         $pedido = Pedido::findOrFail($id);
 
+        if($request->hasFile('corel') && $request->file('corel')->isValid()){
+            $dadosCorel = $request->corel;
+            $extension = $dadosCorel->extension();
+            $corelName = $dadosCorel->getClientoriginalName(). "." . $extension;
+            $dadosCorel->move(public_path('corel'), $corelName);
+        }
+
         $pedido->update([
             
             'status'=>$request->status,
-            'descricao'=>$request->descricao
+            'descricao'=>$request->descricao,
+            'corel'=>$corelName
         
         ]);
 
         return redirect('/admin/pedidos/')->with('msg', 'Pedido editado com sucesso!');
     }
-
     /**
      * Remove the specified resource from storage.
      *
