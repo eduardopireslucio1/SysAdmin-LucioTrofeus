@@ -108,33 +108,24 @@ class ProdutoController extends Controller
     {   
 
         $produto = ModelsProduto::findOrFail($id);
-        $imagem = $produto->imagem;
 
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
-            // $imagem_path = $request->file('imagem')->store('models_produtos');
             $requestImagem = $request->imagem;
             $extension = $requestImagem->extension();
             $imagemName = md5($requestImagem->getClientoriginalName() . strtotime("now")) . "." . $extension;
             $requestImagem->move(public_path('images/produtos'), $imagemName);
-
-            $produto->update([
-                'nome'=>$request->nome,
-                'descricao'=>$request->descricao,
-                'imagem'=>$imagemName,
-                'preco'=>$request->preco,
-                'status'=>$request->status,
-                'material'=>$request->material
-            ]);
         }else{
-            $produto->update([
-                'nome'=>$request->nome,
-                'descricao'=>$request->descricao,
-                'imagem'=>$imagem,
-                'preco'=>$request->preco,
-                'status'=>$request->status,
-                'material'=>$request->material
-            ]);
+           $imagemName = $produto->imagem;
         }
+
+        $produto->update([
+            'nome'=>$request->nome,
+            'descricao'=>$request->descricao,
+            'imagem'=>$imagemName,
+            'preco'=>$request->preco,
+            'status'=>$request->status,
+            'material'=>$request->material
+        ]);
 
         return redirect('/admin/produtos/')->with('msg', 'Produto editado com sucesso!');
 
