@@ -45,13 +45,6 @@ class PedidoController extends Controller
     {
         $dados = $request->all();
 
-        // if($dados->hasFile('imagem_cartaz' && $dados->file('imagem_cartaz')->isValid())){
-        //     $imagemCartaz = $dados->imagem_cartaz;
-        //     $extension = $imagemCartaz->extension();
-        //     $imagemName = $imagemCartaz->getClientoriginalName(). "." . $extension;
-        //     $imagemCartaz->move(public_path('images/pedidos'), $imagemName);
-        // }
-
         $pedido = Pedido::create([
             'models_cliente_id'=>$dados['models_cliente_id'],
             'valor_total'=>$dados['valor_total'],
@@ -118,11 +111,6 @@ class PedidoController extends Controller
         }
     }
 
-    public static function pegarCorel($id){
-        $pedidos = Pedido::findOrFail($id);
-        return response()->download(public_path("corel/".$pedidos->corel));
-    }
-
     public function pedidos(Pedido $pedido)
     {
         $pedidos = DB::table('pedidos')
@@ -169,13 +157,24 @@ class PedidoController extends Controller
             $extension = $dadosCorel->extension();
             $corelName = $dadosCorel->getClientoriginalName(). "." . $extension;
             $dadosCorel->move(public_path('corel'), $corelName);
+        }else{
+            $corelName = $pedido->corel;
+        }
+        if($request->hasFile('imagem_cartaz')){
+            $imagemCartaz = $request->imagem_cartaz;
+            $extension = $imagemCartaz->extension();
+            $imagemName = $imagemCartaz->getClientoriginalName(). "." . $extension;
+            $imagemCartaz->move(public_path('images/pedidos'), $imagemName);
+        }else{
+            $imagemName = $pedido->imagem_cartaz;
         }
 
         $pedido->update([
             
             'status'=>$request->status,
             'descricao'=>$request->descricao,
-            'corel'=>$corelName
+            'corel'=>$corelName,
+            'imagem_cartaz'=>$imagemName
         
         ]);
 

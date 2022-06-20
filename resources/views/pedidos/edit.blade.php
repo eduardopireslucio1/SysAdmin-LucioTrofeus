@@ -82,6 +82,19 @@
                         @enderror
 
                         <div class="">
+                            <label>Enviar imagem do cartaz: </label>
+                            <div class="custom-file">
+                                <input type="file" id="imagem_cartaz" class="custom-file-input" name="imagem_cartaz" value="">
+                                <label for="imagem_cartaz" class="custom-file-label">Enviar imagem cartaz </label>
+                            </div>
+                            @error('imagem_cartaz')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        <div class="">
                             <label>Enviar arquivo corel: </label>
                             <div class="custom-file">
                                 <input type="file" id="corel" class="custom-file-input" name="corel" value="">

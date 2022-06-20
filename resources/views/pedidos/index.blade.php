@@ -43,7 +43,7 @@ form {
                         <th class="col-1">Valor total</th>
                         <th class="col-1">Informações</th>
                         <th class="col-1">Editar</th>
-                        <th class="col-1">Status</th>
+                        <th class="col-2">Status</th>
                     </tr>
                 </thead>
                 <tbody>
