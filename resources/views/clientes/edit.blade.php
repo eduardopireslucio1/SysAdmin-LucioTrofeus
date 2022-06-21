@@ -21,7 +21,7 @@
                             @if(isset($models_clientes->cnpj))
                             <div class="col-3">
                                 <label>CNPJ:</label>
-                                <input placeholder="CNPJ" type="text" name="cnpj"
+                                <input placeholder="CNPJ" type="text" name="cnpj" onblur="checkCnpj(this.value)" autocomplete="off"
                                     class="form-control @error('cnpj') is-invalid @enderror" id="cnpj"
                                     value="{{$models_clientes->cnpj}}">
                                 @error('cnpj')

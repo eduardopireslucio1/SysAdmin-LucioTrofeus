@@ -149,6 +149,7 @@
                                     <option data-valor="" value=""></option>
                                     <option value="PAC">PAC</option>
                                     <option value="SEDEX">SEDEX</option>
+                                    <option value="SEDEX">Entrega pessoalmente</option>
                                 </select>
                             </div>
                             <div class="col-3">
@@ -164,7 +165,7 @@
                             </div>
                             <div class="col-2">
                                 <label>Taxa de frete: </label>
-                                <input placeholder="Taxa de frete" type="text" name="taxa_frete"
+                                <input placeholder="R$" type="text" name="taxa_frete"
                                     class="form-control @error('taxa_frete') is-invalid @enderror"
                                     id="taxa_frete">{{old('taxa_frete')}}</input>
                                 @error('taxa_frete')

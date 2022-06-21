@@ -2,6 +2,8 @@
 @section('title','Lista de entregas')
 
 @section('content')
+<script src="/js/integracao/integracao.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <div class="container-fluid">
     <div class="padding:0px;" class="col-md-12">
         <div class="painel-heading" style="margin-top:8px !important;color: black">
@@ -79,7 +81,7 @@
 
                         <div class="col-3">
                             <label>CEP: </label>
-                            <input placeholder="CEP" type="text" name="cep"
+                            <input placeholder="CEP" type="text" name="cep" onblur="checkCep(this.value)"
                                 class="form-control @error('cep') is-invalid @enderror" id="cep"
                                 value="{{$entregas->cep}}">{{old('cep')}}</input>
                             @error('cep')

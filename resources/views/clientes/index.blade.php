@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title','Lista de Clientes')
-
+<link href="/css/cliente/clientes.css" rel="stylesheet">
 <style>
 p {
     margin-top: 10px !important;
@@ -54,7 +54,7 @@ form {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome / Razão Social</th>
+                        <th class="alinhadoCentro">Nome / Razão Social</th>
                         <th> CPF/CNPJ </th>
                         <th> Tipo </th>
                         <th>Telefone</th>
@@ -67,7 +67,7 @@ form {
                     @foreach ($models_clientes as $cliente)
                     <tr>
                         <td>{{$cliente->id}}</td>
-                        <td>{{ucwords($cliente->nome_razaosocial)}}</td>
+                        <td class="alinhadoCentro">{{ucwords($cliente->nome_razaosocial)}}</td>
                         <td> {{$cliente->getDocument()}} </td>
                         <td> {{$cliente->inTipo}} </td>
                         <td>{{$cliente->telefone}}</td>

@@ -58,7 +58,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Preço: <span class="obrigatorio">*</span></label>
-                                <input placeholder="preço" type="text" name="preco"
+                                <input placeholder="R$" type="text" name="preco"
                                     class="form-control @error('preco') is-invalid @enderror" id="preco">
                                 @error('preco')
                                 <span class="invalid-feedback" role="alert">

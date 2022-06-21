@@ -35,7 +35,7 @@
 
                             <div class="col-3">
                                 <label>Descrição:</label>
-                                <input type="text" name="descricao"
+                                <input type="text" name="descricao" placeholder="Descrição"
                                     class="form-control @error('descricao') is-invalid @enderror" id="descricao">
                                 @error('descricao')
                                 <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Quantidade: <span class="obrigatorio">*</span></label>
-                                <input type="text" name="quantidade"
+                                <input type="text" name="quantidade" placeholder="Ex: 8 unidades"
                                     class="form-control @error('quantidade') is-invalid @enderror" id="quantidade">
                                 @error('quantidade')
                                 <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
                             <div class="col-3">
                                 <label>Preço (unidade): <span class="obrigatorio">*</span></label>
-                                <input type="text" name="preco"
+                                <input type="text" name="preco" placeholder="R$"
                                     class="form-control @error('preco') is-invalid @enderror" id="preco">
                                 @error('preco')
                                 <span class="invalid-feedback" role="alert">

@@ -22,7 +22,7 @@
                         <div class="row" id="margem" style="margin-bottom:2vh">
                             <div class="col-4">
                                 <label>CPF:<span class="obrigatorio">*</span> </label>
-                                <input placeholder="CPF" type="text" name="cpf"
+                                <input placeholder="CPF" type="text" name="cpf" value="{{$array["cpf"]}}"
                                     class="form-control @error('cpf') is-invalid @enderror"
                                     id="cpf">{{old('cpf')}}</input>
                                 @error('cpf')
@@ -34,7 +34,7 @@
 
                             <div class="col-4">
                                 <label>Nome: <span class="obrigatorio">*</span></label>
-                                <input placeholder="Ex: Lúcio Troféus" type="text" name="nome_razaosocial"
+                                <input placeholder="Ex: Lúcio Troféus" type="text" name="nome_razaosocial" value="{{$array["nome_razaosocial"]}}"
                                     class="form-control @error('nome') is-invalid @enderror" id="nome">
                                 @error('nome')
                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
 
                             <div class="col-4">
                                 <label>Telefone: <span class="obrigatorio">*</span></label>
-                                <input placeholder="Telefone" type="text" name="telefone"
+                                <input placeholder="Telefone" type="text" name="telefone" value="{{$array["telefone"]}}"
                                     class="form-control @error('telefone') is-invalid @enderror" id="telefone">
                                 @error('telefone')
                                 <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <div class="col-4">
                                 <label>CEP: <span class="obrigatorio">*</span></label>
                                 <input placeholder="CEP" type="text" name="cep" onblur="checkCep(this.value)" autocomplete="off"
-                                    class="form-control @error('cep') is-invalid @enderror"
+                                    class="form-control @error('cep') is-invalid @enderror" value="{{$array["cep"]}}"
                                     id="cep">{{old('cep')}}</input>
                                 @error('cep')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
 
                             <div class="col-4">
                                 <label>Estado: <span class="obrigatorio">*</span></label>
-                                <input placeholder="UF" type="text" name="uf"
+                                <input placeholder="UF" type="text" name="uf" value="{{$array["uf"]}}"
                                     class="form-control @error('uf') is-invalid @enderror"
                                     id="estado">{{old('uf')}}</input>
                                 @error('uf')
@@ -82,7 +82,7 @@
 
                             <div class="col-4">
                                 <label>Cidade: <span class="obrigatorio">*</span></label>
-                                <input placeholder="Cidade" type="text" name="cidade"
+                                <input placeholder="Cidade" type="text" name="cidade" value="{{$array["cidade"]}}"
                                     class="form-control @error('cidade') is-invalid @enderror"
                                     id="cidade">{{old('cidade')}}</input>
                                 @error('cidade')
@@ -95,7 +95,7 @@
                         <div class="row" id="margem" style="margin-bottom:2vh">
                             <div class="col-4">
                                 <label>Logradouro: <span class="obrigatorio">*</span></label>
-                                <input placeholder="Logradouro" type="text" name="logradouro"
+                                <input placeholder="Logradouro" type="text" name="logradouro" value="{{$array["logradouro"]}}"
                                     class="form-control @error('logradouro') is-invalid @enderror"
                                     id="logradouro">{{old('logradouro')}}</input>
                                 @error('logradouro')
@@ -107,7 +107,7 @@
 
                             <div class="col-4">
                                 <label>Número: <span class="obrigatorio">*</span></label>
-                                <input placeholder="Número" type="text" name="numero"
+                                <input placeholder="Número" type="text" name="numero" value="{{$array["numero"]}}"
                                     class="form-control @error('numero') is-invalid @enderror"
                                     id="numero">{{old('numero')}}</input>
                                 @error('numero')
@@ -119,7 +119,7 @@
 
                             <div class="col-4">
                                 <label>E-mail:</label>
-                                <input placeholder="Ex: email@gmail.com" type="text" name="email"
+                                <input placeholder="Ex: email@gmail.com" type="text" name="email" value="{{$array["email"]}}"
                                     class="form-control @error('email') is-invalid @enderror" id="email">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -132,7 +132,7 @@
                         <div class="row" id="margem" style="margin-bottom:2vh">
                             <div class="col-12">
                                 <label>Observação:</label>
-                                <textarea placeholder="Observação" type="text" name="observacao"
+                                <textarea placeholder="Observação" type="text" name="observacao" value="{{$array["observacao"]}}"
                                     class="form-control @error('observacao') is-invalid @enderror"
                                     id="descricao">{{old('observacao')}}</textarea>
                                 @error('observacao')

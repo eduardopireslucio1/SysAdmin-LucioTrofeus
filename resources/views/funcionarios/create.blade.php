@@ -49,7 +49,7 @@
 
                             <div class="col-3">
                                 <label>Data de Nascimento: <span class="obrigatorio">*</span></label>
-                                <input placeholder="" type="text" name="dt_nascimento"
+                                <input placeholder="Ex: 01/03/2001" type="text" name="dt_nascimento"
                                     class="form-control @error('dt_nascimento') is-invalid @enderror"
                                     id="dt_nascimento">
                                 @error('dt_nascimento')
@@ -61,7 +61,7 @@
 
                             <div class="col-3">
                                 <label>Data de Admissão: <span class="obrigatorio">*</span></label>
-                                <input placeholder="" type="text" name="dt_admissao"
+                                <input placeholder="Ex: 01/01/2022" type="text" name="dt_admissao"
                                     class="form-control @error('dt_admissao') is-invalid @enderror" id="dt_admissao">
                                 @error('dt_admissao')
                                 <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Carga horária / dia: <span class="obrigatorio">*</span></label>
-                                <input placeholder="" type="text" name="carga_horaria"
+                                <input placeholder="Horas" type="text" name="carga_horaria"
                                     class="form-control @error('carga_horaria') is-invalid @enderror"
                                     id="carga_horaria">
                                 @error('carga_horaria')
@@ -86,7 +86,7 @@
 
                             <div class="col-3">
                                 <label>Cargo: <span class="obrigatorio">*</span></label>
-                                <input placeholder="" type="text" name="cargo"
+                                <input placeholder="Ex: Programador" type="text" name="cargo"
                                     class="form-control @error('cargo') is-invalid @enderror" id="cargo">
                                 @error('cargo')
                                 <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
 
                             <div class="col-3">
                                 <label>Salário: <span class="obrigatorio">*</span></label>
-                                <input placeholder="" type="text" name="salario"
+                                <input placeholder="R$" type="text" name="salario"
                                     class="form-control @error('salario') is-invalid @enderror" id="salario">
                                 @error('salario')
                                 <span class="invalid-feedback" role="alert">

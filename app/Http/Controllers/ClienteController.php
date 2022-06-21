@@ -20,7 +20,11 @@ class ClienteController extends Controller
         $tempedido = false;
         $podeExcluirCliente = false;
         $models_clientes = modelsCliente::latest()->paginate(10);
-        return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido)->with('podeExcluirCliente', $podeExcluirCliente);
+        $array = [];
+
+        return view('clientes.index', compact('models_clientes', 'tempedido', 'podeExcluirCliente', 'array'));
+
+        // return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido)->with('podeExcluirCliente', $podeExcluirCliente);
     }
 
     /**
@@ -34,11 +38,25 @@ class ClienteController extends Controller
         $cliente_cadastrado = null;
         $opcao = $request->opcao;
 
+        //definindo variavels como null
+        $array = array(
+            'cpf' => null, 
+            'nome_razaosocial' => null,
+            'telefone' => null,
+            'cep' => null,
+            'uf' => null,
+            'cidade' => null,
+            'logradouro' => null,
+            'numero' => null,
+            'email' => null,
+            'observacao' => null
+        );
+
         if($opcao == "cnpj") {
             return view('clientes.clientecnpj', compact('opcao', 'cliente_cadastrado'));
         } 
 
-        return view('clientes.clientecpf', compact('opcao', 'validar_cpf', 'cliente_cadastrado'));
+        return view('clientes.clientecpf', compact('opcao', 'validar_cpf', 'cliente_cadastrado', 'array'));
     
     }
 
@@ -59,8 +77,23 @@ class ClienteController extends Controller
 
         $models_clientes = ModelsCliente::all();
         $validar_cpf = true;
-        $cliente_cadastrado = null;
+        $cliente_cadastrado = false;
+
+        //definindo variaveis para view em caso de erro
+        $array = array(
+            'cpf' => $request->cpf, 
+            'nome_razaosocial' => $request->nome_razaosocial,
+            'telefone' => $request->telefone,
+            'cep' => $request->cep,
+            'uf' => $request->uf,
+            'cidade' => $request->cidade,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'email' => $request->email,
+            'observacao' => $request->observacao
+        );
         
+        //verificando se existe registros com o mesmo cpf e cnpj da requisição
         foreach($models_clientes as $cliente){
             if($cliente->inTipo == 'PJ'){
                 if($cliente->cnpj == $request->cnpj){
@@ -72,21 +105,22 @@ class ClienteController extends Controller
             if($cliente->inTipo == 'PF'){
                 if($cliente->cpf == $request->cpf){
                     $cliente_cadastrado = true;
-                    return view('clientes.clientecpf', compact('cliente_cadastrado', 'validar_cpf'));
+                    return view('clientes.clientecpf', compact('cliente_cadastrado', 'validar_cpf', 'array'));
                 }
             }
         }
 
+        //validando CPF
         if(isset($request->cpf)){
             $validar_cpf = CPF::validaCPF($request->cpf);
     
             if(!$validar_cpf){
-            return view('clientes.clientecpf', compact('validar_cpf'));
+            return view('clientes.clientecpf', compact('validar_cpf', 'cliente_cadastrado', 'array'));
             }
 
             $inTipo = 'PF';
         }
-
+        
         if(isset($request->cnpj)){
             $inTipo = 'PJ';
         }
