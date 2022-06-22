@@ -21,7 +21,7 @@
 
                             <div class="col-4">
                                 <label>CNPJ:</label>
-                                <input placeholder="CNPJ" type="text" name="cnpj"
+                                <input placeholder="CNPJ" type="text" name="cnpj" disabled
                                     class="form-control @error('cnpj') is-invalid @enderror" id="cnpj"
                                     value="{{$models_clientes->cnpj}}">
                                 @error('cnpj')

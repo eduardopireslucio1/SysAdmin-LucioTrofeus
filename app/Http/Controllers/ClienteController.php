@@ -79,7 +79,15 @@ class ClienteController extends Controller
         $validar_cpf = true;
         $cliente_cadastrado = false;
 
-        //definindo variaveis para view em caso de erro
+        if(isset($request->cpf)){
+            $rules_cpf = ['cpf'=>'required|string|max:50'];
+            $this->validate($request, $rules_cpf);
+        }else{
+            $rules_cnpj = ['cnpj'=>'required|string|max:50'];
+            $this->validate($request, $rules_cnpj);
+        }
+
+        //definindo variaveis de retorno para view em caso de erro
         $array = array(
             'cpf' => $request->cpf, 
             'nome_razaosocial' => $request->nome_razaosocial,
@@ -160,7 +168,14 @@ class ClienteController extends Controller
     {
         $models_clientes = ModelsCliente::findOrFail($id);
 
-        return view('clientes.show', ['models_clientes' => $models_clientes]);
+        if(isset($models_clientes->cpf)){
+            return view('clientes.showclientecpf', ['models_clientes' => $models_clientes]);
+        }
+
+        if(isset($models_clientes->cnpj)){
+            return view('clientes.showclientecnpj', ['models_clientes' => $models_clientes]);
+        }
+        
     }
 
     /**
@@ -209,8 +224,8 @@ class ClienteController extends Controller
             'fantasia'=>$request->fantasia,
             'email'=>$request->email,
             'telefone'=>$request->telefone,
-            'cpf'=>$request->cpf,
-            'cnpj'=>$request->cnpj,
+            'cpf'=>$models_clientes->cpf,
+            'cnpj'=>$models_clientes->cnpj,
             'cep'=>$request->cep,
             'cidade'=>$request->cidade,
             'uf'=>$request->uf,

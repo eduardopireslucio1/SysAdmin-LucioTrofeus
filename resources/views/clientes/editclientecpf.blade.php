@@ -20,7 +20,7 @@
                         <div class="row" style="margin-bottom:3vh">
                             <div class="col-4">
                                 <label>CPF: </label>
-                                <input placeholder="CPF" type="text" name="cpf"
+                                <input placeholder="CPF" type="text" name="cpf" disabled
                                     class="form-control @error('cpf') is-invalid @enderror" id="cpf"
                                     value="{{$models_clientes->cpf}}">
                                 @error('cpf')
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="col-4">
-                                <label>Nome / Razão Social: </label>
+                                <label>Nome: </label>
                                 <input placeholder="Nome / Razão Social" type="text" name="nome_razaosocial"
                                     class="form-control @error('nome_razaosocial') is-invalid @enderror"
                                     id="nome_razaocial" value="{{$models_clientes->nome_razaosocial}}">

@@ -109,20 +109,14 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FuncionarioStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $models_funcionarios = ModelsFuncionario::findOrFail($id);
 
-        $validar_cpf = CPF::validaCPF($request->cpf);
-
-        if(!$validar_cpf){
-            return view('funcionarios.edit')->with('validar_cpf', $validar_cpf)->with('models_funcionarios', $models_funcionarios);
-        }
-
         $models_funcionarios -> update([
-            'nome'=>$request->nome,
-            'cpf'=>$request->cpf,
-            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),
+            'nome'=>$models_funcionarios->nome,
+            'cpf'=>$models_funcionarios->cpf,
+            'dt_nascimento' => $models_funcionarios->dt_nascimento,
             'dt_admissao' => DateTime::createFromFormat('d/m/Y', $request->dt_admissao),
             'carga_horaria'=>$request->carga_horaria,
             'cargo'=>$request->cargo,
