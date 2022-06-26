@@ -48,7 +48,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Quantidade: <span class="obrigatorio">*</span></label>
-                                <input type="text" name="quantidade" placeholder="Ex: 8 unidades"
+                                <input type="number" name="quantidade" placeholder="Ex: 8 unidades"
                                     class="form-control @error('quantidade') is-invalid @enderror" id="quantidade">
                                 @error('quantidade')
                                 <span class="invalid-feedback" role="alert">

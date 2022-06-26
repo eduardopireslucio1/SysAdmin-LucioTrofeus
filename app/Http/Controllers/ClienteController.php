@@ -38,7 +38,7 @@ class ClienteController extends Controller
         $cliente_cadastrado = null;
         $opcao = $request->opcao;
 
-        //definindo variavels como null
+        //definindo variaveis como null
         $array = array(
             'cpf' => null, 
             'nome_razaosocial' => null,

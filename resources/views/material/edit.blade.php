@@ -48,7 +48,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Quantidade: </label>
-                                <input placeholder="Descrição" type="text" name="quantidade"
+                                <input placeholder="Descrição" type="number" name="quantidade"
                                     class="form-control @error('quantidade') is-invalid @enderror" id="quantidade"
                                     value="{{$models_materials->quantidade}}">
                                 @error('quantidade')

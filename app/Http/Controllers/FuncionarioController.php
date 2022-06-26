@@ -37,7 +37,17 @@ class FuncionarioController extends Controller
     public function create()
     {
         $validar_cpf = true;
-        return view('funcionarios.create')->with('validar_cpf', $validar_cpf);
+        $data = array(
+            'nome' => null,
+            'cpf' => null,
+            'dt_nascimento' => null,
+            'dt_admissao' => null,
+            'carga_horaria' => null,
+            'cargo' => null,
+            'salario' => null
+        );
+
+        return view('funcionarios.create', compact('validar_cpf', 'data'));
     }
 
     /**
@@ -48,11 +58,20 @@ class FuncionarioController extends Controller
      */
     public function store(FuncionarioStoreRequest $request)
     {   
+        $data = array(
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'dt_nascimento' => $request->dt_nascimento,
+            'dt_admissao' => $request->dt_admissao,
+            'carga_horaria' => $request->carga_horaria,
+            'cargo' => $request->cargo,
+            'salario' => $request->cargo
+        );
 
         $validar_cpf = CPF::validaCPF($request->cpf);
 
         if(!$validar_cpf){
-            return view('funcionarios.create')->with('validar_cpf', $validar_cpf);
+            return view('funcionarios.create', compact('validar_cpf', 'data'));
         }
 
         $Funcionario = ModelsFuncionario::create([
