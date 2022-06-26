@@ -27,7 +27,7 @@
   
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div id="contt" class="content-wrapper">
    
     <section>
       @include('layouts.partials.alert.sucess')
@@ -48,8 +48,8 @@
 @yield('js')
   <style>
     .main-sidebar .lucio_logo{
-      max-width:175px;
-      max-height:120px;
+      max-width:205px;
+      max-height:200px;
       width: auto;
       height: auto;
     }

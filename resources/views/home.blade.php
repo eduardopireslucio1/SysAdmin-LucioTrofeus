@@ -3,29 +3,51 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard :') }}</div>
+        <div id="cont" class="col-md-8">
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+        <img id="lucio_logo"  src="{{('/images/lucio_logo_2.png')}}">
+            <div id="logado">
 
-                    {{ __('Você está logado!') }}
-
-                    <!-- <p class="mb-0">
-                        <a href="{{ route('register') }}" class="text-center">Cadastrar uma nova conta</a>
-                    </p> -->
-                    <br>
-                    <br>
+                   
+                    <h3 id="vc_logado">Você está logado!</h3>
                     <a id="btn-funcionario" href="{{route('register')}}" class="btn btn-success btn-sm"
-                        style=""><strong>Cadastrar um novo usuário</strong></a>
+                        style=""><h5>Novo usuário</h5></a>
                 </div>
-            </div>
+                
+        
         </div>
     </div>
 </div>
+
 @endsection
+
+<style>
+    
+#contt{
+ background-color: #343A40;
+}
+
+#btn-funcionario{
+    margin-left: 60px;
+    margin-top: 25px;
+    width:150px;
+    height:35px;
+}
+
+#vc_logado{
+    margin-left: 30px;
+    color: white;
+    width: 450px;
+}
+
+#lucio_logo{
+  height: 80%;
+  width: 700px;
+}
+
+#logado{
+    margin-left: 220px;
+    width: 250px;
+}
+  
+</style>

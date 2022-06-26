@@ -3,6 +3,11 @@
         color:white;
     }
 
+    .lucio_logo{
+        margin-left: 20px;
+    }
+    
+
    
 </style>
 <!-- Main Sidebar Container -->
