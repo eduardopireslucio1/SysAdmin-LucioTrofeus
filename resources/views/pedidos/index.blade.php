@@ -37,8 +37,8 @@ form {
                 <thead>
                     <tr>
                         <th class="col-1">ID</th>
-                        <th class="col-3; alinhadoCentro">Cliente</th>
-                        <th class="col-2">Data de entrega</th>
+                        <th class="col-4; alinhadoCentro">Cliente</th>
+                        <th class="col-1">Data de entrega</th>
                         <th class="col-1"></th>
                         <th class="col-1">Valor total</th>
                         <th class="col-1">Informações</th>

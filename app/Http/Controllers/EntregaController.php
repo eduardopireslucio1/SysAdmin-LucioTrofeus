@@ -35,7 +35,20 @@ class EntregaController extends Controller
         ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
         ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'pedidos.status')
         ->get();
-        return view('entrega.create')->with('models_funcionarios',$models_funcionarios)->with('pedidos',$pedidos);
+
+        $dados_entregas = DadosEntrega::all();
+
+        $pedidoInEntrega = [];
+
+        foreach ($pedidos as $pedido){
+            foreach($dados_entregas as $entrega){
+                if($pedido->id == $entrega->pedido_id){
+                array_push($pedidoInEntrega, $entrega->pedido_id);
+                }
+            }
+        }
+
+        return view('entrega.create', compact('models_funcionarios', 'pedidos', 'pedidoInEntrega'));
     }
 
     /**
