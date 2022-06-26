@@ -50,7 +50,7 @@ form {
                 <thead>
                     <tr>
                         <th class="col-1">ID</th>
-                        <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1; alinhadoEsquerda">Nome</th>
                         <th class="col-1; alinhadoEsquerda">Data de admissão</th>
                         <th class="col-1; alinhadoEsquerda">Carga horária/dia</th>
                         <th class="col-1; alinhadoCentro">Cargo</th>
@@ -63,7 +63,7 @@ form {
                     @foreach ($models_funcionarios as $funcionario)
                     <tr>
                         <td>{{$funcionario->id}}</td>
-                        <td class="alinhadoCentro">{{ucwords($funcionario->nome)}}</td>
+                        <td class="alinhadoEsquerda">{{ucwords($funcionario->nome)}}</td>
                         <td class="alinhadoEsquerda">{{ \Carbon\Carbon::parse($funcionario->dt_admissao)->format('d/m/Y')}}</td>
                         <td class="alinhadoEsquerda">{{$funcionario->carga_horaria}}</td>
                         <td class="alinhadoCentro">{{$funcionario->cargo}}</td>

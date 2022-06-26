@@ -19,7 +19,7 @@ class MaterialController extends Controller
     {
         $excluiu = false;
         $models_materials = modelsMaterial::latest()->paginate(10);
-        return view('material.index')->with('models_materials',$models_materials)->with('excluiu',$excluiu);
+        return view('material.index', compact('excluiu', 'models_materials'));
     }
 
     /**

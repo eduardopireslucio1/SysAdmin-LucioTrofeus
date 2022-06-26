@@ -50,11 +50,14 @@ form {
                 <thead>
                     <tr>
                         <th class="col-1">ID</th>
-                        <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1; alinhadoEsquerda">Nome</th>
                         <th class="col-1; alinhadoEsquerda">Descrição</th>
                         <th class="alinhadoCentro" class="col-1">Quantidade</th>
                         <th class="col-1"></th>
                         <th class="col-1">Preço</th>
+                        <th class="col-1"></th>
+                        <th class="col-1">Total</th>
+                        <th class="col-1"></th>
                         <th class="col-2">Ação</th>
                     </tr>
                 </thead>
@@ -62,11 +65,19 @@ form {
                     @foreach ($models_materials as $material)
                     <tr>
                         <td>{{$material->id}}</td>
-                        <td class="alinhadoCentro">{{ucwords($material->nome)}}</td>
+                        <td class="alinhadoEsquerda">{{ucwords($material->nome)}}</td>
                         <td class="alinhadoEsquerda">{{$material->descricao}}</td>
                         <td class="alinhadoCentro">{{$material->quantidade}}</td>
                         <td class="alinhadoDireita">R$</td>
                         <td class="alinhadoDireita">{{number_format($material->preco, 2, ',', '.')}}</td>
+                        <td class="alinhadoDireita">R$</td>
+                        @php $total = 0;
+                        foreach($models_materials as $material){
+                            $total = $material->quantidade * $material->preco;
+                        }
+                        @endphp
+                        <td class="alinhadoDireita">{{number_format($total, 2, ',', '.')}}</td>
+                        <td class=""></td>
                         <td>
                             <a href="/admin/material/edit/{{$material->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>
