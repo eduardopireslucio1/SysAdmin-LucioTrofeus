@@ -111,14 +111,40 @@ class PedidoController extends Controller
         }
     }
 
-    public function pedidos(Pedido $pedido)
-    {
+    public static function getPedidos(){
         $pedidos = DB::table('pedidos')
         ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
         ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status', 'pedidos.created_at')
         ->orderByRaw('pedidos.created_at DESC')
         ->get();
+
+        return $pedidos;
+    }
+
+    public function pedidos(Pedido $pedido)
+    {
+        $pedidos = PedidoController::getPedidos();
         return view('pedidos.index')->with('pedidos',$pedidos);
+    }
+
+    public function pedidosFiltraStatus(Request $request){
+
+        $status = $request->get('status');
+
+        if($status == 'todos'){
+            $pedidos = PedidoController::getPedidos();
+            return view('pedidos.index', compact('pedidos'));
+        }
+
+        $pedidos = DB::table('pedidos')
+        ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
+        ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status', 'pedidos.created_at')
+        ->where('pedidos.status', '=', $status)
+        ->orderByRaw('pedidos.created_at DESC')
+        ->get();
+
+        return view('pedidos.index', compact('pedidos'));
+
     }
 
     /**

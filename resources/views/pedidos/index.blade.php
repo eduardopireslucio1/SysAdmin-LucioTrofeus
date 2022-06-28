@@ -31,6 +31,16 @@ form {
         </div>
     </div>
     <p class="text" style="color: #007FFF"><strong>Lista de pedidos:</strong>
+    <form action="{{route('pedidosFiltraStatus')}}" method="GET" enctype="multipart/form-data">
+        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+            <option value="todos">Todos</option>
+            <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
+            <option value="1" {{old('status'==1 ? 'selected' : '')}}>Em andamento</option>
+            <option value="2" {{old('status'==2 ? 'selected' : '')}}>Cancelado</option>
+            <option value="3" {{old('status'==3 ? 'selected' : '')}}>Concluído</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
     <div class="div card">
         <div class="card-body">
             <table class="table">
@@ -54,8 +64,8 @@ form {
                         <td>{{ \Carbon\Carbon::parse($pedido->data_entrega)->format('d/m/Y')}}</td>
                         <td class="alinhadoDireita">R$</td>
                         <td class="alinhadoDireita">{{number_format($pedido->valor_total, 2, ',', '.')}}</td>
-                        <td class="alinhadoCentro"><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i class="fas fa-eye"
-                                    style="color:white"></i></a></td>
+                        <td class="alinhadoCentro"><a href="/admin/pedido/{{$pedido->id}}" class="btn btn-info"><i
+                                    class="fas fa-eye" style="color:white"></i></a></td>
                         <td><a href="/admin/pedido/edit/{{$pedido->id}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a></td>
                         @if($pedido->status == 0)
