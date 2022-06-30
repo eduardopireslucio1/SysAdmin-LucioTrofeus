@@ -32,14 +32,20 @@ form {
     </div>
     <p class="text" style="color: #007FFF"><strong>Lista de pedidos:</strong>
     <form action="{{route('pedidosFiltraStatus')}}" method="GET" enctype="multipart/form-data">
-        <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-            <option value="todos">Todos</option>
-            <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
-            <option value="1" {{old('status'==1 ? 'selected' : '')}}>Em andamento</option>
-            <option value="2" {{old('status'==2 ? 'selected' : '')}}>Cancelado</option>
-            <option value="3" {{old('status'==3 ? 'selected' : '')}}>Concluído</option>
-        </select>
-        <button type="submit">Filtrar</button>
+        <div class="row">
+            <div class="form-group col-8">
+                <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                    <option value="todos">Todos</option>
+                    <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
+                    <option value="1" {{old('status'==1 ? 'selected' : '')}}>Em andamento</option>
+                    <option value="2" {{old('status'==2 ? 'selected' : '')}}>Cancelado</option>
+                    <option value="3" {{old('status'==3 ? 'selected' : '')}}>Concluído</option>
+                </select>
+            </div>
+            <div class="form-group col-4">
+                <button class="btn btn-outline-info" type="submit">Filtrar</button>
+            </div>
+        </div>
     </form>
     <div class="div card">
         <div class="card-body">

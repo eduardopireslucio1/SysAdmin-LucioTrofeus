@@ -120,6 +120,8 @@ Route::prefix('admin')->group(function(){
     
 });
 
+Route::get('entregasFiltraStatus', 'EntregaController@entregasFiltraStatus')->name('entregasFiltraStatus');
+
 Route::prefix('admin')->group(function(){
     Route::resource('pedidos', 'PedidoController');
     Route::get('pedidos',[PedidoController::class, 'pedidos']); 

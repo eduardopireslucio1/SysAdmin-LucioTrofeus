@@ -38,15 +38,10 @@ class EntregaController extends Controller
 
         $dados_entregas = DadosEntrega::all();
 
-        $pedidoInEntrega = [];
-
-        foreach ($pedidos as $pedido){
-            foreach($dados_entregas as $entrega){
-                if($pedido->id == $entrega->pedido_id){
-                array_push($pedidoInEntrega, $entrega->pedido_id);
-                }
-            }
-        }
+        $pedidoInEntrega = DB::table('pedidos')
+        ->join('dados_entregas', 'dados_entregas.pedido_id', '=', 'pedidos.id')
+        ->select('pedidos.id')
+        ->get();
 
         return view('entrega.create', compact('models_funcionarios', 'pedidos', 'pedidoInEntrega'));
     }
@@ -114,15 +109,41 @@ class EntregaController extends Controller
     }
 
     public function entregas(){
+        $entregas = EntregaController::getEntregas();
+
+        return view('entrega.index',[
+            'entregas'=>$entregas
+        ]);
+    }
+
+    public function entregasFiltraStatus(Request $request)
+    {
+        $status = $request->get('status');
+
+        if($status == 'todos'){
+            $entregas = EntregaController::getEntregas();
+            return view('entrega.index', compact('entregas'));
+        }
+
+        $entregas = DB::table('entregas')
+        ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
+        ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
+        ->where('entregas.status', '=', $status)
+        ->orderByRaw('created_at DESC')
+        ->get();
+
+        return view('entrega.index', compact('entregas'));
+    }
+
+    public static function getEntregas()
+    {
         $entregas = DB::table('entregas')
         ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
         ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
         ->orderByRaw('created_at DESC')
         ->get();
 
-        return view('entrega.index',[
-            'entregas'=>$entregas
-        ]);
+        return $entregas;
     }
 
     /**

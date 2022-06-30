@@ -57,7 +57,7 @@
                                     @php $tamanho = count($pedidoInEntrega); @endphp
                                     @foreach ($pedidos as $pedido)
                                         @for($i = 0; $i < $tamanho; $i++)
-                                            @if(!($pedidoInEntrega[$i] == $pedido->id))
+                                            @if(!($pedidoInEntrega[$i]->id == $pedido->id))
                                                 @if($pedido->status == 3)
                                                 <option value="{{$pedido->id}}">{{$pedido->id}} - {{$pedido->nome_razaosocial}}
                                                 </option>
