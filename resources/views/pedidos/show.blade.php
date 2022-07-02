@@ -7,7 +7,7 @@
         <div class="painel panel-default">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3><strong>Informações do Pedido</strong></h3>
+                    <h3><strong>Informações do Pedido: {{$pedidos->id}}</strong></h3>
                 </div>
             </div>
             <div class="div card">

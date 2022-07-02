@@ -31,19 +31,29 @@ class EntregaController extends Controller
     public function create()
     {
         $models_funcionarios = ModelsFuncionario::all();
+
+        $pedidoEntrega = EntregaController::retornaPedidosInEntrega();
+        $pedidosInEntrega = json_decode( json_encode($pedidoEntrega), true);
+
         $pedidos = DB::table('pedidos')
         ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
         ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'pedidos.status')
+        ->whereNotIn('pedidos.id', $pedidosInEntrega)
         ->get();
 
         $dados_entregas = DadosEntrega::all();
 
+        return view('entrega.create', compact('models_funcionarios', 'pedidos'));
+    }
+
+    public static function retornaPedidosInEntrega()
+    {
         $pedidoInEntrega = DB::table('pedidos')
         ->join('dados_entregas', 'dados_entregas.pedido_id', '=', 'pedidos.id')
         ->select('pedidos.id')
         ->get();
-
-        return view('entrega.create', compact('models_funcionarios', 'pedidos', 'pedidoInEntrega'));
+        
+        return $pedidoInEntrega;
     }
 
     /**

@@ -96,7 +96,7 @@ function renderTable() {
 
     table += `
     <tr>
-        <th colspan="5">Total</th>
+        <th colspan="5">Sub Total</th>
         <th>${subTotal}</th>
     </tr>
     `

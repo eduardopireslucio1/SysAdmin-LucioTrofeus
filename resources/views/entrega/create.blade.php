@@ -54,16 +54,10 @@
                                     name="pedido_id" placeholder="Selecione um pedido" class="selectpicker"
                                     data-live-search="true" style="width:100%; outline: none">
                                     <option data-valor="" value=""></option>
-                                    @php $tamanho = count($pedidoInEntrega); @endphp
                                     @foreach ($pedidos as $pedido)
-                                        @for($i = 0; $i < $tamanho; $i++)
-                                            @if(!($pedidoInEntrega[$i]->id == $pedido->id))
-                                                @if($pedido->status == 3)
-                                                <option value="{{$pedido->id}}">{{$pedido->id}} - {{$pedido->nome_razaosocial}}
-                                                </option>
-                                                @endif
-                                            @endif
-                                        @endfor
+                                        @if($pedido->status == 3)
+                                        <option value="{{$pedido->id}}">{{$pedido->id}} - {{$pedido->nome_razaosocial}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
