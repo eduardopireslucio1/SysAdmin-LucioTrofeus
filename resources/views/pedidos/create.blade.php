@@ -50,9 +50,9 @@
                                 style="width:100%; outline: none">
                                 <option data-valor="" value=""></option>
                                 @foreach ($models_produtos as $produto)
-                                <option data-valor="{{$produto->preco}}" value="{{$produto->id}}">{{$produto->nome}}
-                                </option>
-
+                                @if($produto->status)
+                                <option data-valor="{{$produto->preco}}" value="{{$produto->id}}">{{$produto->nome}}</option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>

@@ -88,7 +88,7 @@ function renderTable() {
             <td>${i.tamanho} cm</td>
             <td>${valorItem}</td>
             <td>${valorTotal}</td>
-            <td><button class="btn btn-danger" onclick="remover(${index})">Remover</button></td>
+            <td><button class="btn btn-danger" onclick="remover(${index})"><i class="fas fa-trash"></i></button></td>
         </tr>`
     })
 

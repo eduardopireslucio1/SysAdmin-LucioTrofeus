@@ -18,7 +18,7 @@ p {
     font-size: 18px;
 }
 
-h3 b{
+h3 b {
     font-size: 22px;
 }
 
@@ -41,7 +41,8 @@ form {
         </div>
     </div>
     <p class="text" style="color: #007FFF"><strong>Lista de produtos:</strong>
-    <a id="btn-produtos" href="{{route('produtos.create')}}" class="btn btn-success btn-sm" style="float: right"><strong>Cadastrar</strong></a>
+        <a id="btn-produtos" href="{{route('produtos.create')}}" class="btn btn-success btn-sm"
+            style="float: right"><strong>Cadastrar</strong></a>
         @if($errors->any())
     <h4>{{$errors->first()}}</h4>
     @endif
@@ -52,6 +53,7 @@ form {
                     <tr>
                         <th class="col-1">ID</th>
                         <th class="col-1; alinhadoCentro">Nome</th>
+                        <th class="col-1; alinhadoCentro">Status</th>
                         <th class="col-1"></th>
                         <th class="col-1">Preço</th>
                         <th class="col-2; alinhadoCentro">Cadastrado em</th>
@@ -64,6 +66,14 @@ form {
                     <tr>
                         <td>{{$produto->id}}</td>
                         <td class="alinhadoCentro">{{ucfirst($produto->nome)}}</td>
+                        <td>@if($produto->status == 0)
+
+                            <a class="btn btn-danger btn-sm" style="background-color: red; color: white; margin-left:80px">I</a>
+                            @else
+                            <a class="btn btn-sucess btn-sm" style="background-color: green; color: white; margin-left:80px">A</a>
+
+                            @endif
+                        </td>
                         <td class="alinhadoDireita">R$</td>
                         <td class="alinhadoDireita">{{number_format($produto->preco, 2, ',', '.')}}</td>
                         <td class="alinhadoCentro">{{$produto->created_at->format('d/m/Y')}}</td>
