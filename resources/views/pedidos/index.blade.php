@@ -30,7 +30,6 @@ form {
             </div>
         </div>
     </div>
-    <p class="text" style="color: #007FFF"><strong>Lista de pedidos:</strong>
     <form action="{{route('pedidosFiltraStatus')}}" method="GET" enctype="multipart/form-data">
         <div class="row">
             <div class="form-group col-8">

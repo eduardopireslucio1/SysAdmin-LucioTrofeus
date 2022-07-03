@@ -65,6 +65,9 @@ Route::prefix('admin')->group(function(){
     
 });
 
+Route::get('searchClientes', 'ClienteController@searchClientes')->name('searchClientes');
+Route::get('searchProdutos', 'ProdutoController@searchProdutos')->name('searchProdutos');
+
 Route::prefix('admin')->group(function(){
     Route::resource('clientescpf', 'ClienteController');
     Route::get('clientescpf',[ClienteController::class, 'clientes']); 

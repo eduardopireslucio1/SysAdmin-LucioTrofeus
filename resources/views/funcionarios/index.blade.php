@@ -40,9 +40,12 @@ form {
                 </div>
             </div>
         </div>
-        <p class="text" style="color: #007FFF"><strong>Lista de funcionários:</strong>
-            <a id="btn-funcionario" href="{{route('funcionarios.create')}}" class="btn btn-success btn-sm"
-                style="float: right; "><strong>Cadastrar</strong></a>
+    </div>
+    <div class="row" style="margin-bottom:2vh"> 
+        <div class="col-12">
+        <a id="btn-funcionario" href="{{route('funcionarios.create')}}" class="btn btn-success btn-sm"
+                style="float: right; width: 200px; height: 30px; "><strong>Cadastrar</strong></a>
+        </div>
     </div>
     <div class="div card">
         <div class="card-body">

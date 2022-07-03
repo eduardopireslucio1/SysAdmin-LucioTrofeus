@@ -27,6 +27,23 @@ class ClienteController extends Controller
         // return view('clientes.index')->with('models_clientes',$models_clientes)->with('tempedido', $tempedido)->with('podeExcluirCliente', $podeExcluirCliente);
     }
 
+    public function searchClientes(Request $request)
+    {
+        $tempedido = false;
+        $podeExcluirCliente = false;
+        $array = [];
+
+        $query = modelsCliente::query();
+
+        if($request->has('search')) {
+            $query->where('nome_razaosocial', 'LIKE', '%' . $request->search . '%');
+        }
+
+        $models_clientes = $query->paginate();
+
+        return view('clientes.index', compact('models_clientes', 'tempedido', 'podeExcluirCliente', 'array'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

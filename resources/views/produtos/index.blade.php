@@ -40,10 +40,29 @@ form {
             </div>
         </div>
     </div>
-    <p class="text" style="color: #007FFF"><strong>Lista de produtos:</strong>
-        <a id="btn-produtos" href="{{route('produtos.create')}}" class="btn btn-success btn-sm"
-            style="float: right"><strong>Cadastrar</strong></a>
-        @if($errors->any())
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <form action="{{route('searchProdutos')}}">
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <input type="search" class="form-control form-control-lg" placeholder="Pesquisar" style="width:700px"
+                                    name="search">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+                <a id="btn-produtos" href="{{route('produtos.create')}}" class="btn btn-success btn-sm"
+        style="float: right"><strong>Cadastrar</strong></a>
+            </div>
+        </div>
+    </section>
+    @if($errors->any())
     <h4>{{$errors->first()}}</h4>
     @endif
     <div class="div card">
@@ -68,9 +87,11 @@ form {
                         <td class="alinhadoCentro">{{ucfirst($produto->nome)}}</td>
                         <td>@if($produto->status == 0)
 
-                            <a class="btn btn-danger btn-sm" style="background-color: red; color: white; margin-left:80px">I</a>
+                            <a class="btn btn-danger btn-sm"
+                                style="background-color: red; color: white; margin-left:80px">I</a>
                             @else
-                            <a class="btn btn-sucess btn-sm" style="background-color: green; color: white; margin-left:80px">A</a>
+                            <a class="btn btn-sucess btn-sm"
+                                style="background-color: green; color: white; margin-left:80px">A</a>
 
                             @endif
                         </td>

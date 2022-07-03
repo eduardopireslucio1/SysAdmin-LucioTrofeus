@@ -19,7 +19,22 @@ class ProdutoController extends Controller
         $tempedido = false;
         $podeExcluirProduto = false;
         $models_produtos = modelsProduto::latest()->paginate(10);
-        return view('produtos.index')->with('models_produtos',$models_produtos)->with('tempedido',$tempedido)->with('podeExcluirProduto', $podeExcluirProduto);
+        return view('produtos.index', compact('models_produtos', 'tempedido', 'podeExcluirProduto'));
+    }
+
+    public function searchProdutos(Request $request)
+    {
+        $tempedido = false;
+        $podeExcluirProduto = false;
+        $query = ModelsProduto::query();
+
+        if($request->has('search')) {
+            $query->where('nome', 'LIKE', '%' . $request->search . '%');
+        }
+
+        $models_produtos = $query->paginate();
+
+        return view('produtos.index', compact('models_produtos', 'tempedido', 'podeExcluirProduto'));
     }
 
     /**

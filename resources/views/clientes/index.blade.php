@@ -41,13 +41,32 @@ form {
                 </div>
             </div>
         </div>
-        <p class="text" style="color: #007FFF"><strong>Lista de clientes:</strong>
-            <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cpf'])}}" class="btn btn-success btn-sm"
-                style="float: right; "><strong>CPF</strong></a>
-            <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cnpj'])}}" class="btn btn-success btn-sm"
-                style="float: right; "><strong>CNPJ</strong></a>
-            </a>
+        <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cpf'])}}" class="btn btn-success btn-sm"
+            style="float: right; "><strong>CPF</strong></a>
+        <a id="btn-cliente" href="{{route('clientes.create', ['opcao' => 'cnpj'])}}" class="btn btn-success btn-sm"
+            style="float: right; "><strong>CNPJ</strong></a>
+        </a>
     </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <form action="{{route('searchClientes')}}">
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <input type="search" class="form-control form-control-lg" style="width:700px"
+                                    placeholder="Pesquisar" name="search">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="div card">
         <div class="card-body">
             <table class="table">
