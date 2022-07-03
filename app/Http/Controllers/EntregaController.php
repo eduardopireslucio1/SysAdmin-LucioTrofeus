@@ -32,7 +32,7 @@ class EntregaController extends Controller
     {
         $models_funcionarios = ModelsFuncionario::all();
 
-        $pedidoEntrega = EntregaController::retornaPedidosInEntrega();
+        $pedidoEntrega = EntregaController::getPedidosInEntrega();
         $pedidosInEntrega = json_decode( json_encode($pedidoEntrega), true);
 
         $pedidos = DB::table('pedidos')
@@ -41,12 +41,10 @@ class EntregaController extends Controller
         ->whereNotIn('pedidos.id', $pedidosInEntrega)
         ->get();
 
-        $dados_entregas = DadosEntrega::all();
-
         return view('entrega.create', compact('models_funcionarios', 'pedidos'));
     }
 
-    public static function retornaPedidosInEntrega()
+    public static function getPedidosInEntrega()
     {
         $pedidoInEntrega = DB::table('pedidos')
         ->join('dados_entregas', 'dados_entregas.pedido_id', '=', 'pedidos.id')
@@ -120,6 +118,15 @@ class EntregaController extends Controller
 
     public function entregas(){
         $entregas = EntregaController::getEntregas();
+        
+        $entregas = DB::table('entregas')
+        ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
+        ->join('dados_entregas', 'entregas.id', '=', 'dados_entregas.entrega_id')
+        ->join('pedidos', 'dados_entregas.pedido_id', '=', 'pedidos.id')
+        ->join('models_clientes', 'pedidos.models_cliente_id', '=', 'models_clientes.id')
+        ->select('models_clientes.nome_razaosocial', 'pedido_id','entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'entregas.cidade', 'entregas.status', 'entregas.created_at')
+        ->orderByRaw('created_at DESC')
+        ->get();
 
         return view('entrega.index',[
             'entregas'=>$entregas
@@ -174,16 +181,6 @@ class EntregaController extends Controller
         ->where('pedidos.id', '=', $dados_entregas->pedido_id)
         ->select('pedidos.models_cliente_id', 'pedidos.id')
         ->get();
-
-        //$pedido_cliente = DB::table('dados_entregas')
-        //->join('pedidos', 'pedidos.id', '=', 'dados_entregas.pedido_id')
-        //->select('dados_entregas.id', 'dados_entregas.pedido_id', 'pedidos.models_cliente_id')
-        //->get();
-
-        //$cliente = DB::table('models_clientes')
-        //->where('models_clientes.id', '=', $pedido_cliente[0]->models_cliente_id)
-        //->select('models_clientes.id', 'models_clientes.nome_razaosocial')
-        //->get();
         
         $pedido = Pedido::find($pedido[0]->id);
         $pedido_cliente = $pedido->models_cliente;
