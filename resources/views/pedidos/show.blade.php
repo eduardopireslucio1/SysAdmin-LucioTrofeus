@@ -24,7 +24,7 @@
                         <tbody>
                             <tr>
                                 <td><a
-                                        href="/admin/clientes/{{$models_clientes->id}}">{{$models_clientes->nome_razaosocial}}</a>
+                                        href="/admin/clientes/{{$models_clientes->id}}">{{$models_clientes->id}} - {{$models_clientes->nome_razaosocial}}</a>
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($pedidos->data_entrega)->format('d/m/Y')}}</td>
                                 <td>{{$pedidos->descricao}}</td>

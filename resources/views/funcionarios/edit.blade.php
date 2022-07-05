@@ -24,7 +24,7 @@
                         <div class="row" style="margin-bottom:6vh">
                             <div class="col-3">
                                 <label>Nome: </label>
-                                <input placeholder="nome" type="text" name="nome" disabled
+                                <input placeholder="nome" type="text" name="nome"
                                     class="form-control @error('nome') is-invalid @enderror" id="nome"
                                     value="{{$models_funcionarios->nome}}">
                                 @error('nome')
@@ -48,7 +48,7 @@
 
                             <div class="col-3">
                                 <label>Data de nascimento: </label>
-                                <input placeholder="dt_nascimento" type="text" name="dt_nascimento" disabled
+                                <input placeholder="dt_nascimento" type="text" name="dt_nascimento"
                                     class="form-control @error('dt_nascimento') is-invalid @enderror" id="dt_nascimento"
                                     value="{{ \Carbon\Carbon::parse($models_funcionarios->dt_nascimento)->format('d/m/Y')}}">
                                 @error('dt_nascimento')

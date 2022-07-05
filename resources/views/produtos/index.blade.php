@@ -88,7 +88,7 @@ form {
                         <td>@if($produto->status == 0)
 
                             <a class="btn btn-danger btn-sm"
-                                style="background-color: red; color: white; margin-left:80px">I</a>
+                                style="background-color: red; color: white; margin-left:80px; width:28px;">I</a>
                             @else
                             <a class="btn btn-sucess btn-sm"
                                 style="background-color: green; color: white; margin-left:80px">A</a>

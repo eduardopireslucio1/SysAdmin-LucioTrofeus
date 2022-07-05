@@ -52,8 +52,9 @@ form {
                 <thead>
                     <tr>
                         <th class="col-1">ID</th>
+                        <th class="col-2">Pedido - Nome do cliente</th>
                         <th class="alinhadoCentro" class="col-4">Funcionário responsável</th>
-                        <th class="col-2">Data da entrega</th>
+                        <th class="col-2; alinhadoCentro">Data da entrega</th>
                         <th class=""></th>
                         <th class="col-1">Taxa de frete</th>
                         <th class="col-1">Cidade</th>
@@ -66,8 +67,9 @@ form {
                     @foreach ($entregas as $entrega)
                     <tr>
                         <td>{{$entrega->id}}</td>
+                        <td><a href="/admin/pedido/{{$entrega->pedido_id}}">{{$entrega->pedido_id}} - {{$entrega->nome_razaosocial}}</a></td>
                         <td class="alinhadoCentro">{{$entrega->nome}}</td>
-                        <td class="">{{ \Carbon\Carbon::parse($entrega->dt_entrega)->format('d/m/Y')}}</td>
+                        <td class="AlinhadoCentro">{{ \Carbon\Carbon::parse($entrega->dt_entrega)->format('d/m/Y')}}</td>
                         <td class="alinhadoDireita">R$ </td>
                         <td class="alinhadoDireita">{{number_format($entrega->taxa_frete, 2, ',', '.')}}</td>
                         <td>{{$entrega->cidade}}</td>

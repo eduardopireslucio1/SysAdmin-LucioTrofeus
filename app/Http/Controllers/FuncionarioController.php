@@ -37,6 +37,8 @@ class FuncionarioController extends Controller
     public function create()
     {
         $validar_cpf = true;
+        $funcionario_cadastrado = false;
+        
         $data = array(
             'nome' => null,
             'cpf' => null,
@@ -47,7 +49,7 @@ class FuncionarioController extends Controller
             'salario' => null
         );
 
-        return view('funcionarios.create', compact('validar_cpf', 'data'));
+        return view('funcionarios.create', compact('validar_cpf', 'data', 'funcionario_cadastrado'));
     }
 
     /**
@@ -58,6 +60,9 @@ class FuncionarioController extends Controller
      */
     public function store(FuncionarioStoreRequest $request)
     {   
+        $funcionario_cadastrado = false;
+        $funcionarios = ModelsFuncionario::all();
+
         $data = array(
             'nome' => $request->nome,
             'cpf' => $request->cpf,
@@ -69,6 +74,13 @@ class FuncionarioController extends Controller
         );
 
         $validar_cpf = CPF::validaCPF($request->cpf);
+        
+        foreach($funcionarios as $funcionario){
+            if($funcionario->cpf == $request->cpf){
+                $funcionario_cadastrado = true;
+                return view('funcionarios.create', compact('funcionario_cadastrado', 'data', 'validar_cpf'));
+            }
+        }
 
         if(!$validar_cpf){
             return view('funcionarios.create', compact('validar_cpf', 'data'));
@@ -133,9 +145,9 @@ class FuncionarioController extends Controller
         $models_funcionarios = ModelsFuncionario::findOrFail($id);
 
         $models_funcionarios -> update([
-            'nome'=>$models_funcionarios->nome,
+            'nome'=>$request->nome,
             'cpf'=>$models_funcionarios->cpf,
-            'dt_nascimento' => $models_funcionarios->dt_nascimento,
+            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),
             'dt_admissao' => DateTime::createFromFormat('d/m/Y', $request->dt_admissao),
             'carga_horaria'=>$request->carga_horaria,
             'cargo'=>$request->cargo,

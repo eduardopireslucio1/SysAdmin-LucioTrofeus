@@ -34,8 +34,10 @@
                                     <option data-valor="{{$funcionario->nome}}"
                                         value="{{$entregas->models_funcionario_id}}">
                                         {{$funcionario->nome}} </option>
-                                    @foreach ($models_funcionarios as $funcionario)
+                                    @foreach($models_funcionarios as $funcionario)
+                                    @if($funcionario->id != $entregas->models_funcionario_id)
                                     <option value="{{$funcionario->id}}">{{$funcionario->nome}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                         </div>
