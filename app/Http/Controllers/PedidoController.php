@@ -127,7 +127,23 @@ class PedidoController extends Controller
         return view('pedidos.index')->with('pedidos',$pedidos);
     }
 
-    public function pedidosFiltraStatus(Request $request){
+    public function searchPedidos(Request $request)
+    {
+      
+        if ($request->has('search')) {
+            $pedidos = DB::table('pedidos')
+            ->join('models_clientes', 'models_clientes.id', '=', 'pedidos.models_cliente_id')
+            ->select('pedidos.id', 'pedidos.models_cliente_id', 'models_clientes.nome_razaosocial', 'data_entrega','valor_total', 'status', 'pedidos.created_at')
+            ->where('models_clientes.nome_razaosocial', 'LIKE', '%' . $request->search . '%')
+            ->orderByRaw('pedidos.created_at DESC')
+            ->get();
+        }
+
+        return view('pedidos.index', compact('pedidos'));
+    }
+
+    public function pedidosFiltraStatus(Request $request)
+    {
 
         $status = $request->get('status');
 
