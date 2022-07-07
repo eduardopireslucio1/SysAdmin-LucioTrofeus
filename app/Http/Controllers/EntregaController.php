@@ -116,17 +116,9 @@ class EntregaController extends Controller
         ]);
     }
 
-    public function entregas(){
+    public function entregas()
+    {
         $entregas = EntregaController::getEntregas();
-        
-        $entregas = DB::table('entregas')
-        ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
-        ->join('dados_entregas', 'entregas.id', '=', 'dados_entregas.entrega_id')
-        ->join('pedidos', 'dados_entregas.pedido_id', '=', 'pedidos.id')
-        ->join('models_clientes', 'pedidos.models_cliente_id', '=', 'models_clientes.id')
-        ->select('models_clientes.nome_razaosocial', 'pedido_id','entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'entregas.cidade', 'entregas.status', 'entregas.created_at')
-        ->orderByRaw('created_at DESC')
-        ->get();
 
         return view('entrega.index',[
             'entregas'=>$entregas
@@ -137,14 +129,17 @@ class EntregaController extends Controller
     {
         $status = $request->get('status');
 
-        if($status == 'todos'){
+        if ($status == 'todos') {
             $entregas = EntregaController::getEntregas();
             return view('entrega.index', compact('entregas'));
         }
 
         $entregas = DB::table('entregas')
         ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
-        ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
+        ->join('dados_entregas', 'entregas.id', '=', 'dados_entregas.entrega_id')
+        ->join('pedidos', 'dados_entregas.pedido_id', '=', 'pedidos.id')
+        ->join('models_clientes', 'pedidos.models_cliente_id', '=', 'models_clientes.id')
+        ->select('models_clientes.nome_razaosocial', 'pedido_id','entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'entregas.cidade', 'entregas.status', 'entregas.created_at')
         ->where('entregas.status', '=', $status)
         ->orderByRaw('created_at DESC')
         ->get();
@@ -156,7 +151,10 @@ class EntregaController extends Controller
     {
         $entregas = DB::table('entregas')
         ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
-        ->select('entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'cidade', 'status', 'entregas.created_at')
+        ->join('dados_entregas', 'entregas.id', '=', 'dados_entregas.entrega_id')
+        ->join('pedidos', 'dados_entregas.pedido_id', '=', 'pedidos.id')
+        ->join('models_clientes', 'pedidos.models_cliente_id', '=', 'models_clientes.id')
+        ->select('models_clientes.nome_razaosocial', 'pedido_id','entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'entregas.cidade', 'entregas.status', 'entregas.created_at')
         ->orderByRaw('created_at DESC')
         ->get();
 
