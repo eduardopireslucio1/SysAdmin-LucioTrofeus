@@ -147,6 +147,23 @@ class EntregaController extends Controller
         return view('entrega.index', compact('entregas'));
     }
 
+    public static function searchEntregas(Request $request)
+    {
+        if ($request->has('search')) {
+        $entregas = DB::table('entregas')
+        ->join('models_funcionarios', 'models_funcionarios.id', '=', 'entregas.models_funcionario_id')
+        ->join('dados_entregas', 'entregas.id', '=', 'dados_entregas.entrega_id')
+        ->join('pedidos', 'dados_entregas.pedido_id', '=', 'pedidos.id')
+        ->join('models_clientes', 'pedidos.models_cliente_id', '=', 'models_clientes.id')
+        ->select('models_clientes.nome_razaosocial', 'pedido_id','entregas.id', 'entregas.models_funcionario_id', 'models_funcionarios.nome', 'dt_entrega', 'taxa_frete', 'entregas.cidade', 'entregas.status', 'entregas.created_at')
+        ->where('models_clientes.nome_razaosocial', 'LIKE' , '%' . $request->search . '%' )
+        ->orderByRaw('created_at DESC')
+        ->get();
+        }
+
+        return view('entrega.index', compact('entregas'));
+    }
+
     public static function getEntregas()
     {
         $entregas = DB::table('entregas')

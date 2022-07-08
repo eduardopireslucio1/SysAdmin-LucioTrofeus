@@ -61,7 +61,6 @@ form {
         </div>
     </div>
 </div>
-</form>
 <div class="div card">
     <div class="card-body">
         <table class="table">
