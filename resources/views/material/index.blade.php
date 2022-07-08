@@ -67,6 +67,7 @@ form {
                 <tbody>
                     @foreach ($models_materials as $material)
                     <tr>
+                        @php $total = $material->preco * $material->quantidade @endphp
                         <td>{{$material->id}}</td>
                         <td class="alinhadoEsquerda">{{ucwords($material->nome)}}</td>
                         <td class="alinhadoEsquerda">{{$material->descricao}}</td>
@@ -74,11 +75,6 @@ form {
                         <td class="alinhadoDireita">R$</td>
                         <td class="alinhadoDireita">{{number_format($material->preco, 2, ',', '.')}}</td>
                         <td class="alinhadoDireita">R$</td>
-                        @php $total = 0;
-                        foreach($models_materials as $material){
-                            $total = $material->quantidade * $material->preco;
-                        }
-                        @endphp
                         <td class="alinhadoDireita">{{number_format($total, 2, ',', '.')}}</td>
                         <td class=""></td>
                         <td>

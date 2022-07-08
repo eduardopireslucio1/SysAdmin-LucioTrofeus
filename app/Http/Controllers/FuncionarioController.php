@@ -39,15 +39,17 @@ class FuncionarioController extends Controller
         $validar_cpf = true;
         $funcionario_cadastrado = false;
         
-        $data = array(
-            'nome' => null,
-            'cpf' => null,
-            'dt_nascimento' => null,
-            'dt_admissao' => null,
-            'carga_horaria' => null,
-            'cargo' => null,
-            'salario' => null
-        );
+        if (!isset($data)) {
+            $data = array(
+                'nome' => null,
+                'cpf' => null,
+                'dt_nascimento' => null,
+                'dt_admissao' => null,
+                'carga_horaria' => null,
+                'cargo' => null,
+                'salario' => null
+            );
+        }
 
         return view('funcionarios.create', compact('validar_cpf', 'data', 'funcionario_cadastrado'));
     }
@@ -70,10 +72,13 @@ class FuncionarioController extends Controller
             'dt_admissao' => $request->dt_admissao,
             'carga_horaria' => $request->carga_horaria,
             'cargo' => $request->cargo,
-            'salario' => $request->cargo
+            'salario' => $request->salario
         );
 
         $validar_cpf = CPF::validaCPF($request->cpf);
+        if(!$validar_cpf){
+            return view('funcionarios.create', compact('validar_cpf', 'data', 'funcionario_cadastrado'));
+        }
         
         foreach($funcionarios as $funcionario){
             if($funcionario->cpf == $request->cpf){
@@ -81,20 +86,16 @@ class FuncionarioController extends Controller
                 return view('funcionarios.create', compact('funcionario_cadastrado', 'data', 'validar_cpf'));
             }
         }
-
-        if(!$validar_cpf){
-            return view('funcionarios.create', compact('validar_cpf', 'data'));
-        }
-
+        
         $Funcionario = ModelsFuncionario::create([
-            
-            'nome'=>$request->nome,
-            'cpf'=>$request->cpf,
-            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $request->dt_nascimento),
-            'dt_admissao' => DateTime::createFromFormat('d/m/Y', $request->dt_admissao),
-            'carga_horaria'=>$request->carga_horaria,
-            'cargo'=>$request->cargo,
-            'salario'=>$request->salario,
+
+            'nome'=>$data['nome'],
+            'cpf'=>$data['cpf'],
+            'dt_nascimento' => DateTime::createFromFormat('d/m/Y', $data['dt_nascimento']),
+            'dt_admissao' => DateTime::createFromFormat('d/m/Y', $data['dt_admissao']),
+            'carga_horaria'=>$data['carga_horaria'],
+            'cargo'=>$data['cargo'],
+            'salario'=>$data['salario'],
         ]);
 
         if(!$Funcionario){
