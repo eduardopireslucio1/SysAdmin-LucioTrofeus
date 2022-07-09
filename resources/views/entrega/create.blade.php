@@ -37,7 +37,7 @@
                         @csrf
                         <div class="row" style="margin-bottom:2vh">
                             <div class="col-3">
-                                <label for="">Funcionário</label>
+                                <label for="">Funcionário <span class="obrigatorio">*</span></label>
                                 <select class="form-control select2bs4 select2-hidden-accessible"
                                     id="models_funcionario_id" name="models_funcionario_id"
                                     placeholder="Selecione um funcionário" class="selectpicker" data-live-search="true"
@@ -49,7 +49,7 @@
                                 </select>
                             </div>
                             <div class="col-3">
-                                <label for="">Pedido</label>
+                                <label for="">Pedido <span class="obrigatorio">*</span></label>
                                 <select class="form-control select2bs4 select2-hidden-accessible" id="pedido_id"
                                     name="pedido_id" placeholder="Selecione um pedido" class="selectpicker"
                                     data-live-search="true" style="width:100%; outline: none">
@@ -62,12 +62,12 @@
                                 </select>
                             </div>
                             <div class="col-3">
-                                <label for="">Data da entrega:</label>
+                                <label for="">Data da entrega: <span class="obrigatorio">*</span></label>
                                 <input class="form-control datetimepicker-input" id="dt_entrega" name="dt_entrega"
                                     type="date" placeholder="Data entrega">
                             </div>
                             <div class="col-3">
-                                <label for="">Status:</label>
+                                <label for="">Status: <span class="obrigatorio">*</span></label>
                                 <select name="status" id="status"
                                     class="form-control @error('status') is-invalid @enderror">
                                     <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="col-3">
-                                <label>Cidade:</label>
+                                <label>Cidade:<span class="obrigatorio">*</span></label>
                                 <input placeholder="Cidade" type="text" name="cidade"
                                     class="form-control @error('cidade') is-invalid @enderror"
                                     id="cidade">{{old('cidade')}}</input>
@@ -106,7 +106,7 @@
                                 @enderror
                             </div>
                             <div class="col-2">
-                                <label>Estado:</label>
+                                <label>Estado:<span class="obrigatorio">*</span></label>
                                 <input placeholder="Estado" type="text" name="estado"
                                     class="form-control @error('estado') is-invalid @enderror"
                                     id="estado">{{old('estado')}}</input>
@@ -192,6 +192,12 @@
         </div>
     </div>
 </div>
+
+<style>
+.obrigatorio {
+    color: red;
+}
+</style>
 
 <script>
 var cleave = new Cleave('#cep', {
