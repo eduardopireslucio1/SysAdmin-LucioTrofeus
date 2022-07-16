@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <div class="row" style="margin-bottom:2vh">
                         <div class="col-3">
-                            <label for="">Cliente</label>
+                            <label for="">Cliente<span class="obrigatorio">*</span></label>
                             <select class="form-control select2bs4 select2-hidden-accessible" id="cliente"
                                 placeholder="Selecione um cliente" class="selectpicker" data-live-search="true"
                                 style="width:100%">
@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <label for="">Produto</label>
+                            <label for="">Produto<span class="obrigatorio">*</span></label>
                             <select class="form-control select2bs4 select2-hidden-accessible" id="produto"
                                 placeholder="Selecione um produto" class="selectpicker" data-live-search="true"
                                 style="width:100%; outline: none">
@@ -57,11 +57,11 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <label for="">Quantidade</label>
+                            <label for="">Quantidade<span class="obrigatorio">*</span></label>
                             <input class="form-control" id="quantidade" placeholder="Ex: 20" type="number" />
                         </div>
                         <div class="col-3">
-                            <label for="">Tamanho</label>
+                            <label for="">Tamanho<span class="obrigatorio">*</span></label>
                             <input class="form-control" id="tamanho" placeholder="Ex: 15cm" type="number" />
                         </div>
 
@@ -72,10 +72,10 @@
                                 placeholder="Descrição"></textarea>
                         </div>
                         <div class="col-4">
-                            <br><label for="">Prazo de entrega:</label>
+                            <br><label for="">Prazo de entrega<span class="obrigatorio">*</span></label>
                             <br><input class="form-control datetimepicker-input" id="data" type="date"
                                 placeholde="Data entrega">
-                            <label style="padding:5 px;">Status: <span class="obrigatorio"></span></label>
+                            <label style="padding:5 px;">Status <span class="obrigatorio">*</span></label>
                             <select name="status" id="status"
                                 class="form-control @error('status') is-invalid @enderror">
                                 <option value="0" {{old('status'==0 ? 'selected' : '')}}>Pendente</option>
@@ -110,6 +110,12 @@
 </div>
 
 </div>
+
+<style>
+.obrigatorio {
+    color: red;
+}
+</style>
 
 
 @endsection

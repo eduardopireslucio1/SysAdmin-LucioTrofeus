@@ -47,9 +47,9 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="{{route('home')}}" class="nav-link {{activeSegment('home')}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="fa fa-home" aria-hidden="true"></i>
                         <p>
-                            Dashboard
+                            Home
                         </p>
                     </a>
                 </li>
