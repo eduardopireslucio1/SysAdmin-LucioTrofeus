@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="col-4">
-                                <label>Telefone: <span class="obrigatorio">*</span></label>
+                                <label>Telefoneee: <span class="obrigatorio">*</span></label>
                                 <input placeholder="Telefone" type="text" name="telefone" value="{{$array["telefone"]}}"
                                     class="form-control @error('telefone') is-invalid @enderror" id="telefone">
                                 @error('telefone')
